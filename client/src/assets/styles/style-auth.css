@@ -1,0 +1,41 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif; }
+
+.wrapper-login, .wrapper-register {
+  height: 100vh;
+  background: url(../img/background-login.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+  .wrapper-login h4, .wrapper-register h4 {
+    color: #ffffff; }
+  .wrapper-login .login-input-field, .wrapper-login .login-field-icon-c, .wrapper-login .register-input-field, .wrapper-login .register-field-icon-c, .wrapper-login .newPass-input-field .newPass-field-icon-c, .wrapper-register .login-input-field, .wrapper-register .login-field-icon-c, .wrapper-register .register-input-field, .wrapper-register .register-field-icon-c, .wrapper-register .newPass-input-field .newPass-field-icon-c {
+    background: #f6f8f9; }
+  .wrapper-login .card-title, .wrapper-register .card-title {
+    color: #565656;
+    font-weight: bold;
+    margin: 15px 0px 15px 0px; }
+  .wrapper-login .blue-btn, .wrapper-register .blue-btn {
+    background: #3c4e5f !important;
+    border-color: #385570;
+    margin-left: 0 !important; }
+  .wrapper-login .cyan-btn, .wrapper-register .cyan-btn {
+    background: #2b6cc8 !important;
+    border-color: #1e56a5; }
+  .wrapper-login .blue-btn, .wrapper-login .cyan-btn, .wrapper-register .blue-btn, .wrapper-register .cyan-btn {
+    color: #ffffff !important;
+    padding: 5px 30px;
+    text-transform: uppercase;
+    margin: 12px 5px 12px 5px; }
+
+.cyan-btn:hover {
+  background: #1e56a5 !important;
+  color: #ffffff !important; }
+
+.blue-btn:hover {
+  background: #345e86 !important;
+  color: #ffffff !important; }
+
+/*# sourceMappingURL=style-auth.css.map */

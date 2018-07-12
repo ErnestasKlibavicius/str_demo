@@ -91,13 +91,26 @@ body {
 }
 
 
-.side-nav-item [data-toggle="collapse"] .fa:before {   
-  content: "\f107";
+.side-nav-item{
+    a.collapsed{
+        .icon-o {display: block !important;}
+        .icon{display: none !important;}
+    }
+    a{
+        .icon-o{display: none !important;}
+        .icon{display: block !important;}
+    }
 }
 
-.side-nav-item [data-toggle="collapse"].collapsed .fa:before {
-  content: "\f105";
-}
+  
+
+// .side-nav-item svg.icon.hide{
+//   display: none !important;
+// }
+// .expand-link:hover .icon-contract,
+// .expand-link:active .icon-contract{
+//   display: block;
+// }
 
 .content-container{
     h3{

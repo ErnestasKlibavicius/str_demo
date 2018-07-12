@@ -157,17 +157,15 @@ body {
   
 }
 
-.question-container[data-toggle="collapse"] .fa:before {   
-    content: "\f107";
-}
-
-.question-container[data-toggle="collapse"].collapsed .fa:before {   
-    content: "\f105";
-}
-
-
-.question-container [data-toggle="collapse"].collapsed .fa:before {
-content: "\f105";
+.question-parent{
+    li.collapsed{
+        .icon-o {display: block !important;}
+        .icon{display: none !important;}
+    }
+    li{
+        .icon-o{display: none !important;}
+        .icon{display: block !important;}
+    }
 }
 
 

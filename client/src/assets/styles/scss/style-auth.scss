@@ -9,8 +9,8 @@ body, html{
 }
 
 .wrapper-login, .wrapper-register{
-    height: 100%; 
-    background: url(/img/background-login.png);
+    height: 100vh; 
+    background: url(../img/background-login.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
