@@ -1,5 +1,5 @@
 <template>
-  <div class="account">
+  <div class="changePassword">
     <header class="header-container sticky-top">
       <nav class="navbar navbar-expand-md">
         <div class="container-fluid">
@@ -39,7 +39,7 @@
               </li>
               <li class="nav-item account-info-btn">
                 <a href="/account" class="nav-link"> My Account
-                   <font-awesome-icon icon="user" style="color: #fff" aria-hidden="true"/>
+                   <font-awesome-icon icon="user"/>
                 </a>
               </li>
             </ul>
@@ -54,7 +54,7 @@
             <div class="nav-items">
               <ul>
                 <li>
-                  <router-link class="dropdown-item" to="/">Dashboard</router-link>
+                  <router-link class="dropdown-item" to="/account">Dashboard</router-link>
                 </li>
                 <li>
                   <router-link class="dropdown-item" to="/referrals">Referrals</router-link>
@@ -78,24 +78,59 @@
         </div>
       </div>
     </div>
+    <div class="content mt-5">
+        <div class="container"> 
+            <div class="row">
+                <div class="col-md-12 px-0">
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h1 class="display-heading ml-3">Change Password</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-container">
+                <form>
+                <div class="form-group row pt-3">
+                <label class="col-sm-3 offset-sm-1 text-center col-form-label">Old Password</label>
+                    <div class="col-sm-5">
+                        <input type="password" class="form-control" placeholder="Old Password">
+                    </div>
+                </div>
+                <div class="form-group row pt-3">
+                <label class="col-sm-3 offset-sm-1 text-center col-form-label">New Password</label>
+                    <div class="col-sm-5">
+                        <input type="password" class="form-control" placeholder="New Password">
+                    </div>
+                </div>
+                <div class="form-group row pt-3">
+                <label class="col-sm-3 offset-sm-1 text-center col-form-label">Confirm New Password</label>
+                    <div class="col-sm-5">
+                        <input type="password" class="form-control" placeholder="Confirm New Password">
+                    </div>
+                </div>
+                <div class="form-group row">
+                <div class="col-sm-12 text-center my-3">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
   </div>
 </template>
 
 
 <script>
-  export default {
-    name: 'Account',
-    data() {
-      return {
-
-      }
-    }
-  }
-
+export default {
+  name: "ChangePass",
+  data() {
+    return {};
+  }};
 </script>
 
 
 <style scoped>
-  @import url('../assets/styles/style-private.css');
-
+@import url("../../assets/styles/style-private.css");
 </style>

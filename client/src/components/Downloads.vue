@@ -62,7 +62,7 @@
               <h1 class="display-5 display-heading-text">Download APP-1</h1>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 <br> Assumenda minima consectetur, temporibus ad porro quos.</p>
-              <a class="btn blue-btn" href="/download/app-one" role="button">
+              <a class="btn blue-btn" href="/download-app-1" role="button">
                 <i class="fa fa-arrow-down"></i> Download</a>
             </div>
           </div>
@@ -72,7 +72,7 @@
               <h1 class="display-5 display-heading-text">Download APP-2</h1>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 <br> Assumenda minima consectetur, temporibus ad porro quos.</p>
-              <a class="btn blue-btn" href="/download/app-two" role="button">
+              <a class="btn blue-btn" href="/download-app-2" role="button">
                 <i class="fa fa-arrow-down"></i> Download</a>
             </div>
           </div>

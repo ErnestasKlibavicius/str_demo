@@ -7,10 +7,15 @@ import Login from '@/components/Login'
 import Documentation from '@/components/Documentation'
 import Downloads from '@/components/Downloads'
 import DownApp1 from '@/components/DownApp1'
-import DownApp2 from '@/components/DownApp2'
-import Account from '@/components/Account'
+import DownApp2 from '@/components/DownApp2'  
 import Register from '@/components/Register'
-import UpdPassword from '@/components/UpdPassword'
+//User Views
+import Account from '@/components/user/Account'
+import UpdPassword from '@/components/user/UpdPassword'
+import Referrals from '@/components/user/Referrals'
+import ChangePassword from '@/components/user/ChangePassword'
+import Purchase from '@/components/user/Purchase'
+//Admin Views
 
 Vue.use(Router)
 
@@ -66,6 +71,21 @@ export default new Router({
       path: '/update-password',
       name: 'UpdPassword',
       component: UpdPassword
+    },
+    {
+      path: '/referrals',
+      name: 'Referrals',
+      component: Referrals
+    },
+    {
+      path: '/change-password',
+      name: 'ChangePass',
+      component: ChangePassword
+    },
+    {
+      path: '/purchase',
+      name: 'Purchase',
+      component: Purchase
     }  
   ]
 })

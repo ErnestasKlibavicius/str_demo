@@ -8,10 +8,18 @@ let Bootstrap = require ('bootstrap')
 import 'bootstrap/dist/css/bootstrap.css'
 //Font-Awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faBars,  faUser, faAngleRight, faAngleDown, faLock, faArrowDown } from '@fortawesome/free-solid-svg-icons'
+import
+ { 
+   faBars,  faUser, faAngleRight, faAngleDown,
+   faLock, faArrowDown, faTimesCircle, faCheck, faPlus, faTimes 
+ } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faBars, faUser, faAngleRight, faAngleDown, faLock, faArrowDown)
+library.add
+(
+  faBars, faUser, faAngleRight, faAngleDown, faLock,
+  faArrowDown, faTimesCircle, faCheck, faPlus, faTimes
+)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

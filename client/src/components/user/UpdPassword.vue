@@ -59,6 +59,6 @@
 
 
 <style scoped>
-   @import url('../assets/styles/style-auth.css');
+   @import url("../../assets/styles/style-private.css");
 
 </style>
