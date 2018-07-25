@@ -1,5 +1,5 @@
 <template>
-  <div class="purchase">
+  <div class="gifts">
     <header class="header-container sticky-top">
       <nav class="navbar navbar-expand-md">
         <div class="container-fluid">
@@ -54,16 +54,16 @@
             <div class="nav-items">
               <ul>
                 <li>
-                  <router-link class="dropdown-item" to="/account">Dashboard</router-link>
+                  <router-link class="dropdown-item" to="/admin">Dashboard</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/referrals">Referrals</router-link>
+                  <router-link class="dropdown-item" to="/users">Users</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/change-password">Change Password</router-link>
+                  <router-link class="dropdown-item" to="/gifts">Gifts/Discount codes</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/purchase">Purchase</router-link>
+                  <router-link class="dropdown-item" to="/admins">Admins</router-link>
                 </li>
               </ul>
             </div>
@@ -79,60 +79,45 @@
       </div>
     </div>
     <div class="content mt-5">
-        <div class="container">
-        <div class="row">
-            <div class="col-md-12 px-0">
-            <div>
-                <div class="d-flex justify-content-between align-items-center">
-                <h1 class="display-heading ml-3">Add more points</h1>
-                </div>
+      <div class="container-fluid dashboard-container">
+      <div class="row">
+        <div class="col-md-8 offset-md-2 px-0">
+          <div>
+            <div class="d-flex justify-content-between align-items-center add-licenses-container">
+              <h1 class="display-heading">Generate new gift</h1>
             </div>
+            <div class="input-group w-25 my-2">
+              <input type="text" class="form-control" placeholder="Search">
             </div>
+          </div>
         </div>
-        <div class="table-container">
-            <form>
-            <div class="form-group form-inline form-container row pt-3">
-                <label class="col-sm-3 text-center col-form-label" style="color: #2b6cc8">Choose Point Amount</label>
-                <div class="col-sm-5">
-                   <input @keydown.enter.prevent="checkValue" @change="checkValue" type="text" v-model="value" class="form-control" placeholder="Enter Amount">
-                </div>
-                <div class="col-sm-4">
-                  <p id="amountInfo" class="text-muted"> Minimal point rate - 20pts</p>
-                  <p id="amountInfo" class="text-muted"> Point rate - 1.3/1s</p>
-                   <span class="text-muted"><input type="checkbox" id="checkbox" v-model="isGift"> Is It A Gift? </span>
-                   <div>
-                     <input type="text" v-if="isGift" class="form-control" style="width: 60%;" placeholder="Amount" @keydown.enter.prevent>
-                   </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-12 text-center my-3">
-                <button type="submit" class="btn btn-primary">Purchase</button>
-                </div>
-            </div>
-            </form>
+      </div>
+      <div class="row">
+        <div class="col-md-8 offset-md-2 table-container text-center py-4">
+          <div>
+            <h3 class="my-2">Create New Referral</h3>
+            <button type="submit" @click="showCode"  class="btn btn-primary my-3">Generate</button>
+            <h5 v-for="code in codes" id="code">Code: {{code.code}}</h5>
+          </div>
         </div>
-        </div>
-    </div> 
+      </div>
+    </div>
+    </div>
   </div>
 </template>
 
 
 <script>
 export default {
-  name: "Purchase",
+  name: "Gifts",
   data() {
     return {
-        value: 0,
-        isGift: false
-  
+      codes: []
     };
   },
   methods: {
-    checkValue() {
-      if(this.value < 20) {
-        this.value = 20;
-      }
+    showCode: function() {
+      this.codes.push({code: 'newCode'});
     }
   }
 };

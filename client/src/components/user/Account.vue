@@ -81,7 +81,7 @@
     <div class="content mt-5">
         <div class="container-fluid dashboard-container"> 
         <div class="row">
-            <div class="col-md-10 offset-md-1 px-0">
+            <div class="col-md-8 offset-md-2 px-0">
                 <div>
                     <div class="d-flex justify-content-between align-items-center add-licenses-container">
                         <h1 class="display-heading">Licenses</h1>
@@ -91,34 +91,34 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-10 offset-md-1 table-container">  
+            <div class="col-md-8 offset-md-2 table-container">  
             <div class="table-responsive">
             <table class="table authCode-table">
             <thead>
             <tr>
               <th scope="col">Date</th>
               <th scope="col">Code</th>
-              <th scope="col">Remove Code</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
             <tr>
-                <td scope="row">2018.02.03</th>
+                <td scope="row">2018.02.03</td>
                 <td>A82C6Dge5Cz893</td>
                 <td><a href="#" class="delete-btn"><font-awesome-icon class="i" icon="times-circle"/></a></td>
             </tr>
             <tr>
-              <td scope="row">2018.02.03</th>
+              <td scope="row">2018.02.03</td>
               <td>A82C6Dge5Cz893</td>
               <td><a href="#" class="delete-btn"><font-awesome-icon class="i" icon="times-circle"/></a></td>
             </tr>
             <tr>
-                <td scope="row">2018.02.03</th>
+                <td scope="row">2018.02.03</td>
                 <td>A82C6Dge5Cz893</td>
                 <td><a href="#" class="delete-btn"><font-awesome-icon class="i" icon="times-circle"/></a></td>
             </tr>
             <tr>
-                <td scope="row">2018.02.03</th>
+                <td scope="row">2018.02.03</td>
                 <td>A82C6Dge5Cz893</td>
                 <td><a href="#" class="delete-btn"><font-awesome-icon class="i" icon="times-circle"/></a></td>
             </tr>
@@ -147,22 +147,22 @@
           </thead>
           <tbody>
             <tr>
-              <td scope="row">2018.02.03</th>
+              <td scope="row">2018.02.03</td>
               <td>100</td>
               <td>135</td>
             </tr>
             <tr>
-              <td scope="row">2018.02.03</th>
+              <td scope="row">2018.02.03</td>
               <td>100</td>
               <td>135</td>
             </tr>
             <tr>
-              <td scope="row">2018.02.03</th>
+              <td scope="row">2018.02.03</td>
               <td>100</td>
               <td>135</td>
             </tr>
           <tr>
-              <td scope="row">2018.02.03</th>
+              <td scope="row">2018.02.03</td>
               <td>100</td>
               <td>135</td>
           </tr>
@@ -192,29 +192,29 @@
                     </thead>
                     <tbody>
                         <tr class="claimed">
-                            <td scope="row">2018.02.02</th>
-                            <td scope="row">4asd5as5cz5xc</th>
+                            <td scope="row">2018.02.02</td>
+                            <td scope="row">4asd5as5cz5xc</td>
                             <td>123</td>
                             <td class="referral-link">useremail@gmail.com</td>
                             <td><font-awesome-icon icon="check"/></td>
                         </tr>
                         <tr>
-                            <td scope="row">2018.02.02</th>
-                            <td scope="row">4asd5as5cz5xc</th>
+                            <td scope="row">2018.02.02</td>
+                            <td scope="row">4asd5as5cz5xc</td>
                             <td>123</td>
                             <td class="referral-link">useremail@gmail.com</td>
                             <td><font-awesome-icon icon="times-circle"/></td>
                         </tr>
                         <tr>
-                            <td scope="row">2018.02.02</th>
-                            <td scope="row">4asd5as5cz5xc</th>
+                            <td scope="row">2018.02.02</td>
+                            <td scope="row">4asd5as5cz5xc</td>
                             <td>123</td>
                             <td class="referral-link">useremail@gmail.com</td>
                             <td><font-awesome-icon icon="times-circle"/></td>
                         </tr>
                         <tr class="claimed">
-                            <td scope="row">2018.02.02</th>
-                            <td scope="row">4asd5as5cz5xc</th>
+                            <td scope="row">2018.02.02</td>
+                            <td scope="row">4asd5as5cz5xc</td>
                             <td>123</td>
                             <td class="referral-link">useremail@gmail.com</td>
                             <td><font-awesome-icon icon="check"/></td>
@@ -236,7 +236,11 @@ export default {
   name: "Account",
   data() {
     return {};
-  }};
+  },
+  methods: {
+    
+  }
+};
 </script>
 
 

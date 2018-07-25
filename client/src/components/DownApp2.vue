@@ -3,8 +3,7 @@
     <header class="header-container sticky-top">
       <nav class="navbar navbar-expand-md">
         <div class="container-fluid">
-          <a href="/" class="navbar-brand">Lorem
-            <b>ipsum</b>
+          <a href="/" class="navbar-brand">Lorem<b>ipsum</b>
           </a>
           <button class="navbar-toggler hamburger" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
             aria-expanded="false" aria-label="Toggle navigation">

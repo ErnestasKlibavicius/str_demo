@@ -83,14 +83,14 @@ body {
             margin-bottom: 0.1rem;
             li {
                 margin: 10px;
+                margin-bottom: 3px;
                 display: inline-block;
                 .dropdown-item{
                     color: #ffffff;
                 }
                 .dropdown-item:hover{
-                    // color: #0f4885;
                     color: #949393;
-                    border-bottom: 1px solid #0f4885;
+                    border-bottom: 1px solid #0f5caf;
                     background: none;
                 }
                .dropdown-item:active, .dropdown-item:focus{
@@ -106,26 +106,47 @@ body {
 .router-link-exact-active {
     // color: #007bff !important;
     color: #ffffff !important;
-    border-bottom: 1px solid #0965c7;
+    border-bottom: 1px solid #3f9bff;
 }
 
 //Gifts
 .gifts-table{
     font-size: 15px;
-    td{
-        padding: 7px;
+    color: #808080;
+    tr{
+        td{
+            padding-left: 0;
+        }
+        td:first-of-type{
+            padding: 13px 10px 13px 25px;
+            width: 25%;
+        }
+        td:last-of-type{
+            width: 20%;
+        }
     }
     thead{
-        th{
-            color: $light-gray;
+        border-bottom: hidden;
+        tr{
+            box-shadow: 0 5px 13px 0px rgba(0, 0, 0, 0.1);;
         }
+        th{
+            color: #2058a5;
+            padding: 16px 10px 16px 0px;
+        }
+        th:first-of-type{
+            padding: 16px 10px 16px 25px;
+            width: 25%;
+        }
+        th:last-of-type{
+            width: 20%;
+        }
+        
     }
 }
 .claimed{
     background: #2b6cc81a;
 }
-
-
 
 //Buttons-hover
 .cyan-btn:hover{
@@ -133,7 +154,7 @@ body {
     color: #ffffff !important;
 }
 .blue-btn:hover{
-    background: #345e86 !important;
+    background: #345e86 !important; 
     color: #ffffff !important;
 }
 
@@ -143,12 +164,32 @@ body {
     padding-right: 70px !important;
 }
 .authCode-table{
-    td{
-        padding: 7px;
+    color: #808080;
+    tr{
+        td{
+            padding-left: 0;
+        }
+        td:first-of-type{
+            padding: 13px 10px 13px 25px;
+        }
+        td:last-of-type{
+            width: 20%;
+        }
     }
     thead{
+        border-bottom: hidden;
+        tr{
+            box-shadow: 0 5px 13px 0px rgba(0, 0, 0, 0.1);;
+        }
         th{
-            color: $light-gray;
+            color: #2058a5;
+            padding: 16px 10px 16px 0px;
+        }
+        th:first-of-type{
+            padding: 16px 10px 16px 25px;
+        }
+        th:last-of-type{
+            width: 20%;
         }
     }
 }
@@ -157,15 +198,14 @@ body {
 }
 .table-container{
     background: #ffffff;
-    // padding: 15px;
-    border-radius: 10px;
-    // margin-top: 10px;
+    border-radius: 15px;
     margin-bottom: 25px;
+    padding: 0;
     .license-list-container{
         li{
             list-style: none;
             border-bottom: 1px solid #d9d9da;
-            padding: 15px 15px 15px 0px;
+            padding: 0;
             margin: 10px;
        
         }
@@ -175,13 +215,36 @@ body {
 //Payments
 .payment-table{
     font-size: 15px;
-    td{
-        padding: 7px;
+    color: #808080;
+    tr{
+        td{
+            padding-left: 0;
+        }
+        td:first-of-type{
+            padding: 13px 10px 13px 25px;
+            width: 25%;
+        }
+        td:last-of-type{
+            width: 20%;
+        }
     }
     thead{
-        th{
-            color: $light-gray;
+        border-bottom: hidden;
+        tr{
+            box-shadow: 0 5px 13px 0px rgba(0, 0, 0, 0.1);;
         }
+        th{
+            color: #2058a5;
+            padding: 16px 10px 16px 0px;
+        }
+        th:first-of-type{
+            padding: 16px 10px 16px 25px;
+            width: 25%;
+        }
+        th:last-of-type{
+            width: 20%;
+        }
+        
     }
 }
 .table{
@@ -238,6 +301,9 @@ body {
     background: #4090ff;
     color: #ffffff;
 }
+.form-container {
+    padding-left: 3rem;
+}
 
 
 //BUTTONS 
@@ -249,7 +315,7 @@ body {
     text-decoration: none !important;
     background: #ca0202;
     border-radius: 3px;
-    .i{
+    i{
         padding: 3px;
     }
 }
@@ -264,7 +330,7 @@ body {
     text-decoration: none !important;
     background: #08bd35;
     border-radius: 3px;
-    .i{
+    i{
         margin-left: 5px;
         margin-top: 1px;
     }
@@ -299,6 +365,10 @@ h1.display-heading{
         padding-left: 10px !important;
         padding-right: 10px !important;
     }
+    .form-container {
+        padding-left: 0;
+    }
+
 }
 @media screen and (min-width: 768px) and (max-width: 784px) {
     .account-info-btn{
@@ -306,4 +376,55 @@ h1.display-heading{
             font-size: 12px;
         }
     }    
+}
+
+@media screen and (max-width: 400px){
+    .authCode-table{
+        tr{
+            td:first-of-type{
+                padding: 8px;
+            }
+        }
+        thead{
+            th {
+                padding: 8px;
+            }
+            th:first-of-type {
+                padding: 8px;
+            }
+            
+        }
+    }
+    .gifts-table{
+        tr{
+            td:first-of-type{
+                padding: 8px;
+            }
+        }
+        thead{
+            th {
+                padding: 8px;
+            }
+            th:first-of-type {
+                padding: 8px;
+            }
+            
+        }
+    }
+    .payment-table{
+        tr{
+            td:first-of-type{
+                padding: 8px;
+            }
+        }
+        thead{
+            th {
+                padding: 8px;
+            }
+            th:first-of-type {
+                padding: 8px;
+            }
+            
+        }
+    }
 }

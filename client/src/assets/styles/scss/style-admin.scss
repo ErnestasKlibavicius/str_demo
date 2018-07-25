@@ -1,0 +1,208 @@
+$primary-color: #22282e;
+$cyan-btn-color: #2b6cc8;
+$blue-btn-color: #3c4e5f;
+$green-btn-color: #51a061;
+$grey-body-color: #f6f8f9;
+$gray-heading: #565656;
+$light-gray: #898989;
+
+body {
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: $grey-body-color;
+}
+
+//NAVBAR
+.header-container {
+    background: $primary-color;
+    box-shadow:  0 2px 5px 0 rgba(0,0,0,.3);
+}
+
+.navbar {
+    a {
+        color: #ffffff;
+    } // .dropdown:hover>.dropdown-menu {
+    //     display: block;
+    // }
+    .dropdown-menu {
+        a {
+            color: #ffffff;
+        }
+        a:hover{
+            color: #ffffff;
+            background: #345e86;
+        }
+        background: $blue-btn-color;
+    }
+    ul li a:hover {
+        color: #6d98c0;
+    }
+    .nav-link {
+        font-size: 14px;
+        text-transform: uppercase;
+        padding-left: 2em !important;
+        padding-right: 2em !important;
+    }
+    .account-info-btn {
+        background: $cyan-btn-color;
+        border-radius: 5px;
+    }
+    .account-info-btn:hover {
+        background: #3f79af;
+        a{
+            color: #ffffff;
+        } 
+    }
+    .navbar-brand {
+        font-size: 20px;
+        margin-right: 0;
+    }
+}
+.hamburger {
+    background: rgba(50, 65, 79, 1);
+}
+
+.navbar-expand-md {
+    padding-top: 15px;
+}
+
+
+//Sub-Nav
+.sub-nav {
+    background: #2f373f;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    .nav-items{
+        ul {
+            list-style: none;
+            padding: 0 !important;
+            font-size: 15px;
+            margin-bottom: 0.1rem;
+            li {
+                margin: 10px;
+                margin-bottom: 3px;
+                display: inline-block;
+                .dropdown-item {
+                    color: #ffffff;
+                }
+                .dropdown-item:hover {
+                    color: #949393;
+                    border-bottom: 1px solid #0f5caf;
+                    background: none;
+                }
+               .dropdown-item:active, .dropdown-item:focus {
+                   background: none !important;
+                   color: #ffffff;
+               }
+            }
+        }
+    }
+}
+
+.content-wrapper {
+    padding: 25px 0px;
+    border-radius: 15px;
+    min-height: 220px;
+    background: #ffffff;
+    color: #2058a5;
+    font-size: 1.2em;
+    #data-holder{
+        span, h4 {
+            color: #3283dc;
+        }
+        margin-top: 35px;
+    }
+} 
+
+.router-link-exact-active {
+    color: #ffffff !important;
+    border-bottom: 1px solid #3f9bff;
+}
+
+//Buttons-hover
+.cyan-btn:hover {
+    background: #2058a5 !important;
+    color: #ffffff !important;
+}
+.blue-btn:hover {
+    background: #345e86 !important; 
+    color: #ffffff !important;
+}
+
+//BUTTONS 
+.delete-btn {
+    font-size: 15px;
+    color: #ffffff !important;
+    padding: 5px 15px;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    background: #ca0202;
+    border-radius: 3px;
+    i{
+        padding: 3px;
+    }
+}
+.delete-btn:hover {
+    background: #ff1d1d;
+}
+.add-btn{
+    font-size: 15px;
+    color: #ffffff !important;
+    padding: 5px 15px;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    background: #08bd35;
+    border-radius: 3px;
+    i{
+        margin-left: 5px;
+        margin-top: 1px;
+    }
+}
+.add-btn:hover {
+    background: #11d141;
+    text-decoration: none !important;
+    border: none !important;
+}
+
+
+//Media Queries
+@media screen and (max-width: 768px) {
+    .sub-nav {
+        justify-content: flex-start;
+        flex-direction: column;
+        .nav-items {
+            ul {
+                li {
+                    display: block;
+                }
+            }
+        }
+    }
+    .dashboard-container {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 784px) {
+    .account-info-btn {
+        .nav-link {
+            font-size: 12px;
+        }
+    }    
+}
+
+@media screen and (max-width: 423px) {
+    .content-wrapper {
+        #data-holder{
+            span, h4 {
+                color: #3283dc;
+            }
+            h3{
+                font-size: 1.2rem;
+            }
+        }
+    } 
+}

@@ -16,6 +16,10 @@ import Referrals from '@/components/user/Referrals'
 import ChangePassword from '@/components/user/ChangePassword'
 import Purchase from '@/components/user/Purchase'
 //Admin Views
+import Dashboard from '@/components/admin/Dashboard'
+import Admins from '@/components/admin/Admins'
+import Gifts from '@/components/admin/Gifts'
+import Users from '@/components/admin/Users'
 
 Vue.use(Router)
 
@@ -86,6 +90,26 @@ export default new Router({
       path: '/purchase',
       name: 'Purchase',
       component: Purchase
-    }  
+    },
+    {
+      path: '/admin',
+      name: 'Dashboard',
+      component: Dashboard
+    },
+    {
+      path: '/admins',
+      name: 'Admins',
+      component: Admins
+    },
+    {
+      path: '/gifts',
+      name: 'Gifts',
+      component: Gifts
+    },
+    {
+      path: '/users',
+      name: 'Users',
+      component: Users
+    }
   ]
 })

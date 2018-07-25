@@ -3,9 +3,7 @@
     <header class="bg-main">
       <nav class="navbar navbar-expand-md">
         <div class="container">
-          <a href="/" class="navbar-brand">Lorem
-            <b>ipsum</b>
-          </a>
+          <a href="/" class="navbar-brand">Lorem<b>ipsum</b></a>
           <button class="navbar-toggler hamburger" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
             aria-expanded="false" aria-label="Toggle navigation">
               <font-awesome-icon icon="bars" style="color: #fff" aria-hidden="true"/>
