@@ -70,6 +70,9 @@
             <div class="nav-items">
               <ul>
                 <li>
+                  <a class="dropdown-item balance" href="#">Balance: 25</a>
+                </li>
+                <li>
                   <a class="dropdown-item" href="/">Logout</a>
                 </li>
               </ul>
@@ -94,13 +97,13 @@
                 <div class="form-group row pt-3">
                 <label class="col-sm-3 offset-sm-1 text-center col-form-label">Old Password</label>
                     <div class="col-sm-5">
-                        <input type="password" class="form-control" placeholder="Old Password">
+                        <input type="password" class="form-control" v-model="oldPass" placeholder="Old Password">
                     </div>
                 </div>
                 <div class="form-group row pt-3">
                 <label class="col-sm-3 offset-sm-1 text-center col-form-label">New Password</label>
                     <div class="col-sm-5">
-                        <input type="password" class="form-control" placeholder="New Password">
+                        <input type="password" class="form-control" v-model="newPass" placeholder="New Password">
                     </div>
                 </div>
                 <div class="form-group row pt-3">
@@ -111,7 +114,7 @@
                 </div>
                 <div class="form-group row">
                 <div class="col-sm-12 text-center my-3">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button @click="updatePassword" type="submit" class="btn btn-primary">Submit</button>
                 </div>
                 </div>
             </form>
@@ -123,11 +126,37 @@
 
 
 <script>
+import axios from 'axios';
+
 export default {
   name: "ChangePass",
   data() {
-    return {};
-  }};
+    return {
+      oldPass: '',
+      newPass: ''
+    };
+  },
+  methods: {
+    updatePassword(e){
+      e.preventDefault();
+      
+       var vm = this;
+        var userInfo = 
+        {
+          oldPass: this.oldPass,
+          newPass: this.newPass
+        } 
+
+        axios.post('http://localhost:3000/changepass', userInfo)
+        .then(function(response){
+         vm.$router.push({path: '/account'});
+        })
+        .catch(function(error){
+          alert("Ups! Something went Wrong! " + error);
+        });
+    }
+  }
+  };
 </script>
 
 

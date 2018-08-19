@@ -70,6 +70,9 @@
             <div class="nav-items">
               <ul>
                 <li>
+                  <a class="dropdown-item balance" href="#">Balance: 25</a>
+                </li>
+                <li>
                   <a class="dropdown-item" href="/">Logout</a>
                 </li>
               </ul>

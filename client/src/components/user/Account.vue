@@ -70,6 +70,9 @@
             <div class="nav-items">
               <ul>
                 <li>
+                  <a class="dropdown-item balance" href="#">Balance: 25</a>
+                </li>
+                <li>
                   <a class="dropdown-item" href="/">Logout</a>
                 </li>
               </ul>
@@ -186,7 +189,6 @@
                         <th scope="col">Purchased at</th>
                         <th scope="col">Gift Code</th>
                         <th scope="col">Gift Points</th>
-                        <th scope="col">Redeemer</th>
                         <th scope="col">Is Redeemed</th>
                     </tr>
                     </thead>
@@ -195,28 +197,24 @@
                             <td scope="row">2018.02.02</td>
                             <td scope="row">4asd5as5cz5xc</td>
                             <td>123</td>
-                            <td class="referral-link">useremail@gmail.com</td>
                             <td><font-awesome-icon icon="check"/></td>
                         </tr>
                         <tr>
                             <td scope="row">2018.02.02</td>
                             <td scope="row">4asd5as5cz5xc</td>
                             <td>123</td>
-                            <td class="referral-link">useremail@gmail.com</td>
                             <td><font-awesome-icon icon="times-circle"/></td>
                         </tr>
                         <tr>
                             <td scope="row">2018.02.02</td>
                             <td scope="row">4asd5as5cz5xc</td>
                             <td>123</td>
-                            <td class="referral-link">useremail@gmail.com</td>
                             <td><font-awesome-icon icon="times-circle"/></td>
                         </tr>
                         <tr class="claimed">
                             <td scope="row">2018.02.02</td>
                             <td scope="row">4asd5as5cz5xc</td>
                             <td>123</td>
-                            <td class="referral-link">useremail@gmail.com</td>
                             <td><font-awesome-icon icon="check"/></td>
                         </tr>
                     </tbody>

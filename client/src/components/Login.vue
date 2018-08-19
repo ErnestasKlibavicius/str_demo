@@ -21,7 +21,7 @@
                               <font-awesome-icon icon="user" style="color: #898989"/>
                             </div>
                           </div>
-                          <input type="text" class="form-control login-input-field" placeholder="Username">
+                          <input type="text" class="form-control login-input-field" v-model="username" placeholder="Username">
                         </div>
                         <div class="input-group mt-4 mb-2">
                           <div class="input-group-prepend">
@@ -29,7 +29,7 @@
                              <font-awesome-icon icon="lock" style="color: #898989"/>
                             </div>
                           </div>
-                          <input type="password" class="form-control login-input-field" placeholder="Password">
+                          <input type="password" class="form-control login-input-field" v-model="password" placeholder="Password">
                         </div>
                         <div>
                           <a href="#" data-toggle="modal" data-target="#forgotPassModal">Forgot Password ?</a>
@@ -37,8 +37,8 @@
                       </div>
                     </div>
                   </form>
-                  <a href="/register" class="btn btn-secondary blue-btn">SIGN UP</a>
-                  <a href="/account" class="btn btn-secondary cyan-btn">LOGIN</a>
+                  <router-link to="/register" class="btn btn-secondary blue-btn">SIGN UP</router-link>
+                  <a  @click="sendData" class="btn btn-secondary cyan-btn">LOGIN</a>
                 </div>
               </div>
             </div>
@@ -53,11 +53,11 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <input type="email" class="form-control login-input-field" placeholder="Email">
+                  <input type="email" class="form-control login-input-field" v-model="email" placeholder="Email">
                   <p class="my-2 text-center">You will get information how to update your password by provided email</p>
                 </div>
                 <div class="modal-footer justify-content-center p-0">
-                  <a href="/" class="btn btn-secondary cyan-btn">Send</a>
+                  <a @click="sendPassword"  data-dismiss="modal" class="btn btn-secondary cyan-btn">Send</a>
                 </div>
               </div>
             </div>
@@ -70,11 +70,47 @@
 
 
 <script>
+ import axios from 'axios';
+
   export default {
     name: 'Login',
     data() {
       return {
-       
+       username: '',
+       password: '',
+       email: ''
+      }
+    },
+    methods: {
+      sendData(){
+        var vm = this;
+        var userInfo = 
+        {
+          userName: this.username,
+          password: this.password
+        } 
+
+        axios.post('http://localhost:3000/auth', userInfo)
+        .then(function(response){
+         vm.$router.push({path: '/account'});
+        })
+        .catch(function(error){
+          alert("Ups! Something went Wrong! " + error);
+        });
+      },
+      sendPassword(){
+        var vm = this;
+        var userEmail = {
+          email: this.email
+        }
+
+        axios.post('http://localhost:3000/forgotpass', userEmail)
+        .then(function(response){
+         vm.$router.push({path: '/'});
+        })
+        .catch(function(error){
+          alert("Ups! Something went Wrong! " + error);
+        });
       }
     }
   }

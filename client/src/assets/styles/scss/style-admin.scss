@@ -102,6 +102,59 @@ body {
     }
 }
 
+//table
+.table-container{
+    background: #ffffff;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    padding: 0;
+    .license-list-container{
+        li{
+            list-style: none;
+            border-bottom: 1px solid #d9d9da;
+            padding: 0;
+            margin: 10px;
+       
+        }
+    }
+}
+
+.paramsTable{
+    text-align: center;
+    font-size: 18px;
+    color: #808080;
+    tr{
+        td{
+            padding-left: 0;
+            padding-top: 28px;
+            padding-bottom: 28px;
+        }
+        td:first-of-type{
+            padding: 28px 10px 28px 10px;
+        }
+        td:last-of-type{
+            width: 20%;
+        }
+    }
+    thead{
+        border-bottom: hidden;
+        border-top: hidden;
+        tr{
+            box-shadow: 0 5px 13px 0px rgba(0, 0, 0, 0.1);;
+        }
+        th{
+            color: #2058a5;
+            padding: 16px 10px 16px 0px;
+        }
+        th:first-of-type{
+            padding: 16px 10px 16px 10px;
+        }
+        th:last-of-type{
+            width: 20%;
+        }
+    }
+}
+
 .content-wrapper {
     padding: 25px 0px;
     border-radius: 15px;

@@ -70,6 +70,9 @@
             <div class="nav-items">
               <ul>
                 <li>
+                  <a class="dropdown-item balance" href="#">Balance: 25</a>
+                </li>
+                <li>
                   <a class="dropdown-item" href="/">Logout</a>
                 </li>
               </ul>
@@ -84,7 +87,7 @@
             <div class="col-md-12 px-0">
             <div>
                 <div class="d-flex justify-content-between align-items-center">
-                <h1 class="display-heading ml-3">Add more points</h1>
+                <h1 class="display-heading ml-3">Add Funds</h1>
                 </div>
             </div>
             </div>
@@ -92,13 +95,13 @@
         <div class="table-container">
             <form>
             <div class="form-group form-inline form-container row pt-3">
-                <label class="col-sm-3 text-center col-form-label" style="color: #2b6cc8">Choose Point Amount</label>
+                <label class="col-sm-3 text-center col-form-label" style="color: #2b6cc8">Amount</label>
                 <div class="col-sm-5">
                    <input @keydown.enter.prevent="checkValue" @change="checkValue" type="text" v-model="value" class="form-control" placeholder="Enter Amount">
                 </div>
                 <div class="col-sm-4">
-                  <p id="amountInfo" class="text-muted"> Minimal point rate - 20pts</p>
-                  <p id="amountInfo" class="text-muted"> Point rate - 1.3/1s</p>
+                  <p id="amountInfo" class="text-muted"> Minimal amout - 0.003 BTC</p>
+                  <p id="amountInfo" class="text-muted"> Fuel rate - 0.00001BTC/1s</p>
                    <span class="text-muted"><input type="checkbox" id="checkbox" v-model="isGift"> Is It A Gift? </span>
                    <div>
                      <input type="text" v-if="isGift" class="form-control" style="width: 60%;" placeholder="Amount" @keydown.enter.prevent>
@@ -107,7 +110,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-12 text-center my-3">
-                <button type="submit" class="btn btn-primary">Purchase</button>
+                <button type="submit" class="btn btn-primary">Deposit</button>
                 </div>
             </div>
             </form>
@@ -130,8 +133,8 @@ export default {
   },
   methods: {
     checkValue() {
-      if(this.value < 20) {
-        this.value = 20;
+      if(this.value < 0.003) {
+        this.value = 0.003;
       }
     }
   }

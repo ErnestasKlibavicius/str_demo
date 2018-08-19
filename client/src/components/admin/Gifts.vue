@@ -54,9 +54,6 @@
             <div class="nav-items">
               <ul>
                 <li>
-                  <router-link class="dropdown-item" to="/admin">Dashboard</router-link>
-                </li>
-                <li>
                   <router-link class="dropdown-item" to="/users">Users</router-link>
                 </li>
                 <li>
@@ -84,7 +81,10 @@
         <div class="col-md-8 offset-md-2 px-0">
           <div>
             <div class="d-flex justify-content-between align-items-center add-licenses-container">
-              <h1 class="display-heading">Generate new gift</h1>
+              <h1 class="display-heading">Gift Codes</h1>
+               <a href="#"  @click="AddCode" class="pull-right d-flex align-items-center add-btn">Add
+                <font-awesome-icon class="i" icon="plus" />
+              </a>
             </div>
             <div class="input-group w-25 my-2">
               <input type="text" class="form-control" placeholder="Search">
@@ -93,17 +93,79 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-8 offset-md-2 table-container text-center py-4">
+        <div class="col-md-8 offset-md-2 table-container text-center">
           <div>
-            <h3 class="my-2">Create New Referral</h3>
+            <!-- <h3 class="my-2">Create New Referral</h3>
             <button type="submit" @click="showCode"  class="btn btn-primary my-3">Generate</button>
-            <h5 v-for="code in codes" id="code">Code: {{code.code}}</h5>
+            <div class="table-responsive"> -->
+              <table class="table authCode-table">
+                <thead>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Code</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                 <tr>
+                  <td scope="row">2018.02.03</td>
+                    <td>A58X72E4Q56X5668C422X56S</td>
+                    <td>
+                      <a href="#" class="delete-btn">
+                        <font-awesome-icon class="i" icon="times-circle" />
+                      </a>
+                    </td>
+                </tr>
+                 <tr>
+                  <td scope="row">2018.02.03</td>
+                    <td>A58X72E4Q56X5668C422X56S</td>
+                    <td>
+                      <a href="#" class="delete-btn">
+                        <font-awesome-icon class="i" icon="times-circle" />
+                      </a>
+                    </td>
+                </tr>
+                 <tr>
+                  <td scope="row">2018.02.03</td>
+                    <td>A58X72E4Q56X5668C422X56S</td>
+                    <td>
+                      <a href="#" class="delete-btn">
+                        <font-awesome-icon class="i" icon="times-circle" />
+                      </a>
+                    </td>
+                </tr>
+                 <tr>
+                  <td scope="row">2018.02.03</td>
+                    <td>A58X72E4Q56X5668C422X56S</td>
+                    <td>
+                      <a href="#" class="delete-btn">
+                        <font-awesome-icon class="i" icon="times-circle" />
+                      </a>
+                    </td>
+                </tr>
+                <tr v-for="code in codes">
+                  <td scope="row">{{code.date}}</td>
+                  <td>{{code.code}}</td>
+                  <td>
+                    <a href="#" class="delete-btn">
+                      <font-awesome-icon class="i" icon="times-circle"/>
+                    </a>
+                  </td>
+                </tr>
+                <!-- <tr v-for="code in codes">
+                    <td scope="row">{{code.date}}</td>
+                    <td>{{code.code}}</td>
+                    <td><a href="#" class="delete-btn"><font-awesome-icon class="i" icon="times-circle"/></a></td>
+                </tr> -->
+              </tbody>
+              </table>
+             </div>
           </div>
         </div>
       </div>
     </div>
+      
     </div>
-  </div>
 </template>
 
 
@@ -112,12 +174,12 @@ export default {
   name: "Gifts",
   data() {
     return {
-      codes: []
+      codes: [],
     };
   },
   methods: {
-    showCode: function() {
-      this.codes.push({code: 'newCode'});
+    AddCode: function() {
+      this.codes.push({code: 'newCode', date: new Date().toDateString()});
     }
   }
 };

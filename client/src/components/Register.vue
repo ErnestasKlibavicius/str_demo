@@ -21,7 +21,7 @@
                                <font-awesome-icon icon="user" style="color: #898989"/>
                             </div>
                           </div>
-                          <input type="text" class="form-control register-input-field" placeholder="Username">
+                          <input type="text" required class="form-control register-input-field" v-model="username" placeholder="Username">
                         </div>
                         <div class="input-group my-4">
                           <div class="input-group-prepend">
@@ -29,7 +29,7 @@
                               <font-awesome-icon icon="lock" style="color: #898989"/>
                             </div>
                           </div>
-                          <input type="password" class="form-control register-input-field" placeholder="Password">
+                          <input type="password" required class="form-control register-input-field" v-model="password" placeholder="Password">
                         </div>
                         <div class="input-group my-4">
                           <div class="input-group-prepend">
@@ -37,12 +37,12 @@
                               <font-awesome-icon icon="lock" style="color: #898989"/>
                             </div>
                           </div>
-                          <input type="password" class="form-control register-input-field" placeholder="Confirm Password">
+                          <input type="password" required class="form-control register-input-field"  placeholder="Confirm Password">
                         </div>
                       </div>
                     </div>
                   </form>
-                  <a href="/account" class="btn btn-secondary cyan-btn">CREATE ACCOUNT</a>
+                  <a  @click="sendData"  class="btn btn-secondary cyan-btn">CREATE ACCOUNT</a>
                 </div>
               </div>
             </div>
@@ -55,11 +55,32 @@
 
 
 <script>
+  import axios from 'axios';
+
   export default {
     name: 'Register',
     data() {
       return {
-       
+       username: '',
+       password: ''
+      }
+    },
+    methods: {
+      sendData(){
+        var vm = this;
+        var userInfo = 
+        {
+          userName: this.username,
+          password: this.password
+        } 
+
+        axios.post('http://localhost:3000/user', userInfo)
+        .then(function(response){
+         vm.$router.push({path: '/login'});
+        })
+        .catch(function(error){
+          alert("Ups! Something went Wrong! " + error);
+        });
       }
     }
   }

@@ -54,9 +54,6 @@
           <div class="nav-items">
             <ul>
               <li>
-                <router-link class="dropdown-item" to="/admin">Dashboard</router-link>
-              </li>
-              <li>
                 <router-link class="dropdown-item" to="/users">Users</router-link>
               </li>
               <li>
@@ -167,6 +164,26 @@
                           <input type="email" class="form-control" placeholder="Receiver Email">
                       </div>
                 </div>
+<!--                 
+                 <div v-if="displayInput" class="form-group row pt-3">
+                  <label class="col-sm-2 text-center col-form-label">Email:</label>
+                      <div class="col-sm-10">
+                          <input type="email" v-model="extraEmails[0].field" class="form-control" placeholder="Receiver Email">
+                      </div>
+                 </div> -->
+                    <div class="form-group row pt-3" v-for="(item, index) in extraEmails">
+                      <label class="col-sm-3 text-center col-form-label">Extra email:</label>
+                      <div class="col-sm-9">
+                          <input type="email" class="form-control" v-model="extraEmails[index].field" placeholder="Receiver Email">
+                      </div>
+                    </div>
+                    
+                   <div class="form-group row pt-3">
+                  <label class="col-sm-5 col-form-label">Add Another email:</label>
+                        <a href="#" @click="addEmail" class="pull-right d-flex align-items-center add-btn">
+                          <font-awesome-icon class="i" icon="plus" />
+                        </a>
+                </div>
             </form>
       </div>
       <div class="modal-footer">
@@ -185,8 +202,20 @@
 export default {
   name: "Admins",
   data() {
-    return {};
-  }};
+    return {
+      extraEmails: []
+    };
+  },
+  methods : {
+    addEmail(){
+      this.extraEmails.push(
+        {
+          field: ''
+        }
+      );
+    }
+  }
+  };
 </script>
 
 

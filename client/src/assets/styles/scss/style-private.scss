@@ -87,6 +87,7 @@ body {
                 display: inline-block;
                 .dropdown-item{
                     color: #ffffff;
+                   
                 }
                 .dropdown-item:hover{
                     color: #949393;
@@ -101,6 +102,12 @@ body {
         }
     }
   
+}
+.balance {
+    color: #93c2f6 !important;
+}
+.balance:hover{
+    border-bottom: hidden !important;
 }
 
 .router-link-exact-active {

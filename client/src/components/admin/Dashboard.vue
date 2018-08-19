@@ -54,9 +54,6 @@
             <div class="nav-items">
               <ul>
                 <li>
-                  <router-link class="dropdown-item" to="/admin">Dashboard</router-link>
-                </li>
-                <li>
                   <router-link class="dropdown-item" to="/users">Users</router-link>
                 </li>
                 <li>
@@ -80,45 +77,121 @@
     </div>
     <div class="content mt-5">
       <div class="container-fluid">
-        <div class="row justify-content-center my-3">
+  
+      <div class="row justify-content-center my-3">
               <div class="content-container col-md-4 text-center my-2">
                 <div class="content-wrapper">
-                  <div id="data-holder">
-                  <h3>FuelPointRate: <span>2.52</span></h3>
-                  <button class="btn btn-primary mt-3">Edit</button>
-                  </div>
-                </div>
-              </div>
-              <div class="content-container col-md-4 text-center my-2">
-                <div class="content-wrapper">
-                  <div id="data-holder">
-                    <h3>MinFuelPointsToBuy: <span>12.35</span></h3>
-                    <button class="btn btn-primary mt-3">Edit</button>
-                  </div>
-                </div>
-              </div>
-        </div>
-        <div class="row justify-content-center my-3">
-              <div class="content-container col-md-4 text-center my-2">
-                <div class="content-wrapper">
-                  <div id="data-holder">
+                  <div id="data-holder-AuthCode">
                     <h3>AuthCodeSig:</h3>
-                    <h4>dasd5x3xdsa5f8e4d</h4>
+                    <h4>{{AuthCodeSigValue}}</h4>
                     <button class="btn btn-primary mt-3">Edit</button>
                   </div>
                 </div>
               </div>
               <div class="content-container col-md-4 text-center my-2">
                 <div class="content-wrapper">
-                  <div id="data-holder">
-                    <h3>AuthCodeSessionMins: <span>53min</span></h3>
+                  <div id="data-holder-AuthCodeMins">
+                    <h3>AuthCodeSessionMins: <span>{{AuthCodeSessionMinsValue}}</span></h3>
                     <button class="btn btn-primary mt-3">Edit</button> 
                   </div>
                 </div>
               </div>
         </div>
+      
       </div>
     </div>
+<!-- Modal -->
+<div class="modal fade" id="MinFuelPointsToBuyModal" tabindex="-1" role="dialog" aria-labelledby="MinFuelPointsToBuyModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="MinFuelPointsToBuyModalLongTitle">Update value</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="ModalParameterValue" class="col-form-label">enter new value:</label>
+            <input class="form-control" v-model="MinFuelPointsToBuyValue">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="FuelPointRateModal" tabindex="-1" role="dialog" aria-labelledby="FuelPointRateModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="FuelPointRateModalLongTitle">Update value</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="ModalParameterValue" class="col-form-label">enter new value:</label>
+            <input class="form-control" v-model="FuelPointRateValue">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="AuthCodeSigModal" tabindex="-1" role="dialog" aria-labelledby="AuthCodeSigModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="AuthCodeSigModalLongTitle">Update value</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="ModalParameterValue" class="col-form-label">enter new value:</label>
+            <input class="form-control" v-model="AuthCodeSigValue">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="AuthCodeSessionMinsModal" tabindex="-1" role="dialog" aria-labelledby="AuthCodeSessionMinsModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="AuthCodeSessionMinsModalLongTitle">Update value</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="ModalParameterValue" class="col-form-label">enter new value:</label>
+            <input class="form-control" v-model="AuthCodeSessionMinsValue">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
   </div>
 </template>
 
@@ -127,8 +200,14 @@
 export default {
   name: "Dashboard",
   data() {
-    return {};
-  }};
+    return {
+      MinFuelPointsToBuyValue: 2.35,
+      FuelPointRateValue: 23,
+      AuthCodeSigValue: 'sadasdasdavfaf',
+      AuthCodeSessionMinsValue: 15
+    };
+  }, methods: {}
+  };
 </script>
 
 

@@ -15,11 +15,13 @@ import UpdPassword from '@/components/user/UpdPassword'
 import Referrals from '@/components/user/Referrals'
 import ChangePassword from '@/components/user/ChangePassword'
 import Purchase from '@/components/user/Purchase'
+import User from '@/components/user/User'
 //Admin Views
 import Dashboard from '@/components/admin/Dashboard'
 import Admins from '@/components/admin/Admins'
 import Gifts from '@/components/admin/Gifts'
 import Users from '@/components/admin/Users'
+
 
 Vue.use(Router)
 
@@ -93,8 +95,8 @@ export default new Router({
     },
     {
       path: '/admin',
-      name: 'Dashboard',
-      component: Dashboard
+      name: 'Admin',
+      component: Users
     },
     {
       path: '/admins',
@@ -110,6 +112,21 @@ export default new Router({
       path: '/users',
       name: 'Users',
       component: Users
+    },
+    {
+      path: '/user',
+      name: 'User',
+      component: User,
+      children: [
+        {
+          path: 'recoverpass',
+          redirect: '/api'
+        }
+      ]
+    },
+    {
+      path: '/api',
+      name: 'Api'
     }
   ]
 })
