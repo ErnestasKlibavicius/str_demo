@@ -11,7 +11,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import
  { 
    faBars,  faUser, faAngleRight, faAngleDown,
-   faLock, faArrowDown, faTimesCircle, faCheck, faPlus, faTimes 
+   faLock, faArrowDown, faTimesCircle, faCheck, faPlus, faTimes
  } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 

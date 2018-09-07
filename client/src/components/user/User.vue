@@ -1,6 +1,8 @@
 <template>
   <div class="user">
-    hello
+    <ul> 
+        <li v-for="info in user">{{info}}</li>
+    </ul>
   </div>
 </template>
 
@@ -13,11 +15,25 @@ export default {
   name: "User",
   data() {
     return {
-
+        user: []
     };
   },
   methods: {
-    
+    getUserData(){
+        var vm = this;
+     
+
+        axios.get('http://localhost:3000/user')
+        .then(function(response){
+           vm.user.push(response.data[0]);
+        })
+        .catch(function(error){
+          alert("Ups! Something went Wrong! " + error);
+        });
+    }
+  },
+  mounted(){
+      this.getUserData();
   }
 };
 </script>

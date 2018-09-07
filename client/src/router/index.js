@@ -120,7 +120,6 @@ export default new Router({
       children: [
         {
           path: 'recoverpass',
-          redirect: '/api'
         }
       ]
     },

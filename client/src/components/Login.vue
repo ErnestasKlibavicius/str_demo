@@ -37,17 +37,17 @@
                       </div>
                     </div>
                   </form>
-                  <router-link to="/register" class="btn btn-secondary blue-btn">SIGN UP</router-link>
-                  <a  @click="sendData" class="btn btn-secondary cyan-btn">LOGIN</a>
+                  <a @click="sendData" class="btn btn-secondary cyan-btn">LOGIN</a>
                 </div>
               </div>
+               <p class="sign-up-link"> Don't have an account? <router-link to="/register" class="">Sign Up</router-link> </p> 
             </div>
           </div>
           <div class="modal fade" id="forgotPassModal" tabindex="-1" role="dialog" aria-labelledby="forgotPassModalTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="forgotPassModalLongTitle">Enter your email</h5>
+                  <h5 class="modal-title" id="forgotPassModalLongTitle">Reset Password</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>

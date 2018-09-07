@@ -82,7 +82,7 @@
       </div>
     </div>
     <div class="content mt-5">
-        <div class="container">
+        <div class="container main-data">
         <div class="row">
             <div class="col-md-12 px-0">
             <div>
@@ -93,24 +93,44 @@
             </div>
         </div>
         <div class="table-container">
+          <div class="row">
+            <div class="col-md-12"><h3 class="ml-5 my-3">Make a Bitcoin Payment</h3></div>
+          </div>
+           <div class="row">
+             <div class="col-md-12">
+                <ul class="info-container-list ml-5 my-3">
+                  <li>Bitcoin (BTC)</li>
+                  <li>No Refunds availabe</li>
+                  <li>Bitcoin deposits may take up to 120 minutes to precess</li>
+                  <li>Minimal amout - 0.003 BTC</li>
+                  <li class="rate-info">1 hour of license is worth 1mBTC</li>
+                </ul>
+              </div>
+            </div>
             <form>
-            <div class="form-group form-inline form-container row pt-3">
-                <label class="col-sm-3 text-center col-form-label" style="color: #2b6cc8">Amount</label>
+              <div class="row d-flex justify-content-center align-items-center payment-options-container">
+                <div class="col-md-1 payment-option"  v-for="price in defaultValues" @click="setValue($event)">{{price.value}}</div>
+              </div>
+            <div class="form-group form-inline form-container row pt-3 d-flex justify-content-center align-items-center">
+                <label class="col-sm-2 text-center col-form-label mt-3" style="color: #2b6cc8;">Amount</label>
                 <div class="col-sm-5">
-                   <input @keydown.enter.prevent="checkValue" @change="checkValue" type="text" v-model="value" class="form-control" placeholder="Enter Amount">
+                   <span class="text-muted"><input type="checkbox" id="checkbox" v-model="isGift"> Is It a Gift? </span>
+                   <div>
+                     <input type="text" v-if="isGift" class="form-control gift-field" placeholder="Quantity" @keydown.enter.prevent>
+                   </div>
+                   <input @keydown.enter.prevent="checkValue" @change="checkValue" type="text" v-model="value" class="form-control deposit-field" placeholder="Enter Amount">
                 </div>
-                <div class="col-sm-4">
-                  <p id="amountInfo" class="text-muted"> Minimal amout - 0.003 BTC</p>
-                  <p id="amountInfo" class="text-muted"> Fuel rate - 0.00001BTC/1s</p>
+                 <!-- <div class="col-sm-4">
                    <span class="text-muted"><input type="checkbox" id="checkbox" v-model="isGift"> Is It A Gift? </span>
                    <div>
                      <input type="text" v-if="isGift" class="form-control" style="width: 60%;" placeholder="Amount" @keydown.enter.prevent>
                    </div>
-                </div>
+                </div> -->
             </div>
+           
             <div class="form-group row">
                 <div class="col-sm-12 text-center my-3">
-                <button type="submit" class="btn btn-primary">Deposit</button>
+                  <button type="submit" class="btn btn-primary payment-btn">Pay With Bitcoin</button>
                 </div>
             </div>
             </form>
@@ -127,15 +147,25 @@ export default {
   data() {
     return {
         value: 0,
-        isGift: false
+        isGift: false,
+        defaultValues: [
+          {value: 10},
+          {value: 25},
+          {value: 50},
+          {value: 100},
+          {value: 250}
+        ]
   
     };
   },
   methods: {
     checkValue() {
-      if(this.value < 0.003) {
-        this.value = 0.003;
+      if(this.value <= 10) {
+        this.value = 10;
       }
+    },
+    setValue(e) {
+      this.value = e.target.innerHTML;
     }
   }
 };

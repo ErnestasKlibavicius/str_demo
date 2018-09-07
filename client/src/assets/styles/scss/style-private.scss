@@ -110,10 +110,20 @@ body {
     border-bottom: hidden !important;
 }
 
+//mbtc
+.mBtc{
+    
+}
+
 .router-link-exact-active {
     // color: #007bff !important;
     color: #ffffff !important;
     border-bottom: 1px solid #3f9bff;
+}
+
+.main-data{
+    max-width: 1000px;
+    padding: 0px 50px;
 }
 
 //Gifts
@@ -165,6 +175,10 @@ body {
     color: #ffffff !important;
 }
 
+.space {
+    margin: 5px;
+}
+
 //Dashboard 
 .dashboard-container{
     padding-left: 70px !important;
@@ -181,6 +195,7 @@ body {
         }
         td:last-of-type{
             width: 20%;
+            text-align: right;
         }
     }
     thead{
@@ -312,10 +327,55 @@ body {
     padding-left: 3rem;
 }
 
+//purchase
+.info-container-list{
+    padding-left: 15px;
+    color: #808080;
+    .rate-info{
+        color: #000000;
+        font-weight: bold;
+    }
+    li{
+        margin: 3px;
+    }
+}
+.payment-btn{
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding-left: 43px;
+    padding-right: 43px;
+}
+
+.payment-options-container{
+    text-align: center;
+    .payment-option{
+        cursor: pointer;
+        padding: 12px;
+        margin: 18px;
+        font-size: 19px;
+        border: 1px solid #4ea3ff;
+        border-radius: 5px;
+    }
+    .payment-option:hover{
+        background-image: linear-gradient(to right, #007bff, #1f89ff, #3896ff, #4ea3ff, #64afff);
+        border-color: #007bff;
+        color: #ffffff;
+    }
+}
+.gift-field{
+    width: 220px;
+    margin-bottom: 10px;
+    border: 1px solid #4ea3ff;
+}
+.deposit-field{
+    border: 1px solid #4ea3ff;
+}
+
 
 //BUTTONS 
 .delete-btn{
-    font-size: 15px;
+    font-size: 18px;
     color: #ffffff !important;
     padding: 5px 15px;
     text-transform: uppercase;
@@ -324,6 +384,7 @@ body {
     border-radius: 3px;
     i{
         padding: 3px;
+        
     }
 }
 .delete-btn:hover{

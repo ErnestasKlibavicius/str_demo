@@ -82,13 +82,15 @@
           <div>
             <div class="d-flex justify-content-between align-items-center add-licenses-container">
               <h1 class="display-heading">Users</h1>
-               <a href="#" data-toggle="modal" data-target="#AddNewUser" class="pull-right d-flex align-items-center add-btn">Add
-                <font-awesome-icon class="i" icon="plus" />
-              </a>
             </div>
-            <div class="input-group w-25 my-2">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
+              <div class="d-flex justify-content-between align-items-center ">
+                <div class="input-group w-25 my-2">
+                  <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <a href="#" data-toggle="modal" data-target="#AddNewUser" class="pull-right d-flex align-items-center add-btn">Invite 
+                   <font-awesome-icon class="i ml-1" icon="plus" />
+                </a>
+              </div>
           </div>
         </div>
       </div>
@@ -109,7 +111,7 @@
                     <td>adam.Smith@gmail.com</td>
                     <td>
                       <a href="#" class="delete-btn">
-                        <font-awesome-icon class="i" icon="times-circle" />
+                        <font-awesome-icon class="i" icon="times" />
                       </a>
                     </td>
                 </tr>
@@ -118,7 +120,7 @@
                     <td>steve.Smith@gmail.com</td>
                     <td>
                       <a href="#" class="delete-btn">
-                        <font-awesome-icon class="i" icon="times-circle" />
+                        <font-awesome-icon class="i" icon="times" />
                       </a>
                     </td>
                 </tr>
@@ -127,7 +129,7 @@
                     <td>diana.Smith@gmail.com</td>
                     <td>
                       <a href="#" class="delete-btn">
-                        <font-awesome-icon class="i" icon="times-circle" />
+                        <font-awesome-icon class="i" icon="times" />
                       </a>
                     </td>
                 </tr>
@@ -136,7 +138,7 @@
                     <td>johnDoe@gmail.com</td>
                     <td>
                       <a class="delete-btn">
-                        <font-awesome-icon class="i" icon="times-circle" />
+                        <font-awesome-icon class="i" icon="times" />
                       </a>
                     </td>
                 </tr>
@@ -203,36 +205,29 @@
       </div>
       <div class="modal-body">
             <form>
-                <div class="form-group row pt-3">
+                <div class="form-group row pt-2">
                   <label class="col-sm-3 text-center col-form-label">New user:</label>
                       <div class="col-sm-9">
-                          <input type="email" class="form-control" placeholder="Receiver Email">
+                          <input type="email" class="form-control" style="width: 76%; display: inline-block" placeholder="Type a name or email">
+                          <button type="button" class="btn btn-primary space">Invite</button>
                       </div>
                 </div>
-<!--                 
-                 <div v-if="displayInput" class="form-group row pt-3">
-                  <label class="col-sm-2 text-center col-form-label">Email:</label>
-                      <div class="col-sm-10">
-                          <input type="email" v-model="extraEmails[0].field" class="form-control" placeholder="Receiver Email">
-                      </div>
-                 </div> -->
-                    <div class="form-group row pt-3" v-for="(item, index) in newUser">
+
+                        <!--for multipal users -->
+                    <!-- <div class="form-group row pt-3" v-for="(item, index) in newUser">
                       <label class="col-sm-3 text-center col-form-label">New user:</label>
                       <div class="col-sm-9">
                           <input type="email" class="form-control" v-model="newUser[index].field" placeholder="email">
                       </div>
-                    </div>
-                    
+                    </div> -->
+<!--                     
                    <div class="form-group row pt-3">
                   <label class="col-sm-5 col-form-label">Add another user:</label>
                         <a href="#" @click="addUser" class="pull-right d-flex align-items-center add-btn">
                           <font-awesome-icon class="i" icon="plus" />
                         </a>
-                </div>
+                </div> -->
             </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Send</button>
       </div>
     </div>
   </div>

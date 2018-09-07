@@ -1,7 +1,7 @@
 <template>
   <div class="register">
     <div class="wrapper-register">
-      <div class="container h-100">
+      <div class="container h-100 w-100">
         <div class="row h-100 justify-conter-center align-items-center">
           <div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 text-center">
             <h4>lorem
@@ -45,6 +45,7 @@
                   <a  @click="sendData"  class="btn btn-secondary cyan-btn">CREATE ACCOUNT</a>
                 </div>
               </div>
+              <p class="login-link">Already have an account? <router-link to="/login" class="">Log In</router-link> </p> 
             </div>
           </div>
         </div>

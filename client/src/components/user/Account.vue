@@ -70,7 +70,7 @@
             <div class="nav-items">
               <ul>
                 <li>
-                  <a class="dropdown-item balance" href="#">Balance: 25</a>
+                  <a class="dropdown-item balance" @click="toggleBalance" href="#">Balance: {{balance}} <span class="mBtc">m</span>&#x20bf;</a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="/">Logout</a>
@@ -108,22 +108,22 @@
             <tr>
                 <td scope="row">2018.02.03</td>
                 <td>A82C6Dge5Cz893</td>
-                <td><a href="#" class="delete-btn"><font-awesome-icon class="i" icon="times-circle"/></a></td>
+                <td><a href="#" class="delete-btn"><font-awesome-icon class="i" icon="times"/></a></td>
             </tr>
             <tr>
               <td scope="row">2018.02.03</td>
               <td>A82C6Dge5Cz893</td>
-              <td><a href="#" class="delete-btn"><font-awesome-icon class="i" icon="times-circle"/></a></td>
+              <td><a href="#" class="delete-btn"><font-awesome-icon class="i" icon="times"/></a></td>
             </tr>
             <tr>
                 <td scope="row">2018.02.03</td>
                 <td>A82C6Dge5Cz893</td>
-                <td><a href="#" class="delete-btn"><font-awesome-icon class="i" icon="times-circle"/></a></td>
+                <td><a href="#" class="delete-btn"><font-awesome-icon class="i" icon="times"/></a></td>
             </tr>
             <tr>
                 <td scope="row">2018.02.03</td>
                 <td>A82C6Dge5Cz893</td>
-                <td><a href="#" class="delete-btn"><font-awesome-icon class="i" icon="times-circle"/></a></td>
+                <td><a href="#" class="delete-btn"><font-awesome-icon class="i" icon="times"/></a></td>
             </tr>
           </tbody>
           </table>
@@ -189,7 +189,7 @@
                         <th scope="col">Purchased at</th>
                         <th scope="col">Gift Code</th>
                         <th scope="col">Gift Points</th>
-                        <th scope="col">Is Redeemed</th>
+                        <th scope="col">Redeemed</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -197,25 +197,25 @@
                             <td scope="row">2018.02.02</td>
                             <td scope="row">4asd5as5cz5xc</td>
                             <td>123</td>
-                            <td><font-awesome-icon icon="check"/></td>
+                            <td><font-awesome-icon icon="check" style="color: green"/></td>
                         </tr>
                         <tr>
                             <td scope="row">2018.02.02</td>
                             <td scope="row">4asd5as5cz5xc</td>
                             <td>123</td>
-                            <td><font-awesome-icon icon="times-circle"/></td>
+                            <td><font-awesome-icon icon="times" style="color: red"/></td>
                         </tr>
                         <tr>
                             <td scope="row">2018.02.02</td>
                             <td scope="row">4asd5as5cz5xc</td>
                             <td>123</td>
-                            <td><font-awesome-icon icon="times-circle"/></td>
+                            <td><font-awesome-icon icon="times" style="color: red"/></td>
                         </tr>
                         <tr class="claimed">
                             <td scope="row">2018.02.02</td>
                             <td scope="row">4asd5as5cz5xc</td>
                             <td>123</td>
-                            <td><font-awesome-icon icon="check"/></td>
+                            <td><font-awesome-icon icon="check" style="color: green"/></td>
                         </tr>
                     </tbody>
                     </table>
@@ -233,10 +233,21 @@
 export default {
   name: "Account",
   data() {
-    return {};
+    return {
+      balance: 13
+    };
   },
   methods: {
-    
+    toggleBalance(){
+    if(this.balance < 1){
+      $('.mBtc').css("display", "inline-block");
+      this.balance = this.balance * 1000;
+    }
+    else {
+      $('.mBtc').css("display", "none");
+      this.balance = this.balance / 1000;
+    }
+    }
   }
 };
 </script>

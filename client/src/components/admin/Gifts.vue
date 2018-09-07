@@ -82,13 +82,15 @@
           <div>
             <div class="d-flex justify-content-between align-items-center add-licenses-container">
               <h1 class="display-heading">Gift Codes</h1>
-               <a href="#"  @click="AddCode" class="pull-right d-flex align-items-center add-btn">Add
-                <font-awesome-icon class="i" icon="plus" />
+            </div>
+               <div class="d-flex justify-content-between align-items-center ">
+                <div class="input-group w-25 my-2">
+                  <input type="text" class="form-control" placeholder="Search">
+                </div>
+              <a href="#"  @click="AddCode" class="pull-right d-flex align-items-center add-btn">Add
+                <font-awesome-icon class="i ml-1" icon="plus" />
               </a>
-            </div>
-            <div class="input-group w-25 my-2">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
+              </div>
           </div>
         </div>
       </div>
@@ -112,7 +114,7 @@
                     <td>A58X72E4Q56X5668C422X56S</td>
                     <td>
                       <a href="#" class="delete-btn">
-                        <font-awesome-icon class="i" icon="times-circle" />
+                        <font-awesome-icon class="i" icon="times" />
                       </a>
                     </td>
                 </tr>
@@ -121,7 +123,7 @@
                     <td>A58X72E4Q56X5668C422X56S</td>
                     <td>
                       <a href="#" class="delete-btn">
-                        <font-awesome-icon class="i" icon="times-circle" />
+                        <font-awesome-icon class="i" icon="times" />
                       </a>
                     </td>
                 </tr>
@@ -130,7 +132,7 @@
                     <td>A58X72E4Q56X5668C422X56S</td>
                     <td>
                       <a href="#" class="delete-btn">
-                        <font-awesome-icon class="i" icon="times-circle" />
+                        <font-awesome-icon class="i" icon="times" />
                       </a>
                     </td>
                 </tr>
@@ -139,7 +141,7 @@
                     <td>A58X72E4Q56X5668C422X56S</td>
                     <td>
                       <a href="#" class="delete-btn">
-                        <font-awesome-icon class="i" icon="times-circle" />
+                        <font-awesome-icon class="i" icon="times" />
                       </a>
                     </td>
                 </tr>
@@ -148,7 +150,7 @@
                   <td>{{code.code}}</td>
                   <td>
                     <a href="#" class="delete-btn">
-                      <font-awesome-icon class="i" icon="times-circle"/>
+                      <font-awesome-icon class="i" icon="times"/>
                     </a>
                   </td>
                 </tr>
