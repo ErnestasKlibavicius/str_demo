@@ -80,6 +80,13 @@
           </div>
         </div>
       </div>
+      <div id="emailVerifyLabel" class="row">
+        <div class="container-fluid">
+          <div class="d-flex justify-content-end">
+            <a href="#" class="badge badge-pill badge-danger mt-2">Your email isn't verified !</a>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="content mt-5">
         <div class="container-fluid dashboard-container"> 
@@ -232,9 +239,16 @@
 <script>
 export default {
   name: "Account",
+     mounted(){
+      if(this.emailStatus === "active"){
+        var emailLabel = document.getElementById("emailVerifyLabel");
+        emailLabel.remove();
+      }
+  },
   data() {
     return {
-      balance: 13
+      balance: 13,
+      emailStatus: "inactive"
     };
   },
   methods: {

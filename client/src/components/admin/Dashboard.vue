@@ -37,11 +37,6 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">Help</a>
               </li>
-              <li class="nav-item account-info-btn">
-                <a href="/account" class="nav-link"> My Account
-                   <font-awesome-icon icon="user"/>
-                </a>
-              </li>
             </ul>
           </div>
         </div>

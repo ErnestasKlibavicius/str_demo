@@ -1,5 +1,5 @@
 <template>
-  <div class="user">
+  <div class="client">
     <ul> 
         <li v-for="info in user">{{info}}</li>
     </ul>
@@ -12,7 +12,7 @@
 import axios from 'axios';
 
 export default {
-  name: "User",
+  name: "Client",
   data() {
     return {
         user: []

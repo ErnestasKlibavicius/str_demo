@@ -1,5 +1,5 @@
 <template>
-<div class="users">
+<div class="clients">
   <header class="header-container sticky-top">
     <nav class="navbar navbar-expand-md">
       <div class="container-fluid">
@@ -37,11 +37,6 @@
             <li class="nav-item">
               <a href="#" class="nav-link">Help</a>
             </li>
-            <li class="nav-item account-info-btn">
-              <a href="/account" class="nav-link"> My Account
-                <font-awesome-icon icon="user" />
-              </a>
-            </li>
           </ul>
         </div>
       </div>
@@ -54,7 +49,7 @@
           <div class="nav-items">
             <ul>
               <li>
-                <router-link class="dropdown-item" to="/users">Users</router-link>
+                <router-link class="dropdown-item" to="/clients">Users</router-link>
               </li>
               <li>
                 <router-link class="dropdown-item" to="/gifts">Gifts/Discount codes</router-link>
@@ -239,7 +234,7 @@
 
 <script>
 export default {
-  name: "Users",
+  name: "Clients",
   data() {
     return {
       newUser: [],
@@ -301,7 +296,7 @@ export default {
   },
   methods: {
    update(){
-     this.$router.push({ path: '/users', query: { plan: 'private' }});
+     this.$router.push({ path: '/clients', query: { plan: 'private' }});
    },
    addUser(){
     this.newUser.push(

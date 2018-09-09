@@ -75,7 +75,7 @@
           password: this.password
         } 
 
-        axios.post('http://localhost:3000/user', userInfo)
+        axios.post('http://localhost:3000/client', userInfo)
         .then(function(response){
          vm.$router.push({path: '/login'});
         })
