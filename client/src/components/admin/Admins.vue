@@ -51,6 +51,9 @@
               <li>
                 <router-link class="dropdown-item" to="/clients">Users</router-link>
               </li>
+               <li>
+                <router-link class="dropdown-item" to="/update-password">Update Password</router-link>
+              </li>
               <li>
                 <router-link class="dropdown-item" to="/gifts">Gifts/Discount codes</router-link>
               </li>
@@ -82,8 +85,8 @@
                 <div class="input-group w-25 my-2">
                   <input type="text" class="form-control" placeholder="Search">
                 </div>
-                <a href="#" data-toggle="modal" data-target="#addAdmin" class="pull-right d-flex align-items-center add-btn">Invite 
-                  <font-awesome-icon class="i ml-1" icon="plus" />
+                <a href="#" data-toggle="modal" data-target="#addAdmin" class="pull-right d-flex align-items-center add-btn"> 
+                  <font-awesome-icon class="i" icon="plus" />
                 </a>
               </div> 
           </div>
@@ -103,10 +106,10 @@
               <tbody>
                 <tr>
                   <td scope="row">2018.02.03</td>
-                    <td>Adminmail@gmail.com</td>
+                    <td data-toggle="modal" data-target="#resendActivationModal" style="cursor: pointer;">Adminmail@gmail.com</td>
                     <td>
-                      <a href="#" class="delete-btn">
-                        <font-awesome-icon class="i" icon="times" />
+                      <a href="#" class="delete-btn"  data-toggle="modal" data-target="#deleteModal" >
+                       <font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/>
                       </a>
                     </td>
                 </tr>
@@ -115,7 +118,7 @@
                     <td>Adminmail@gmail.com</td>
                     <td>
                       <a href="#" class="delete-btn">
-                        <font-awesome-icon class="i" icon="times" />
+                        <font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/>
                       </a>
                     </td>
                 </tr>
@@ -124,7 +127,7 @@
                     <td>Adminmail@gmail.com</td>
                     <td>
                       <a href="#" class="delete-btn">
-                        <font-awesome-icon class="i" icon="times" />
+                       <font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/>
                       </a>
                     </td>
                 </tr>
@@ -133,7 +136,7 @@
                     <td>Adminmail@gmail.com</td>
                     <td>
                       <a href="#" class="delete-btn">
-                        <font-awesome-icon class="i" icon="times" />
+                        <font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/>
                       </a>
                     </td>
                 </tr>
@@ -143,7 +146,7 @@
         </div>
       </div>
     </div>
-
+  <!-- ADD NEW ADMIN MODAL -->
     <div class="modal fade" id="addAdmin" tabindex="-1" role="dialog" aria-labelledby="addAdminTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -158,8 +161,8 @@
                 <div class="form-group row pt-3">
                   <label class="col-sm-2 text-center col-form-label">Email:</label>
                       <div class="col-sm-10">
-                          <input type="email" class="form-control" style="width: 76%; display: inline-block" placeholder="Type a name or email">
-                          <button type="button" class="btn btn-primary space">Invite</button>
+                          <input type="email" class="form-control" style="width: 76%; display: inline-block" placeholder="Type a name or email" v-model="email">
+                          <button type="button" @click="sendInvite()" data-dismiss="modal" class="btn btn-primary space">Invite</button>
                       </div>
                 </div>
 
@@ -182,6 +185,56 @@
     </div>
   </div>
 </div>
+
+<!-- RESEND INVITE MODAL -->
+   <div class="modal fade" id="resendActivationModal" tabindex="-1" role="dialog" aria-labelledby="resendActivationModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="resendActivationModalLongTitle">Resend Invite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <form>
+                <div class="form-group row pt-3">
+                      <div class="col-sm-12 text-center">
+                          <h4>Resend invite to this admin? ID: {{id}}</h4>
+                          <button type="button" data-dismiss="modal" class="btn btn-danger space">Cancel</button>
+                          <button type="button" @click="resendInvite()" data-dismiss="modal" class="btn btn-primary space">Resend</button>
+                      </div>
+                </div>
+            </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- DELETE MODAL -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLongTitle">Delete admin</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <form>
+                <div class="form-group row pt-3">
+                      <div class="col-sm-12 text-center">
+                          <h4>Are you sure you want to delete this admin? ID: {{id}}</h4>
+                          <button type="button" data-dismiss="modal" class="btn btn-danger space">Cancel</button>
+                          <button type="button" @click="deleteAdmin()" data-dismiss="modal" class="btn btn-primary space">Delete</button>
+                      </div>
+                </div>
+            </form>
+      </div>
+    </div>
+  </div>
+</div>
+
   </div>
 
 </div>
@@ -189,11 +242,15 @@
 
 
 <script>
+import axios from 'axios';
+
 export default {
   name: "Admins",
   data() {
     return {
-      extraEmails: []
+      extraEmails: [],
+      email: '',
+      id: 3
     };
   },
   methods : {
@@ -203,6 +260,51 @@ export default {
           field: ''
         }
       );
+    },
+    sendInvite(){
+      var inviteEmail =
+      {
+        email:  this.email
+      };
+      var vm = this;
+
+      axios.post('http://localhost:3000/admin', inviteEmail)
+        .then(function(response){
+         vm.$router.push({path: '/admins'});
+        })
+        .catch(function(error){
+          alert("Ups! Something went Wrong! " + error);
+        });
+    },
+      resendInvite(){
+      var adminID =
+      {
+        adminID:  this.id
+      };
+      var vm = this;
+
+      axios.post('http://localhost:3000/admin', adminID)
+        .then(function(response){
+         vm.$router.push({path: '/admins'});
+        })
+        .catch(function(error){
+          alert("Ups! Something went Wrong! " + error);
+        });
+    },
+    deleteAdmin(){
+         var ObjectID =
+      {
+        adminID:  this.id
+      };
+      var vm = this;
+
+      axios.delete('http://localhost:3000/admin/' + ObjectID.adminID)
+        .then(function(response){
+         vm.$router.push({path: '/admins'});
+        })
+        .catch(function(error){
+          alert("Ups! Something went Wrong! " + error);
+        });
     }
   }
   };

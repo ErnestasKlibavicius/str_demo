@@ -26,7 +26,7 @@
                       </div>
                     </div>
                   </form>
-                  <a class="btn btn-secondary cyan-btn">CONFIRM</a>
+                  <a @click="sendData()" class="btn btn-secondary cyan-btn">CONFIRM</a>
                 </div>
               </div>
             </div>
@@ -45,11 +45,31 @@
     name: 'Confirm',
     data() {
       return {
-       password: ''
+       password: '',
+       root: 'http://localhost:3000/api'
       }
     },
     methods: {
-    
+    sendData(){
+      var vm = this;
+      var userData = 
+      {
+        password: this.password
+      }
+
+      // "/api/admin/confirm?inv=code123"
+      // http://localhost:3000/admin
+      //"/admin/confirm?inv=code123" changes file pabaiga = window.location.href
+      // console.log(this.$BaseURL); **this.$BaseURL - base url i api http://localhost:3000/api**
+      console.log(window.location.href);
+        axios.post(this.root+"/admin/confirm?inv=code123", userData)
+          .then(function(response){
+          vm.$router.push({path: '/admin'});
+          })
+          .catch(function(error){
+            alert("Ups! Something went Wrong! " + error);
+          });
+    }
     
     }
   }

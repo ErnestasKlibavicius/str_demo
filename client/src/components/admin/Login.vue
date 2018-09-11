@@ -87,14 +87,14 @@
         {
           userName: this.username,
           password: this.password
-        } 
-
-        axios.post('http://localhost:3000/auth', adminInfo)
+        };
+        // console.log(this.$BaseURL); **this.$BaseURL - base url i api http://localhost:3000/api**
+        axios.post('http://localhost:3000/adminssss', adminInfo)
         .then(function(response){
          vm.$router.push({path: '/admin'});
         })
         .catch(function(error){
-          alert("Ups! Something went Wrong! " + error);
+          alert("Ups! Something went Wrong! " + error.response.status);
         });
       },
       sendPassword(){

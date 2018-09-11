@@ -51,6 +51,9 @@
               <li>
                 <router-link class="dropdown-item" to="/clients">Users</router-link>
               </li>
+               <li>
+                <router-link class="dropdown-item" to="/update-password">Update Password</router-link>
+              </li>
               <li>
                 <router-link class="dropdown-item" to="/gifts">Gifts/Discount codes</router-link>
               </li>
@@ -82,8 +85,8 @@
                 <div class="input-group w-25 my-2">
                   <input type="text" class="form-control" placeholder="Search">
                 </div>
-                <a href="#" data-toggle="modal" data-target="#AddNewUser" class="pull-right d-flex align-items-center add-btn">Invite 
-                   <font-awesome-icon class="i ml-1" icon="plus" />
+                <a href="#" data-toggle="modal" data-target="#AddNewUser" class="pull-right d-flex align-items-center add-btn"> 
+                   <font-awesome-icon class="i" icon="plus" />
                 </a>
               </div>
           </div>
@@ -103,38 +106,30 @@
               <tbody>
                 <tr>
                   <td data-toggle="modal" @click="update" data-target="#userModal" style="cursor: pointer;" scope="row">2018.02.03</td>
-                    <td>adam.Smith@gmail.com</td>
+                    <td data-toggle="modal" data-target="#resendIvtModal" style="cursor: pointer;">adam.Smith@gmail.com</td>
                     <td>
-                      <a href="#" class="delete-btn">
-                        <font-awesome-icon class="i" icon="times" />
-                      </a>
+                     
                     </td>
                 </tr>
                 <tr>
                   <td data-toggle="modal" data-target="#userModal" style="cursor: pointer;" scope="row">2018.02.03</td>
                     <td>steve.Smith@gmail.com</td>
                     <td>
-                      <a href="#" class="delete-btn">
-                        <font-awesome-icon class="i" icon="times" />
-                      </a>
+                      
                     </td>
                 </tr>
                 <tr>
                   <td data-toggle="modal" data-target="#userModal" style="cursor: pointer;" scope="row">2018.02.03</td>
                     <td>diana.Smith@gmail.com</td>
                     <td>
-                      <a href="#" class="delete-btn">
-                        <font-awesome-icon class="i" icon="times" />
-                      </a>
+                     
                     </td>
                 </tr>
                 <tr>
                   <td data-toggle="modal" data-target="#userModal" style="cursor: pointer;" scope="row">2018.02.03</td>
                     <td>johnDoe@gmail.com</td>
                     <td>
-                      <a class="delete-btn">
-                        <font-awesome-icon class="i" icon="times" />
-                      </a>
+                     
                     </td>
                 </tr>
               </tbody>
@@ -144,7 +139,7 @@
       </div>
     </div>
   </div>
-
+<!-- User Update Info Modal -->
 <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
@@ -168,12 +163,20 @@
             <input class="form-control" v-model="users[0].username" id="username">
           </div>
            <div class="form-group">
-            <label for="funds" class="col-form-label">Balance:</label>
-            <input class="form-control" v-model="users[0].balance" id="funds">
+            <label for="funds" class="col-form-label">Referral Balance:</label>
+            <input class="form-control" v-model="referralsBalance" id="funds">
           </div>
           <div class="form-group">
             <label for="email" class="col-form-label">Email:</label>
             <input class="form-control" v-model="users[0].email" id="email">
+           </div>
+            <div v-if="users[0].type == 'Legacy' " class="form-group">
+            <label class="col-form-label">legacyCodeCount:</label>
+            <input class="form-control" v-model="legacyCodeCount">
+           </div>
+          <div class="form-group">
+            <label class="col-form-label">referralCut:</label>
+            <input class="form-control" v-model="referralCut">
            </div>
           <div class="form-group">
             <label for="referral" class="col-form-label">Referral:</label>
@@ -183,12 +186,12 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+        <button type="button" @click="updateClientInfo()" class="btn btn-primary" data-dismiss="modal">Update</button>
       </div>
     </div>
   </div>
 </div>
-
+ <!-- Add New User Modal -->
    <div class="modal fade" id="AddNewUser" tabindex="-1" role="dialog" aria-labelledby="AddNewUserTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -203,10 +206,15 @@
                 <div class="form-group row pt-2">
                   <label class="col-sm-3 text-center col-form-label">New user:</label>
                       <div class="col-sm-9">
-                          <input type="email" class="form-control" style="width: 76%; display: inline-block" placeholder="Type a name or email">
-                          <button type="button" class="btn btn-primary space">Invite</button>
+                          <input type="email" class="form-control" style="display: inline-block" v-model="email" placeholder="Type a name or email">
                       </div>
                 </div>
+                 <div class="form-group row pt-2">
+                    <label class="col-sm-3 text-center col-form-label">Legacy Code Count:</label>
+                      <div class="col-sm-9">
+                          <input type="number" class="form-control" style="display: inline-block" v-model="legacyCodeCount" placeholder="Type amount of legacy codes">
+                      </div>
+                 </div>
 
                         <!--for multipal users -->
                     <!-- <div class="form-group row pt-3" v-for="(item, index) in newUser">
@@ -224,6 +232,34 @@
                 </div> -->
             </form>
       </div>
+      <div class="modal-footer d-flex justify-content-center">
+            <button type="button" @click="sendInvite()" data-dismiss="modal" class="btn btn-primary space">Invite</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESEND MODAL -->
+  <div class="modal fade" id="resendIvtModal" tabindex="-1" role="dialog" aria-labelledby="resendIvtModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="resendIvtModalLongTitle">Resend Invite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <form>
+                <div class="form-group row pt-3">
+                      <div class="col-sm-12 text-center">
+                          <h4>Resend invite to this User? ID: {{id}}</h4>
+                          <button type="button" data-dismiss="modal" class="btn btn-danger space">Cancel</button>
+                          <button type="button" @click="resendInvite()" data-dismiss="modal" class="btn btn-primary space">Resend</button>
+                      </div>
+                </div>
+            </form>
+      </div>
     </div>
   </div>
 </div>
@@ -233,10 +269,18 @@
 
 
 <script>
+import axios from 'axios';
+
+
 export default {
   name: "Clients",
   data() {
     return {
+      email: '',
+      legacyCodeCount: 0,
+      id: 1,
+      referralCut: 5.5,
+      referralsBalance: 0.001,
       newUser: [],
       users: [
         {
@@ -304,7 +348,57 @@ export default {
         field: ''
       }
     );
-   }
+   },
+  sendInvite(){
+      var inviteObj =
+      {
+        email:  this.email,
+        legacyCodeCount: this.legacyCodeCount
+      };
+      var vm = this;
+
+      axios.post('http://localhost:3000/admin', inviteObj)
+        .then(function(response){
+         vm.$router.push({path: '/clients'});
+        })
+        .catch(function(error){
+          alert("Ups! Something went Wrong! " + error);
+        });
+    },
+     resendInvite(){
+      var userID =
+      {
+        clientID:  this.id
+      };
+      var vm = this;
+
+      axios.post('http://localhost:3000/admin', userID)
+        .then(function(response){
+         vm.$router.push({path: '/clients'});
+        })
+        .catch(function(error){
+          alert("Ups! Something went Wrong! " + error);
+        });
+    },
+    updateClientInfo(){
+      var userInfo =
+      {
+        clientID:  this.id,
+        legacyCodeCount: this.legacyCodeCount,
+        referralCut: this.referralCut,
+        referralsBalance: this.referralsBalance
+
+      };
+      var vm = this;
+
+      axios.put('http://localhost:3000/admin', userInfo)
+        .then(function(response){
+         vm.$router.push({path: '/clients'});
+        })
+        .catch(function(error){
+          alert("Ups! Something went Wrong! " + error);
+        });
+    }
   }
 };
 </script>

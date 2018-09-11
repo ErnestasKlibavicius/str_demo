@@ -63,7 +63,7 @@
                   <router-link class="dropdown-item" to="/change-password">Change Password</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/purchase">Purchase</router-link>
+                  <router-link class="dropdown-item" to="/purchase">Add Funds</router-link>
                 </li>
               </ul>
             </div>

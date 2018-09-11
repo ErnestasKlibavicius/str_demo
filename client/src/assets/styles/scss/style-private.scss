@@ -122,7 +122,7 @@ body {
 }
 
 .main-data{
-    max-width: 1000px;
+    max-width: 920px;
     padding: 0px 50px;
 }
 
@@ -374,20 +374,12 @@ body {
 
 //BUTTONS 
 .delete-btn{
-    font-size: 18px;
-    color: #ffffff !important;
-    padding: 5px 15px;
-    text-transform: uppercase;
+    font-size: 20px;
     text-decoration: none !important;
-    background: #ca0202;
-    border-radius: 3px;
-    i{
-        padding: 3px;
-        
-    }
+    color: red;
 }
 .delete-btn:hover{
-    background: #ff1d1d;
+    color: #a31313;
 }
 .add-btn{
     font-size: 15px;
@@ -406,6 +398,9 @@ body {
     background: #11d141;
     text-decoration: none !important;
     border: none !important;
+}
+.logout-link{
+    cursor: pointer;
 }
 //Headings
 h1.display-heading{

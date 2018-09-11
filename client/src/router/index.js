@@ -23,6 +23,7 @@ import Gifts from '@/components/admin/Gifts'
 import Clients from '@/components/admin/Clients'
 import AdminLogin from '@/components/admin/Login'
 import Confirm from '@/components/admin/Confirm'
+import UpdatePasswordAdmin from '@/components/admin/UpdatePassword'
 //Default Api root view
 import ApiView from '@/components/ApiView'
 
@@ -78,11 +79,6 @@ export default new Router({
       component: Register
     },
     {
-      path: '/update-password',
-      name: 'UpdPassword',
-      component: UpdPassword
-    },
-    {
       path: '/referrals',
       name: 'Referrals',
       component: Referrals
@@ -101,6 +97,11 @@ export default new Router({
       path: '/admin',
       name: 'Admin',
       component: Clients,
+    },
+    {
+      path: '/update-password',
+      name: 'updatePasswordAdmin',
+      component: UpdatePasswordAdmin
     },
     {
       path: '/log-in',

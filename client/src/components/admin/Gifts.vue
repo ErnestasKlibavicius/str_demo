@@ -51,6 +51,9 @@
                 <li>
                   <router-link class="dropdown-item" to="/clients">Users</router-link>
                 </li>
+                 <li>
+                <router-link class="dropdown-item" to="/update-password">Update Password</router-link>
+              </li>
                 <li>
                   <router-link class="dropdown-item" to="/gifts">Gifts/Discount codes</router-link>
                 </li>
@@ -82,8 +85,8 @@
                 <div class="input-group w-25 my-2">
                   <input type="text" class="form-control" placeholder="Search">
                 </div>
-              <a href="#"  @click="AddCode" class="pull-right d-flex align-items-center add-btn">Add
-                <font-awesome-icon class="i ml-1" icon="plus" />
+              <a href="#"  @click="AddCode" class="pull-right d-flex align-items-center add-btn">
+                <font-awesome-icon class="i" icon="plus" />
               </a>
               </div>
           </div>
@@ -109,7 +112,7 @@
                     <td>A58X72E4Q56X5668C422X56S</td>
                     <td>
                       <a href="#" class="delete-btn">
-                        <font-awesome-icon class="i" icon="times" />
+                        <font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/>
                       </a>
                     </td>
                 </tr>
@@ -118,7 +121,7 @@
                     <td>A58X72E4Q56X5668C422X56S</td>
                     <td>
                       <a href="#" class="delete-btn">
-                        <font-awesome-icon class="i" icon="times" />
+                        <font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/>
                       </a>
                     </td>
                 </tr>
@@ -127,7 +130,7 @@
                     <td>A58X72E4Q56X5668C422X56S</td>
                     <td>
                       <a href="#" class="delete-btn">
-                        <font-awesome-icon class="i" icon="times" />
+                        <font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/>
                       </a>
                     </td>
                 </tr>
@@ -136,7 +139,7 @@
                     <td>A58X72E4Q56X5668C422X56S</td>
                     <td>
                       <a href="#" class="delete-btn">
-                        <font-awesome-icon class="i" icon="times" />
+                        <font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/>
                       </a>
                     </td>
                 </tr>
@@ -145,7 +148,7 @@
                   <td>{{code.code}}</td>
                   <td>
                     <a href="#" class="delete-btn">
-                      <font-awesome-icon class="i" icon="times"/>
+                      <font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/>
                     </a>
                   </td>
                 </tr>

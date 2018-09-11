@@ -63,7 +63,7 @@
                   <router-link class="dropdown-item" to="/change-password">Change Password</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/purchase">Purchase</router-link>
+                  <router-link class="dropdown-item" to="/purchase">Add Funds</router-link>
                 </li>
               </ul>
             </div>
@@ -73,7 +73,7 @@
                   <a class="dropdown-item balance" @click="toggleBalance" href="#">Balance: {{balance}} <span class="mBtc">m</span>&#x20bf;</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="/">Logout</a>
+                  <a class="dropdown-item logout-link" @click="logOut()">Logout</a>
                 </li>
               </ul>
             </div>
@@ -95,7 +95,7 @@
                 <div>
                     <div class="d-flex justify-content-between align-items-center add-licenses-container">
                         <h1 class="display-heading">Licenses</h1>
-                        <a href="#" class="pull-right d-flex align-items-center add-btn">Add<font-awesome-icon class="i" icon="plus"/></a>
+                        <a href="#" @click="AddAuthCode()" class="pull-right d-flex align-items-center add-btn"><font-awesome-icon class="i" icon="plus"/></a>
                     </div>
                 </div>
             </div>
@@ -114,23 +114,23 @@
           <tbody>
             <tr>
                 <td scope="row">2018.02.03</td>
-                <td>A82C6Dge5Cz893</td>
-                <td><a href="#" class="delete-btn"><font-awesome-icon class="i" icon="times"/></a></td>
+                <td>{{authCodes[0].code}}</td>
+                <td><a href="#" @click="deleteAuthCode" class=""><font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/></a></td>
             </tr>
             <tr>
               <td scope="row">2018.02.03</td>
               <td>A82C6Dge5Cz893</td>
-              <td><a href="#" class="delete-btn"><font-awesome-icon class="i" icon="times"/></a></td>
+              <td><a href="#"><font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/></a></td>
             </tr>
             <tr>
                 <td scope="row">2018.02.03</td>
                 <td>A82C6Dge5Cz893</td>
-                <td><a href="#" class="delete-btn"><font-awesome-icon class="i" icon="times"/></a></td>
+                <td><a href="#"><font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/></a></td>
             </tr>
             <tr>
                 <td scope="row">2018.02.03</td>
                 <td>A82C6Dge5Cz893</td>
-                <td><a href="#" class="delete-btn"><font-awesome-icon class="i" icon="times"/></a></td>
+                <td><a href="#"><font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/></a></td>
             </tr>
           </tbody>
           </table>
@@ -237,6 +237,8 @@
 
 
 <script>
+import axios from 'axios';
+
 export default {
   name: "Account",
      mounted(){
@@ -247,6 +249,13 @@ export default {
   },
   data() {
     return {
+      authCodes: 
+      [
+        {
+          code: "asdasd165ad5as1",
+          id: 1
+        }
+      ],
       balance: 13,
       emailStatus: "inactive"
     };
@@ -261,6 +270,43 @@ export default {
       $('.mBtc').css("display", "none");
       this.balance = this.balance / 1000;
     }
+    },
+    logOut(){
+      var vm = this;
+
+       axios.post('http://localhost:3000/client', "LogOut")
+        .then(function(response){
+         vm.$router.push({path: '/'});
+        })
+        .catch(function(error){
+          alert("Ups! Something went Wrong! " + error);
+        });
+    },
+    AddAuthCode(){
+      var vm = this;
+
+       axios.post('http://localhost:3000/client')
+        .then(function(response){
+         vm.$router.push({path: '/account'});
+         console.log('Added new code');
+        })
+        .catch(function(error){
+          alert("Ups! Something went Wrong! " + error);
+        });
+    },
+    deleteAuthCode(){
+      var vm = this;
+      var authCode = {
+        authCodeID: this.authCodes[0].id
+      }
+       axios.delete('http://localhost:3000/client' + authCode)
+        .then(function(response){
+         vm.authCodes.splice(1, 1);
+         vm.$router.push({path: '/account'});
+        })
+        .catch(function(error){
+          alert("Ups! Something went Wrong! " + error);
+        });
     }
   }
 };
