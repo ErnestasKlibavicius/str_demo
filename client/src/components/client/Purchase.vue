@@ -93,8 +93,17 @@
             </div>
         </div>
         <div class="table-container">
-          <div class="row">
-            <div class="col-md-12"><h3 class="ml-5 my-3">Make a Bitcoin Payment</h3></div>
+          <div class="row text-center payment-type-container">
+            <div class="col-md-6 option active">
+              <a> 
+              <h3 class="my-3">Make a Bitcoin Payment</h3> 
+              </a> 
+            </div>
+            <div data-toggle="modal" data-target="#redeemModal" class="col-md-6 option redeem">
+              <a> 
+                <h3 class="my-3">Redeem</h3> 
+              </a> 
+            </div>
           </div>
            <div class="row">
              <div class="col-md-12">
@@ -116,16 +125,10 @@
                 <div class="col-sm-5">
                    <span class="text-muted"><input type="checkbox" id="checkbox" v-model="isGift"> Is It a Gift? </span>
                    <div>
-                     <input type="text" v-if="isGift" class="form-control gift-field" placeholder="Quantity" @keydown.enter.prevent>
+                     <input type="number" v-if="isGift" class="form-control gift-field" placeholder="Quantity" @keydown.enter.prevent>
                    </div>
                    <input @keydown.enter.prevent="checkValue" @change="checkValue" type="text" v-model="value" class="form-control deposit-field" placeholder="Enter Amount">
                 </div>
-                 <!-- <div class="col-sm-4">
-                   <span class="text-muted"><input type="checkbox" id="checkbox" v-model="isGift"> Is It A Gift? </span>
-                   <div>
-                     <input type="text" v-if="isGift" class="form-control" style="width: 60%;" placeholder="Amount" @keydown.enter.prevent>
-                   </div>
-                </div> -->
             </div>
            
             <div class="form-group row">
@@ -137,6 +140,27 @@
         </div>
         </div>
     </div> 
+    <div class="modal fade" id="redeemModal" tabindex="-1" role="dialog" aria-labelledby="redeemModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="redeemModalLongTitle">Redeem Your Gift Code</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="ModalParameterValue" class="col-form-label">enter gift code:</label>
+            <input class="form-control" >
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Redeem</button>
+      </div>
+    </div>
+  </div>
+</div>
   </div>
 </template>
 

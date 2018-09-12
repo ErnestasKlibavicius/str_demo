@@ -81,9 +81,9 @@
         </div>
       </div>
       <div id="emailVerifyLabel" class="row">
-        <div class="container-fluid">
-          <div class="d-flex justify-content-end">
-            <a href="#" class="badge badge-pill badge-danger mt-2">Your email isn't verified !</a>
+        <div class="container-fluid email-verify-label-container">
+          <div class="d-flex justify-content-center align-items-center">
+            <a href="#" class="badge badge-pill my-2">Your email isn't verified !</a>
           </div>
         </div>
       </div>
@@ -106,7 +106,7 @@
             <table class="table authCode-table">
             <thead>
             <tr>
-              <th scope="col">Date</th>
+              <th scope="col">Created At</th>
               <th scope="col">Code</th>
               <th scope="col"></th>
             </tr>
@@ -137,6 +137,110 @@
           </div>
             </div>
         </div>
+        +++++++ TEST +++++++++++++++++
+        <div class="row">
+            <div class="col-md-8 offset-md-2 px-0">
+                <div>
+                    <div class="d-flex justify-content-between align-items-center add-licenses-container">
+                        <h1 class="display-heading">Payments</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 offset-md-2 table-container">  
+            <div class="table-responsive">
+             <table class="table text-center payment-table">
+            <thead>
+            <tr>
+              <th scope="col">Created At</th>
+              <th scope="col">Status</th>
+              <th scope="col">Total Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row">2018.02.03</td>
+              <td>100</td>
+              <td>135</td>
+            </tr>
+            <tr>
+              <td scope="row">2018.02.03</td>
+              <td>100</td>
+              <td>135</td>
+            </tr>
+            <tr>
+              <td scope="row">2018.02.03</td>
+              <td>100</td>
+              <td>135</td>
+            </tr>
+          <tr>
+              <td scope="row">2018.02.03</td>
+              <td>100</td>
+              <td>135</td>
+          </tr>
+          </tbody>
+          </table>
+          </div>
+            </div>
+        </div>
+        +++++++ TEST +++++++++++++++++
+
+         +++++++ TEST +++++++++++++++++
+        <div class="row">
+            <div class="col-md-8 offset-md-2 px-0">
+                <div>
+                    <div class="d-flex justify-content-between align-items-center add-licenses-container">
+                        <h1 class="display-heading">Gifts</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 offset-md-2 table-container">  
+            <div class="table-responsive">
+           <table class="table gifts-table text-center">
+                    <thead>
+                    <tr>
+                        <th scope="col">Created At</th>
+                        <th scope="col">Code</th>
+                        <th scope="col">Gift Points</th>
+                        <th scope="col">Was Redeemed</th>
+                        <th scope="col">btcAmount</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="claimed">
+                            <td scope="row">2018.02.02</td>
+                            <td scope="row">4asd5as5cz5xc</td>
+                            <td>123</td>
+                            <td><font-awesome-icon icon="check" style="color: green"/></td>
+                        </tr>
+                        <tr>
+                            <td scope="row">2018.02.02</td>
+                            <td scope="row">4asd5as5cz5xc</td>
+                            <td>123</td>
+                            <td><font-awesome-icon icon="times" style="color: red"/></td>
+                        </tr>
+                        <tr>
+                            <td scope="row">2018.02.02</td>
+                            <td scope="row">4asd5as5cz5xc</td>
+                            <td>123</td>
+                            <td><font-awesome-icon icon="times" style="color: red"/></td>
+                        </tr>
+                        <tr class="claimed">
+                            <td scope="row">2018.02.02</td>
+                            <td scope="row">4asd5as5cz5xc</td>
+                            <td>123</td>
+                            <td><font-awesome-icon icon="check" style="color: green"/></td>
+                        </tr>
+                    </tbody>
+                    </table>
+          </div>
+            </div>
+        </div>
+        +++++++ TEST +++++++++++++++++
+        
 
         <div class="row">
             <div class="col-md-6 col-sm-12">

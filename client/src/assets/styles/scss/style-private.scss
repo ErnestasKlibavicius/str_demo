@@ -180,6 +180,14 @@ body {
 }
 
 //Dashboard 
+.email-verify-label-container{
+    background: #e00505bd;
+    box-shadow: -3px -6px 13px 0px rgba(0,0,0,0.7);
+    a {
+        color: #ffffff;
+    }
+}
+
 .dashboard-container{
     padding-left: 70px !important;
     padding-right: 70px !important;
@@ -220,7 +228,7 @@ body {
 }
 .table-container{
     background: #ffffff;
-    border-radius: 15px;
+    // border-radius: 15px;
     margin-bottom: 25px;
     padding: 0;
     .license-list-container{
@@ -344,6 +352,28 @@ body {
     letter-spacing: 1px;
     padding-left: 43px;
     padding-right: 43px;
+}
+.payment-type-container{
+   background: #2b6cc8;
+   box-shadow:  0 2px 5px 0 rgba(0,0,0,.3);
+   margin: 0 0px;
+   .option{
+       padding: 0;
+   }
+   .redeem{
+       cursor: pointer;
+   }
+   .option:hover{
+        background: #4ea3ff;
+   }
+   .option.active{
+    background: #4d86d4;
+   }
+ 
+   a {
+    color: #ffffff !important;
+   }
+
 }
 
 .payment-options-container{

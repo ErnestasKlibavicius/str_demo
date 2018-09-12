@@ -23,6 +23,15 @@
                           </div>
                           <input type="password" class="form-control login-input-field" v-model="password" placeholder="Password">
                         </div>
+                        
+                        <div class="input-group mt-4 mb-2">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text login-field-icon-c">
+                             <font-awesome-icon icon="lock" style="color: #898989"/>
+                            </div>
+                          </div>
+                          <input type="password" class="form-control login-input-field" placeholder="Confirm Password">
+                        </div>
                       </div>
                     </div>
                   </form>
