@@ -305,9 +305,9 @@ body {
 }
 //Referrals
 .referral-container {
-    padding: 25px 8px 25px 8px;
-    text-align: center;
-    margin: 10px;
+    font-size: 18px;
+    padding: 7px 8px 7px 8px;
+    margin: 5px;
     background: #ffffff;
     border-radius: 10px; 
     .referral-link{
@@ -315,7 +315,11 @@ body {
     }
     span{
         font-weight: bold;
+        color: #000000;
     }
+}
+.ref-header{
+    color: #007bff;
 }
 //Password
 .form-submit-btn{
@@ -346,6 +350,9 @@ body {
         margin: 3px;
     }
 }
+.no-bullet{
+    list-style: none;
+}
 .payment-btn{
     font-size: 17px;
     font-weight: bold;
@@ -359,12 +366,13 @@ body {
    margin: 0 0px;
    .option{
        padding: 0;
+       transition: background 0.2s ease-in;
    }
    .redeem{
        cursor: pointer;
    }
    .option:hover{
-        background: #4ea3ff;
+    background: #1f89ff;
    }
    .option.active{
     background: #4d86d4;
@@ -379,6 +387,7 @@ body {
 .payment-options-container{
     text-align: center;
     .payment-option{
+        transition: color .15s ease-out;
         cursor: pointer;
         padding: 12px;
         margin: 18px;
@@ -471,6 +480,9 @@ h1.display-heading{
 }
 
 @media screen and (max-width: 400px){
+    .referral-link{
+       font-size: 15px;
+    }
     .authCode-table{
         tr{
             td:first-of-type{
@@ -518,5 +530,17 @@ h1.display-heading{
             }
             
         }
+    }
+}
+@media screen and (max-width: 550px){
+    .info-container-list{
+        margin-left: 0 !important;
+    }
+    .payment-btn{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .option-header{
+        font-size: 19px;
     }
 }

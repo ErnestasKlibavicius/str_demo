@@ -82,43 +82,67 @@
       </div>
     </div>
     <div class="content mt-5">
-
-      <div class="container">
+      <div class="container main-data">
         <div class="row">
-          <div class="col-md-12">
+            <div class="col-md-12 px-0">
             <div>
-              <div class="d-flex justify-content-between align-items-center heading">
-                <h1 class="display-heading">Referrals</h1>
-              </div>
+                <div class="d-flex justify-content-between align-items-center">
+                <h1 class="display-heading ml-3">Referrals</h1>
+                </div>
             </div>
-          </div>
+            </div>
         </div>
-        <div class="row referral-parent-container">
-          <div class="col-md-4 px-0">
-            <div class="referral-container">
-              <div>Total Referred Users:
-                <span>143</span>
-              </div>
+        <div class="table-container">
+          <div class="row">
+            <div class="col-md-12 d-flex align-items-center justify-content-center">
+              <h2 class="option-header ref-header my-2">Your Referral Info</h2>
             </div>
           </div>
-          <div class="col-md-3 px-0">
-            <div class="referral-container">
-              <div>Balance:
-                <span>324</span>
+           <div class="row">
+             <div class="col-md-12">
+                <ul class="info-container-list no-bullet ml-5 my-3">
+                  <li>
+                    <div class="referral-container">
+                      <div>Total Referred Users:
+                        <span>143</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="referral-container">
+                      <div> Accumulated Balance:
+                        <span>324</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="referral-container">
+                      <div>Link:
+                        <span class="referral-link">
+                          <a href="#">https://www.website.com/link/link</a>
+                        </span>
+                       </div>
+                    </div>
+                  </li>
+                </ul>
               </div>
             </div>
-          </div>
-          <div class="col-md-5 px-0">
-            <div class="referral-container">
-              <div>Link:
-                <span class="referral-link">
-                  <a href="#">https://www.website.com/link/link</a>
-                </span>
-              </div>
+            <form>
+            <div class="form-group form-inline form-container row pt-3 d-flex justify-content-center align-items-center">
+                <label class="col-sm-2 text-center col-form-label " style="color: #2b6cc8;">Amount</label>
+                <div class="col-sm-5">
+                   <input type="text" class="form-control deposit-field" placeholder="Enter Amount">
+                </div>
             </div>
-          </div>
+           
+            <div class="form-group row">
+                <div class="col-sm-12 text-center my-3 ml-3">
+                  <button type="submit" class="btn btn-primary payment-btn">Transfer to Balance</button>
+                </div>
+            </div>
+            </form>
         </div>
-      </div>
+        </div>
     </div>
   </div>
   </template>

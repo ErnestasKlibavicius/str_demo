@@ -96,12 +96,12 @@
           <div class="row text-center payment-type-container">
             <div class="col-md-6 option active">
               <a> 
-              <h3 class="my-3">Make a Bitcoin Payment</h3> 
+              <h3 class="my-3 option-header">Make a Bitcoin Payment</h3> 
               </a> 
             </div>
             <div data-toggle="modal" data-target="#redeemModal" class="col-md-6 option redeem">
               <a> 
-                <h3 class="my-3">Redeem</h3> 
+                <h3 class="my-3 option-header">Redeem</h3> 
               </a> 
             </div>
           </div>
