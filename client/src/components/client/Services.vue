@@ -1,5 +1,5 @@
 <template>
-  <div class="account">
+  <div class="services">
     <header class="header-container sticky-top">
       <nav class="navbar navbar-expand-md">
         <div class="container-fluid">
@@ -38,7 +38,7 @@
                 <a href="#" class="nav-link">Help</a>
               </li>
               <li class="nav-item account-info-btn">
-                <a href="/account" class="nav-link"> My Account
+                <a href="/services" class="nav-link"> My Account
                    <font-awesome-icon icon="user"/>
                 </a>
               </li>
@@ -54,7 +54,7 @@
             <div class="nav-items">
               <ul>
                 <li>
-                  <router-link class="dropdown-item" to="/account">Dashboard</router-link>
+                  <router-link class="dropdown-item" to="/services">Services</router-link>
                 </li>
                 <li>
                   <router-link class="dropdown-item" to="/referrals">Referrals</router-link>
@@ -95,7 +95,6 @@
                 <div>
                     <div class="d-flex justify-content-between align-items-center add-licenses-container">
                         <h1 class="display-heading">Licenses</h1>
-                        <a href="#" @click="AddAuthCode()" class="pull-right d-flex align-items-center add-btn"><font-awesome-icon class="i" icon="plus"/></a>
                     </div>
                 </div>
             </div>
@@ -108,7 +107,7 @@
             <tr>
               <th scope="col">Created At</th>
               <th scope="col">Code</th>
-              <th scope="col"></th>
+              <th scope="col"> <a href="#" @click="AddAuthCode()" class="pull-right d-flex align-items-center add-btn"><font-awesome-icon class="i" icon="plus"/></a></th>
             </tr>
           </thead>
           <tbody>
@@ -446,7 +445,7 @@
 import axios from 'axios';
 
 export default {
-  name: "Account",
+  name: "Services",
      mounted(){
       if(this.emailStatus === "active"){
         var emailLabel = document.getElementById("emailVerifyLabel");
@@ -493,7 +492,7 @@ export default {
 
        axios.post('http://localhost:3000/client')
         .then(function(response){
-         vm.$router.push({path: '/account'});
+         vm.$router.push({path: '/services'});
          console.log('Added new code');
         })
         .catch(function(error){
@@ -508,7 +507,7 @@ export default {
        axios.delete('http://localhost:3000/client' + authCode)
         .then(function(response){
          vm.authCodes.splice(1, 1);
-         vm.$router.push({path: '/account'});
+         vm.$router.push({path: '/services'});
         })
         .catch(function(error){
           alert("Ups! Something went Wrong! " + error);

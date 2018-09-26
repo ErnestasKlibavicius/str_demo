@@ -60,7 +60,7 @@
           <div class="nav-items">
             <ul>
               <li>
-                <router-link class="dropdown-item" to="/clients">Users</router-link>
+                <router-link class="dropdown-item" to="/clients">Clients</router-link>
               </li>
               <li>
                 <router-link class="dropdown-item" to="/gifts">Gifts</router-link>
@@ -93,9 +93,6 @@
                 <div class="input-group w-25 my-2">
                   <input type="text" class="form-control" placeholder="Search">
                 </div>
-                <!-- <a href="#" data-toggle="modal" data-target="#addAdmin" class="pull-right d-flex align-items-center add-btn"> 
-                  <font-awesome-icon class="i" icon="plus" />
-                </a> -->
               </div> 
           </div>
         </div>

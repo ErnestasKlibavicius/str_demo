@@ -38,7 +38,7 @@
                 <a href="#" class="nav-link">Help</a>
               </li>
               <li class="nav-item account-info-btn">
-                <a href="/account" class="nav-link"> My Account
+                <a href="/services" class="nav-link"> My Account
                    <font-awesome-icon icon="user"/>
                 </a>
               </li>
@@ -54,7 +54,7 @@
             <div class="nav-items">
               <ul>
                 <li>
-                  <router-link class="dropdown-item" to="/account">Dashboard</router-link>
+                  <router-link class="dropdown-item" to="/services">Services</router-link>
                 </li>
                 <li>
                   <router-link class="dropdown-item" to="/referrals">Referrals</router-link>
@@ -101,16 +101,20 @@
         </div>
         <div class="table-container">
           <div class="row text-center payment-type-container">
-            <div class="col-md-6 option active">
-              <a> 
-              <h3 class="my-3 option-header">Make a Bitcoin Payment</h3> 
-              </a> 
-            </div>
-            <div data-toggle="modal" data-target="#redeemModal" class="col-md-6 option redeem">
-              <a> 
-                <h3 class="my-3 option-header">Redeem</h3> 
-              </a> 
-            </div>
+               <router-link class="col-md-6 option" to="/add-funds">
+                  <div>
+                    <a> 
+                        <h3 class="my-3 option-header">Make a Bitcoin Payment</h3> 
+                    </a> 
+                  </div>
+              </router-link>
+              <router-link class="col-md-6 option" to="/redeem">
+                <div>
+                <a> 
+                    <h3 class="my-3 option-header">Redeem</h3> 
+                </a> 
+                </div>
+              </router-link>
           </div>
            <div class="row">
              <div class="col-md-12">
@@ -151,27 +155,7 @@
         </div>
         </div>
     </div> 
-    <div class="modal fade" id="redeemModal" tabindex="-1" role="dialog" aria-labelledby="redeemModalTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="redeemModalLongTitle">Redeem Your Gift Code</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-          <div class="form-group">
-            <label for="ModalParameterValue" class="col-form-label">enter gift code:</label>
-            <input class="form-control" >
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Redeem</button>
-      </div>
-    </div>
-  </div>
-</div>
+ 
  <footer class="footer">
       <div class="container-fluid footer-container">
         <div class="row">

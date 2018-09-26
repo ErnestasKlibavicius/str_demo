@@ -60,7 +60,7 @@
           <div class="nav-items">
             <ul>
               <li>
-                <router-link class="dropdown-item" to="/clients">Users</router-link>
+                <router-link class="dropdown-item" to="/clients">Clients</router-link>
               </li>
               <li>
                 <router-link class="dropdown-item" to="/gifts">Gifts</router-link>
@@ -87,15 +87,12 @@
         <div class="col-md-8 offset-md-2 px-0">
           <div>
             <div class="d-flex justify-content-between align-items-center add-licenses-container">
-              <h1 class="display-heading">Users</h1>
+              <h1 class="display-heading">Clients</h1>
             </div>
               <div class="d-flex justify-content-between align-items-center ">
                 <div class="input-group w-25 my-2">
                   <input type="text" class="form-control" placeholder="Search">
                 </div>
-                <a href="#" data-toggle="modal" data-target="#AddNewUser" class="pull-right d-flex align-items-center add-btn"> 
-                   <font-awesome-icon class="i" icon="plus" />
-                </a>
               </div>
           </div>
         </div>
@@ -108,7 +105,11 @@
                 <tr>
                   <th scope="col">Date</th>
                   <th scope="col">Email</th>
-                  <th scope="col"></th>
+                  <th scope="col">
+                    <a href="#" data-toggle="modal" data-target="#AddNewUser" class="pull-right d-flex align-items-center add-btn"> 
+                      <font-awesome-icon class="i" icon="plus" />
+                    </a>
+                  </th>
                 </tr>
               </thead>
               <tbody>

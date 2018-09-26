@@ -38,7 +38,7 @@
                 <a href="#" class="nav-link">Help</a>
               </li>
               <li class="nav-item account-info-btn">
-                <a href="/account" class="nav-link"> My Account
+                <a href="/services" class="nav-link"> My Account
                    <font-awesome-icon icon="user"/>
                 </a>
               </li>
@@ -54,7 +54,7 @@
             <div class="nav-items">
               <ul>
                 <li>
-                  <router-link class="dropdown-item" to="/account">Dashboard</router-link>
+                  <router-link class="dropdown-item" to="/services">Services</router-link>
                 </li>
                 <li>
                   <router-link class="dropdown-item" to="/referrals">Referrals</router-link>
@@ -256,7 +256,7 @@ export default {
 
         axios.post('http://localhost:3000/changepass', userInfo)
         .then(function(response){
-         vm.$router.push({path: '/account'});
+         vm.$router.push({path: '/services'});
         })
         .catch(function(error){
           alert("Ups! Something went Wrong! " + error);

@@ -10,12 +10,13 @@ import DownApp1 from '@/components/DownApp1'
 import DownApp2 from '@/components/DownApp2'  
 import Register from '@/components/Register'
 //Client Views
-import Account from '@/components/client/Account'
+import Services from '@/components/client/Services'
 import UpdPassword from '@/components/client/UpdPassword'
 import Referrals from '@/components/client/Referrals'
 import ChangePassword from '@/components/client/ChangePassword'
 import AddFunds from '@/components/client/AddFunds'
 import Client from '@/components/client/Client'
+import Redeem from '@/components/client/Redeem'
 //Admin Views
 import Dashboard from '@/components/admin/Dashboard'
 import Admins from '@/components/admin/Admins'
@@ -70,9 +71,9 @@ export default new Router({
       component: DownApp2
     },
     {
-      path: '/account',
-      name: 'Account',
-      component: Account
+      path: '/services',
+      name: 'Services',
+      component: Services
     },
     {
       path: '/register',
@@ -145,9 +146,14 @@ export default new Router({
       component: Client,
       children: [
         {
-          path: 'recoverpass',
+          path: 'recoverpass'
         }
       ]
+    },
+    {
+      path: '/redeem',
+      name: 'Redeem',
+      component: Redeem
     },
     {
       path: '/api',

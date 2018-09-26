@@ -1,5 +1,5 @@
 <template>
-  <div class="gifts">
+  <div class="redeem">
     <header class="header-container sticky-top">
       <nav class="navbar navbar-expand-md">
         <div class="container-fluid">
@@ -37,17 +37,11 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">Help</a>
               </li>
-               <li class="nav-item account-info-btn">
-                <div class="dropdown show">
-                  <a class="dropdown-toggle nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  My Account  <font-awesome-icon icon="user"/>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="/info">Info</a>
-                    <a class="dropdown-item" href="/update-password">Update Password</a>
-                  </div>
-                </div>
-             </li>
+              <li class="nav-item account-info-btn">
+                <a href="/services" class="nav-link"> My Account
+                   <font-awesome-icon icon="user"/>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -60,18 +54,24 @@
             <div class="nav-items">
               <ul>
                 <li>
-                  <router-link class="dropdown-item" to="/clients">Clients</router-link>
+                  <router-link class="dropdown-item" to="/services">Services</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/gifts">Gifts</router-link>
+                  <router-link class="dropdown-item" to="/referrals">Referrals</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/admins">Admins</router-link>
+                  <router-link class="dropdown-item" to="/change-password">Change Password</router-link>
+                </li>
+                <li>
+                  <router-link class="dropdown-item" to="/add-funds" style="border-bottom: 1px solid #3f9bff;">Add Funds</router-link>
                 </li>
               </ul>
             </div>
             <div class="nav-items">
               <ul>
+                <li>
+                  <a class="dropdown-item balance" @click="toggleBalance" href="#">Balance: {{balance}} <span class="mBtc">m</span>&#x20bf;</a>
+                </li>
                 <li>
                   <a class="dropdown-item" href="/">Logout</a>
                 </li>
@@ -80,98 +80,72 @@
           </div>
         </div>
       </div>
+      <div id="emailVerifyLabel" class="row">
+        <div class="container-fluid email-verify-label-container">
+          <div class="d-flex justify-content-center align-items-center">
+            <p href="#" class="badge badge-pill my-2">Your email isn't verified ! Didn't get an email? Click <a href="#">Here</a></p>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="content mt-5">
-      <div class="container-fluid dashboard-container">
-      <div class="row">
-        <div class="col-md-8 offset-md-2 px-0">
-          <div>
-            <div class="d-flex justify-content-between align-items-center add-licenses-container">
-              <h1 class="display-heading">Gift Codes</h1>
-            </div>
-               <div class="d-flex justify-content-between align-items-center ">
-                <div class="input-group w-25 my-2">
-                  <input type="text" class="form-control" placeholder="Search">
+        <div class="container main-data">
+        <div class="row">
+            <div class="col-md-12 px-0">
+            <div>
+                <div class="d-flex justify-content-between align-items-center">
+                <h1 class="display-heading ml-3">Redeem Your Code</h1>
                 </div>
+            </div>
+            </div>
+        </div>
+        <div class="table-container">
+          <div class="row text-center payment-type-container">
+              <router-link class="col-md-6 option" to="/add-funds">
+                  <div>
+                    <a> 
+                        <h3 class="my-3 option-header">Make a Bitcoin Payment</h3> 
+                    </a> 
+                  </div>
+              </router-link>
+              <router-link class="col-md-6 option" to="/redeem">
+                <div>
+                <a> 
+                    <h3 class="my-3 option-header">Redeem</h3> 
+                </a> 
+                </div>
+              </router-link>
+          </div>
+           <div class="row">
+             <div class="col-md-12">
+                <ul class="info-container-list ml-5 my-3">
+                  <li>Enter your code</li>
+                  <li>Use your code only once!</li>
+                  <li>Enter only one code when redeeming!</li>
+                  <li class="rate-info">Make sure you entered the correct code</li>
+                </ul>
               </div>
-          </div>
+            </div>
+            <form>
+              <div class="row d-flex justify-content-center align-items-center payment-options-container">
+                <div class="col-md-12">
+                    <h2 style="color: #2b6cc8;">Enter code </h2>   
+                </div>
+                <input type="text" class="input-group-text redeem-input">
+              </div>
+        
+           
+            <div class="form-group row">
+                <div class="col-sm-12 text-center my-3">
+                  <button type="submit" class="btn btn-primary redeem-btn">Redeem</button>
+                </div>
+            </div>
+            </form>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-8 offset-md-2 table-container text-center">
-          <div>
-         
-              <table class="table authCode-table">
-                <thead>
-                <tr>
-                  <th scope="col">Date</th>
-                  <th scope="col">Code</th>
-                  <th scope="col"> 
-                    <a href="#"  @click="AddCode" class="pull-right d-flex align-items-center add-btn">
-                      <font-awesome-icon class="i" icon="plus" />
-                    </a>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                 <tr>
-                  <td scope="row">2018.02.03</td>
-                    <td>A58X72E4Q56X5668C422X56S</td>
-                    <td>
-                      <a href="#" class="delete-btn">
-                        <font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/>
-                      </a>
-                    </td>
-                </tr>
-                 <tr>
-                  <td scope="row">2018.02.03</td>
-                    <td>A58X72E4Q56X5668C422X56S</td>
-                    <td>
-                      <a href="#" class="delete-btn">
-                        <font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/>
-                      </a>
-                    </td>
-                </tr>
-                 <tr>
-                  <td scope="row">2018.02.03</td>
-                    <td>A58X72E4Q56X5668C422X56S</td>
-                    <td>
-                      <a href="#" class="delete-btn">
-                        <font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/>
-                      </a>
-                    </td>
-                </tr>
-                 <tr>
-                  <td scope="row">2018.02.03</td>
-                    <td>A58X72E4Q56X5668C422X56S</td>
-                    <td>
-                      <a href="#" class="delete-btn">
-                        <font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/>
-                      </a>
-                    </td>
-                </tr>
-                <tr v-for="code in codes">
-                  <td scope="row">{{code.date}}</td>
-                  <td>{{code.code}}</td>
-                  <td>
-                    <a href="#" class="delete-btn">
-                      <font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/>
-                    </a>
-                  </td>
-                </tr>
-                <!-- <tr v-for="code in codes">
-                    <td scope="row">{{code.date}}</td>
-                    <td>{{code.code}}</td>
-                    <td><a href="#" class="delete-btn"><font-awesome-icon class="i" icon="times-circle"/></a></td>
-                </tr> -->
-              </tbody>
-              </table>
-             </div>
-          </div>
         </div>
-      </div>
-    </div>
-       <footer class="footer">
+    </div> 
+ 
+ <footer class="footer">
       <div class="container-fluid footer-container">
         <div class="row">
           <div class="col-md-4 main-footer-info-container">
@@ -270,24 +244,49 @@
         </div>
       </div>
     </footer>
-    </div>
+  </div>
 </template>
 
 
 <script>
 export default {
-  name: "Gifts",
+  name: "Redeem",
   data() {
     return {
-      codes: [],
+        value: 0,
+        isGift: false,
+        balance: 15,
+        defaultValues: [
+          {value: 10},
+          {value: 25},
+          {value: 50},
+          {value: 100},
+          {value: 250}
+        ]
+  
     };
   },
   methods: {
-    AddCode: function() {
-      this.codes.push({code: 'newCode', date: new Date().toDateString()});
+    checkValue() {
+      if(this.value <= 10) {
+        this.value = 10;
+      }
+    },
+    setValue(e) {
+      this.value = e.target.innerHTML;
+    },
+     toggleBalance(){
+      if(this.balance < 1){
+        $('.mBtc').css("display", "inline-block");
+        this.balance = this.balance * 1000;
+      }
+      else {
+        $('.mBtc').css("display", "none");
+        this.balance = this.balance / 1000;
+      }
     }
   }
-};
+}
 </script>
 
 

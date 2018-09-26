@@ -202,7 +202,7 @@ body {
             padding: 13px 10px 13px 25px;
         }
         td:last-of-type{
-            width: 20%;
+            width: 5%;
             text-align: right;
         }
     }
@@ -219,7 +219,7 @@ body {
             padding: 16px 10px 16px 25px;
         }
         th:last-of-type{
-            width: 20%;
+            width: 5%;
         }
     }
 }
@@ -360,26 +360,41 @@ body {
     padding-left: 43px;
     padding-right: 43px;
 }
+.redeem-btn{
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding-left: 18px;
+    padding-right: 18px;
+}
 .payment-type-container{
-   background: #2b6cc8;
+   cursor: pointer;
+   background: #4d86d4;
    box-shadow:  0 2px 5px 0 rgba(0,0,0,.3);
    margin: 0 0px;
    .option{
        padding: 0;
        transition: background 0.2s ease-in;
    }
-   .redeem{
-       cursor: pointer;
-   }
+      
+    a.router-link-exact-active.router-link-active  {
+        background: #2b6cc8;
+        text-decoration: #8dbaf8 underline;
+    }
+    a.router-link-exact-active.router-link-active:hover{
+        background: #1f89ff;   
+    }
+   
    .option:hover{
     background: #1f89ff;
    }
-   .option.active{
-    background: #4d86d4;
-   }
+//    .option.active{
+//     background: #4d86d4;
+//    }
  
    a {
     color: #ffffff !important;
+    text-decoration: none;
    }
 
 }
@@ -424,7 +439,11 @@ body {
   
 }
 
-
+// REDEEM INPUT
+.redeem-input{
+    background-color: #ffffff;
+   border-color: #007bff;
+}
 
 //BUTTONS 
 .delete-btn{
@@ -603,10 +622,11 @@ h1.display-heading{
     .info-container-list{
         margin-left: 0 !important;
     }
-    .payment-btn{
+    .payment-btn, .redeem-btn{
         padding-left: 10px;
         padding-right: 10px;
     }
+
     .option-header{
         font-size: 19px;
     }
