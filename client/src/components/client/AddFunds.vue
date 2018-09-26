@@ -1,5 +1,5 @@
 <template>
-  <div class="purchase">
+  <div class="AddFunds">
     <header class="header-container sticky-top">
       <nav class="navbar navbar-expand-md">
         <div class="container-fluid">
@@ -63,20 +63,27 @@
                   <router-link class="dropdown-item" to="/change-password">Change Password</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/purchase">Add Funds</router-link>
+                  <router-link class="dropdown-item" to="/add-funds">Add Funds</router-link>
                 </li>
               </ul>
             </div>
             <div class="nav-items">
               <ul>
                 <li>
-                  <a class="dropdown-item balance" href="#">Balance: 25</a>
+                  <a class="dropdown-item balance" @click="toggleBalance" href="#">Balance: {{balance}} <span class="mBtc">m</span>&#x20bf;</a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="/">Logout</a>
                 </li>
               </ul>
             </div>
+          </div>
+        </div>
+      </div>
+      <div id="emailVerifyLabel" class="row">
+        <div class="container-fluid email-verify-label-container">
+          <div class="d-flex justify-content-center align-items-center">
+            <p href="#" class="badge badge-pill my-2">Your email isn't verified ! Didn't get an email? Click <a href="#">Here</a></p>
           </div>
         </div>
       </div>
@@ -122,17 +129,21 @@
               </div>
             <div class="form-group form-inline form-container row pt-3 d-flex justify-content-center align-items-center">
                 <label class="col-sm-2 text-center col-form-label mt-3" style="color: #2b6cc8;">Amount</label>
-                <div class="col-sm-5">
+                <!-- <div class="col-sm-5">
                    <span class="text-muted"><input type="checkbox" id="checkbox" v-model="isGift"> Is It a Gift? </span>
                    <div>
                      <input type="number" v-if="isGift" class="form-control gift-field" placeholder="Quantity" @keydown.enter.prevent>
                    </div>
                    <input @keydown.enter.prevent="checkValue" @change="checkValue" type="text" v-model="value" class="form-control deposit-field" placeholder="Enter Amount">
-                </div>
+                </div> -->
             </div>
            
             <div class="form-group row">
                 <div class="col-sm-12 text-center my-3">
+                  <p class="text-muted mb-1"><input type="checkbox" id="checkbox" v-model="isGift"> Is it a gift? </p>
+                    <div class="d-flex justify-content-center">
+                     <input type="number" v-if="isGift" class="form-control gift-field" placeholder="Quantity" @keydown.enter.prevent>
+                   </div>
                   <button type="submit" class="btn btn-primary payment-btn">Pay With Bitcoin</button>
                 </div>
             </div>
@@ -161,17 +172,117 @@
     </div>
   </div>
 </div>
+ <footer class="footer">
+      <div class="container-fluid footer-container">
+        <div class="row">
+          <div class="col-md-4 main-footer-info-container">
+            <h4>lorem
+              <b>ipsum</b>
+            </h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing
+              <br> elit.Suscipit iste officia itaque eveniet obcaecati totam.</p>
+            <div class="social-icons">
+              <ul>
+                <li>
+                  <a href="#">
+                    <img src="../../assets/img/icon-twitter.png" height="20px" width="20px" alt="twitter">
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="../../assets/img/icon-facebook.png" height="20px" width="20px" alt="facebook">
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="../../assets/img/icon-medium.png" height="20px" width="20px" alt="medium">
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="../../assets/img/icon-telegram.png" height="20px" width="20px" alt="telegram">
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-2 footer-info">
+            <h6>lorem ipsum</h6>
+            <ul>
+              <li>
+                <a href="#">lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ips</a>
+              </li>
+              <li>
+                <a href="#">lorem ipsum lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ipss</a>
+              </li>
+              <li>
+                <a href="#">lorem lorem</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-2 footer-info">
+            <h6>lorem ipsum</h6>
+            <ul>
+              <li>
+                <a href="#">lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ips</a>
+              </li>
+              <li>
+                <a href="#">lorem ipsum lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ipss</a>
+              </li>
+              <li>
+                <a href="#">lorem lorem</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-2 footer-info">
+            <h6>lorem ipsum</h6>
+            <ul>
+              <li>
+                <a href="#">lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ips</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-2 footer-info">
+            <h6>lorem ipsum</h6>
+            <ul>
+              <li>
+                <a href="#">lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ips</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
 
 <script>
 export default {
-  name: "Purchase",
+  name: "AddFunds",
   data() {
     return {
         value: 0,
         isGift: false,
+        balance: 15,
         defaultValues: [
           {value: 10},
           {value: 25},
@@ -190,9 +301,19 @@ export default {
     },
     setValue(e) {
       this.value = e.target.innerHTML;
+    },
+     toggleBalance(){
+      if(this.balance < 1){
+        $('.mBtc').css("display", "inline-block");
+        this.balance = this.balance * 1000;
+      }
+      else {
+        $('.mBtc').css("display", "none");
+        this.balance = this.balance / 1000;
+      }
     }
   }
-};
+}
 </script>
 
 

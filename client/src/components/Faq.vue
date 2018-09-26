@@ -293,6 +293,7 @@
       </div>
     </div>
   </section>
+
   <footer class="footer">
     <div class="container-fluid footer-container">
       <div class="row">
@@ -411,11 +412,16 @@
            var target = $(this.getAttribute('href'));
             if( target.length ) {
               event.preventDefault();
-              $('html, body').stop().animate({
-                  scrollTop: target.offset().top }, 1000);
+               $('html, body').stop().animate({
+              
+                   scrollTop: target.offset({top: -50}) }, 1000);
             }
           });
-        })
+        }),
+        function(){
+          var urlString = window.location; // or try window.location.pathname
+          $('a[href="' + urlString + '"]').addClass("active");
+        }
       }
     }
   }

@@ -106,7 +106,7 @@
 
         axios.post('http://localhost:3000/forgotpass', userEmail)
         .then(function(response){
-         vm.$router.push({path: '/'});
+        //  vm.$router.push({path: '/'});
         })
         .catch(function(error){
           alert("Ups! Something went Wrong! " + error);

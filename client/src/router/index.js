@@ -14,7 +14,7 @@ import Account from '@/components/client/Account'
 import UpdPassword from '@/components/client/UpdPassword'
 import Referrals from '@/components/client/Referrals'
 import ChangePassword from '@/components/client/ChangePassword'
-import Purchase from '@/components/client/Purchase'
+import AddFunds from '@/components/client/AddFunds'
 import Client from '@/components/client/Client'
 //Admin Views
 import Dashboard from '@/components/admin/Dashboard'
@@ -24,6 +24,7 @@ import Clients from '@/components/admin/Clients'
 import AdminLogin from '@/components/admin/Login'
 import Confirm from '@/components/admin/Confirm'
 import UpdatePasswordAdmin from '@/components/admin/UpdatePassword'
+import AdminRecover from '@/components/admin/Recover'
 //Default Api root view
 import ApiView from '@/components/ApiView'
 
@@ -89,9 +90,9 @@ export default new Router({
       component: ChangePassword
     },
     {
-      path: '/purchase',
-      name: 'Purchase',
-      component: Purchase
+      path: '/add-funds',
+      name: 'AddFunds',
+      component: AddFunds
     },
     {
       path: '/admin',
@@ -112,6 +113,16 @@ export default new Router({
       path: '/admins',
       name: 'Admins',
       component: Admins
+    },
+    {
+      path: '/info',
+      name: 'Dashboard',
+      component: Dashboard
+    },
+    {
+      path: '/recover',
+      name: 'Admin-Recover',
+      component: AdminRecover
     },
     {
       path: '/confirm',

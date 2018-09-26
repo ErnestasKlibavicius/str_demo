@@ -201,6 +201,14 @@ body {
 .delete-btn:hover {
     background: #ff1d1d;
 }
+.payment-btn{
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding-left: 43px;
+    padding-right: 43px;
+}
+
 .add-btn{
     font-size: 15px;
     color: #ffffff !important;
@@ -219,6 +227,55 @@ body {
     text-decoration: none !important;
     border: none !important;
 }
+
+
+// Account info
+.info-container {
+    font-size: 18px;
+    padding: 7px 8px 7px 8px;
+    margin: 5px;
+    background: #ffffff;
+    border-radius: 10px; 
+    .referral-link{
+        color: #2b6cc8;
+    }
+    span{
+        font-weight: bold;
+        color: #000000;
+    }
+}
+.ref-header{
+    color: #007bff;
+}
+.info-container-list{
+    padding-left: 15px;
+    color: #808080;
+    .rate-info{
+        color: #000000;
+        font-weight: bold;
+    }
+    li{
+        margin: 3px;
+    }
+}
+.no-bullet{
+    list-style: none;
+}
+.logout-link{
+    cursor: pointer;
+}
+//Headings
+h1.display-heading{
+    color: #2b6cc8;
+    font-size: 37px;
+    font-weight: bold;
+    font-family: Roboto !important;
+}
+.main-data{
+    max-width: 920px;
+    padding: 0px 50px;
+}
+
 
 
 //Media Queries

@@ -122,7 +122,7 @@ body {
 }
 
 .main-data{
-    max-width: 920px;
+    max-width: 792px;
     padding: 0px 50px;
 }
 
@@ -390,7 +390,7 @@ body {
         transition: color .15s ease-out;
         cursor: pointer;
         padding: 12px;
-        margin: 18px;
+        margin: 9px;
         font-size: 19px;
         border: 1px solid #4ea3ff;
         border-radius: 5px;
@@ -409,6 +409,21 @@ body {
 .deposit-field{
     border: 1px solid #4ea3ff;
 }
+//Email-verify-line-alert
+.email-verify-label-container{
+    p{
+        font-size: 13px;
+        color: #ffffff;
+        font-weight: 100;
+        cursor: default;
+        a{
+            font-weight: 800 !important;
+            text-decoration: underline;
+        }
+    }
+  
+}
+
 
 
 //BUTTONS 
@@ -449,6 +464,50 @@ h1.display-heading{
     font-family: Roboto !important;
 }
 
+ //FOOTER
+
+ .footer{
+    background: $primary-color;
+    h4,h6{
+        color: #ffffff;
+    }
+    p{
+       color: $light-gray;
+    }
+    ul{
+        padding:0;
+        li{
+            list-style: none;
+            a{
+                color: $light-gray;
+                text-decoration: none;
+            }
+            a:hover{
+                color: #afaeae;
+            }
+        }
+    }
+    .social-icons ul {
+       padding-top: 15px;    
+    }
+    .social-icons li{
+         display: inline-block;
+         margin: 0px 15px 0px 15px;    
+    }
+    .social-icons li:first-of-type{
+        margin: 0px 15px 0px 0px;
+    }
+    .social-icons li:hover{
+       cursor: pointer;
+    }
+    .footer-container{
+        padding: 96px 0px 96px 0px;
+    }
+    .main-footer-info-container{
+        padding-left: 60px;
+    }
+}
+
 //Media Queries
 @media screen and (max-width: 768px) {
     .sub-nav {
@@ -477,6 +536,14 @@ h1.display-heading{
             font-size: 12px;
         }
     }    
+}
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .footer{
+        .footer-info, .main-footer-info-container{
+            padding: 10px 0px 10px 30px !important;
+        }
+    }
+
 }
 
 @media screen and (max-width: 400px){

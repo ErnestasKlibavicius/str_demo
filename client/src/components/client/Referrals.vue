@@ -63,20 +63,27 @@
                   <router-link class="dropdown-item" to="/change-password">Change Password</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/purchase">Add Funds</router-link>
+                  <router-link class="dropdown-item" to="/add-funds">Add Funds</router-link>
                 </li>
               </ul>
             </div>
             <div class="nav-items">
               <ul>
-                <li>
-                  <a class="dropdown-item balance" href="#">Balance: 25</a>
+                 <li>
+                  <a class="dropdown-item balance" @click="toggleBalance" href="#">Balance: {{balance}} <span class="mBtc">m</span>&#x20bf;</a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="/">Logout</a>
                 </li>
               </ul>
             </div>
+          </div>
+        </div>
+      </div>
+      <div id="emailVerifyLabel" class="row">
+        <div class="container-fluid email-verify-label-container">
+          <div class="d-flex justify-content-center align-items-center">
+            <p href="#" class="badge badge-pill my-2">Your email isn't verified ! Didn't get an email? Click <a href="#">Here</a></p>
           </div>
         </div>
       </div>
@@ -112,6 +119,7 @@
                     <div class="referral-container">
                       <div> Accumulated Balance:
                         <span>324</span>
+                          <button class="ml-1 btn btn-primary">Transfer to balance</button>
                       </div>
                     </div>
                   </li>
@@ -127,23 +135,108 @@
                 </ul>
               </div>
             </div>
-            <form>
-            <div class="form-group form-inline form-container row pt-3 d-flex justify-content-center align-items-center">
-                <label class="col-sm-2 text-center col-form-label " style="color: #2b6cc8;">Amount</label>
-                <div class="col-sm-5">
-                   <input type="text" class="form-control deposit-field" placeholder="Enter Amount">
-                </div>
-            </div>
-           
-            <div class="form-group row">
-                <div class="col-sm-12 text-center my-3 ml-3">
-                  <button type="submit" class="btn btn-primary payment-btn">Transfer to Balance</button>
-                </div>
-            </div>
-            </form>
         </div>
         </div>
     </div>
+     <footer class="footer">
+      <div class="container-fluid footer-container">
+        <div class="row">
+          <div class="col-md-4 main-footer-info-container">
+            <h4>lorem
+              <b>ipsum</b>
+            </h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing
+              <br> elit.Suscipit iste officia itaque eveniet obcaecati totam.</p>
+            <div class="social-icons">
+              <ul>
+                <li>
+                  <a href="#">
+                    <img src="../../assets/img/icon-twitter.png" height="20px" width="20px" alt="twitter">
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="../../assets/img/icon-facebook.png" height="20px" width="20px" alt="facebook">
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="../../assets/img/icon-medium.png" height="20px" width="20px" alt="medium">
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="../../assets/img/icon-telegram.png" height="20px" width="20px" alt="telegram">
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-2 footer-info">
+            <h6>lorem ipsum</h6>
+            <ul>
+              <li>
+                <a href="#">lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ips</a>
+              </li>
+              <li>
+                <a href="#">lorem ipsum lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ipss</a>
+              </li>
+              <li>
+                <a href="#">lorem lorem</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-2 footer-info">
+            <h6>lorem ipsum</h6>
+            <ul>
+              <li>
+                <a href="#">lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ips</a>
+              </li>
+              <li>
+                <a href="#">lorem ipsum lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ipss</a>
+              </li>
+              <li>
+                <a href="#">lorem lorem</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-2 footer-info">
+            <h6>lorem ipsum</h6>
+            <ul>
+              <li>
+                <a href="#">lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ips</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-2 footer-info">
+            <h6>lorem ipsum</h6>
+            <ul>
+              <li>
+                <a href="#">lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ips</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
   </template>
 
@@ -153,7 +246,19 @@
     name: 'Referrals',
     data() {
       return {
-
+        balance: 15
+      }
+    },
+    methods:{
+      toggleBalance(){
+        if(this.balance < 1){
+          $('.mBtc').css("display", "inline-block");
+          this.balance = this.balance * 1000;
+        }
+        else {
+          $('.mBtc').css("display", "none");
+          this.balance = this.balance / 1000;
+        }
       }
     }
   }

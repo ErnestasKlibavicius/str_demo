@@ -37,6 +37,17 @@
             <li class="nav-item">
               <a href="#" class="nav-link">Help</a>
             </li>
+            <li class="nav-item account-info-btn">
+              <div class="dropdown show">
+                <a class="dropdown-toggle nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 My Account  <font-awesome-icon icon="user"/>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="/info">Info</a>
+                  <a class="dropdown-item" href="/update-password">Update Password</a>
+                </div>
+              </div>
+             </li>
           </ul>
         </div>
       </div>
@@ -51,11 +62,8 @@
               <li>
                 <router-link class="dropdown-item" to="/clients">Users</router-link>
               </li>
-               <li>
-                <router-link class="dropdown-item" to="/update-password">Update Password</router-link>
-              </li>
               <li>
-                <router-link class="dropdown-item" to="/gifts">Gifts/Discount codes</router-link>
+                <router-link class="dropdown-item" to="/gifts">Gifts</router-link>
               </li>
               <li>
                 <router-link class="dropdown-item" to="/admins">Admins</router-link>
@@ -263,7 +271,105 @@
     </div>
   </div>
 </div>
-
+ <footer class="footer">
+      <div class="container-fluid footer-container">
+        <div class="row">
+          <div class="col-md-4 main-footer-info-container">
+            <h4>lorem
+              <b>ipsum</b>
+            </h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing
+              <br> elit.Suscipit iste officia itaque eveniet obcaecati totam.</p>
+            <div class="social-icons">
+              <ul>
+                <li>
+                  <a href="#">
+                    <img src="../../assets/img/icon-twitter.png" height="20px" width="20px" alt="twitter">
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="../../assets/img/icon-facebook.png" height="20px" width="20px" alt="facebook">
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="../../assets/img/icon-medium.png" height="20px" width="20px" alt="medium">
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="../../assets/img/icon-telegram.png" height="20px" width="20px" alt="telegram">
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-2 footer-info">
+            <h6>lorem ipsum</h6>
+            <ul>
+              <li>
+                <a href="#">lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ips</a>
+              </li>
+              <li>
+                <a href="#">lorem ipsum lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ipss</a>
+              </li>
+              <li>
+                <a href="#">lorem lorem</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-2 footer-info">
+            <h6>lorem ipsum</h6>
+            <ul>
+              <li>
+                <a href="#">lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ips</a>
+              </li>
+              <li>
+                <a href="#">lorem ipsum lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ipss</a>
+              </li>
+              <li>
+                <a href="#">lorem lorem</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-2 footer-info">
+            <h6>lorem ipsum</h6>
+            <ul>
+              <li>
+                <a href="#">lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ips</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-2 footer-info">
+            <h6>lorem ipsum</h6>
+            <ul>
+              <li>
+                <a href="#">lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ips</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
 </div>
 </template>
 

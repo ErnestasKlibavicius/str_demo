@@ -63,7 +63,7 @@
                   <router-link class="dropdown-item" to="/change-password">Change Password</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/purchase">Add Funds</router-link>
+                  <router-link class="dropdown-item" to="/add-funds">Add Funds</router-link>
                 </li>
               </ul>
             </div>
@@ -83,7 +83,7 @@
       <div id="emailVerifyLabel" class="row">
         <div class="container-fluid email-verify-label-container">
           <div class="d-flex justify-content-center align-items-center">
-            <a href="#" class="badge badge-pill my-2">Your email isn't verified !</a>
+            <p href="#" class="badge badge-pill my-2">Your email isn't verified ! Didn't get an email? Click <a href="#">Here</a></p>
           </div>
         </div>
       </div>
@@ -132,12 +132,42 @@
                 <td>A82C6Dge5Cz893</td>
                 <td><a href="#"><font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/></a></td>
             </tr>
+             <tr>
+                <td scope="row">2018.02.03</td>
+                <td>A82C6Dge5Cz893</td>
+                <td><a href="#"><font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/></a></td>
+            </tr>
+             <tr>
+                <td scope="row">2018.02.03</td>
+                <td>A82C6Dge5Cz893</td>
+                <td><a href="#"><font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/></a></td>
+            </tr>
+             <tr>
+                <td scope="row">2018.02.03</td>
+                <td>A82C6Dge5Cz893</td>
+                <td><a href="#"><font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/></a></td>
+            </tr>
+             <tr>
+                <td scope="row">2018.02.03</td>
+                <td>A82C6Dge5Cz893</td>
+                <td><a href="#"><font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/></a></td>
+            </tr>
+             <tr>
+                <td scope="row">2018.02.03</td>
+                <td>A82C6Dge5Cz893</td>
+                <td><a href="#"><font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/></a></td>
+            </tr>
+             <tr>
+                <td scope="row">2018.02.03</td>
+                <td>A82C6Dge5Cz893</td>
+                <td><a href="#"><font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/></a></td>
+            </tr>
           </tbody>
           </table>
           </div>
             </div>
         </div>
-        +++++++ TEST +++++++++++++++++
+        <!-- +++++++ TEST +++++++++++++++++ -->
         <div class="row">
             <div class="col-md-8 offset-md-2 px-0">
                 <div>
@@ -161,22 +191,52 @@
           <tbody>
             <tr>
               <td scope="row">2018.02.03</td>
-              <td>100</td>
+              <td>Completed</td>
               <td>135</td>
             </tr>
             <tr>
               <td scope="row">2018.02.03</td>
-              <td>100</td>
+              <td>Completed</td>
               <td>135</td>
             </tr>
             <tr>
               <td scope="row">2018.02.03</td>
-              <td>100</td>
+              <td>Completed</td>
+              <td>135</td>
+            </tr>
+            <tr>
+              <td scope="row">2018.02.03</td>
+              <td>Completed</td>
+              <td>135</td>
+            </tr>
+            <tr>
+              <td scope="row">2018.02.03</td>
+              <td>Completed</td>
+              <td>135</td>
+            </tr>
+            <tr>
+              <td scope="row">2018.02.03</td>
+              <td>Completed</td>
+              <td>135</td>
+            </tr>
+            <tr>
+              <td scope="row">2018.02.03</td>
+              <td>Completed</td>
+              <td>135</td>
+            </tr>
+            <tr>
+              <td scope="row">2018.02.03</td>
+              <td>Pending</td>
+              <td>135</td>
+            </tr>
+            <tr>
+              <td scope="row">2018.02.03</td>
+              <td>Pending</td>
               <td>135</td>
             </tr>
           <tr>
               <td scope="row">2018.02.03</td>
-              <td>100</td>
+              <td>Completed</td>
               <td>135</td>
           </tr>
           </tbody>
@@ -184,14 +244,15 @@
           </div>
             </div>
         </div>
-        +++++++ TEST +++++++++++++++++
+        <!-- +++++++ TEST +++++++++++++++++
 
-         +++++++ TEST +++++++++++++++++
+         +++++++ TEST +++++++++++++++++ -->
         <div class="row">
             <div class="col-md-8 offset-md-2 px-0">
                 <div>
                     <div class="d-flex justify-content-between align-items-center add-licenses-container">
                         <h1 class="display-heading">Gifts</h1>
+                        <p>Is redeemed?</p>
                     </div>
                 </div>
             </div>
@@ -204,138 +265,179 @@
                     <tr>
                         <th scope="col">Created At</th>
                         <th scope="col">Code</th>
-                        <th scope="col">Gift Points</th>
                         <th scope="col">Was Redeemed</th>
-                        <th scope="col">btcAmount</th>
+                        <th scope="col">BTC Amount </th>
                     </tr>
                     </thead>
                     <tbody>
                         <tr class="claimed">
                             <td scope="row">2018.02.02</td>
                             <td scope="row">4asd5as5cz5xc</td>
-                            <td>123</td>
                             <td><font-awesome-icon icon="check" style="color: green"/></td>
+                            <td>0.002</td>
                         </tr>
                         <tr>
                             <td scope="row">2018.02.02</td>
                             <td scope="row">4asd5as5cz5xc</td>
-                            <td>123</td>
                             <td><font-awesome-icon icon="times" style="color: red"/></td>
-                        </tr>
-                        <tr>
-                            <td scope="row">2018.02.02</td>
-                            <td scope="row">4asd5as5cz5xc</td>
-                            <td>123</td>
-                            <td><font-awesome-icon icon="times" style="color: red"/></td>
+                            <td>0.002</td>
                         </tr>
                         <tr class="claimed">
                             <td scope="row">2018.02.02</td>
                             <td scope="row">4asd5as5cz5xc</td>
-                            <td>123</td>
                             <td><font-awesome-icon icon="check" style="color: green"/></td>
+                            <td>0.002</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">2018.02.02</td>
+                            <td scope="row">4asd5as5cz5xc</td>
+                            <td><font-awesome-icon icon="times" style="color: red"/></td>
+                            <td>0.002</td>
+                        </tr>
+                        <tr class="claimed">
+                            <td scope="row">2018.02.02</td>
+                            <td scope="row">4asd5as5cz5xc</td>
+                            <td><font-awesome-icon icon="check" style="color: green"/></td>
+                            <td>0.002</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">2018.02.02</td>
+                            <td scope="row">4asd5as5cz5xc</td>
+                            <td><font-awesome-icon icon="times" style="color: red"/></td>
+                            <td>0.002</td>
+                        </tr>
+                        <tr class="claimed">
+                            <td scope="row">2018.02.02</td>
+                            <td scope="row">4asd5as5cz5xc</td>
+                            <td><font-awesome-icon icon="check" style="color: green"/></td>
+                            <td>0.002</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">2018.02.02</td>
+                            <td scope="row">4asd5as5cz5xc</td>
+                            <td><font-awesome-icon icon="times" style="color: red"/></td>
+                            <td>0.002</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">2018.02.02</td>
+                            <td scope="row">4asd5as5cz5xc</td>
+                            <td><font-awesome-icon icon="times" style="color: red"/></td>
+                            <td>0.002</td>
+                        </tr>
+                        <tr class="claimed">
+                            <td scope="row">2018.02.02</td>
+                            <td scope="row">4asd5as5cz5xc</td>
+                            <td><font-awesome-icon icon="check" style="color: green"/></td>
+                            <td>0.002</td>
                         </tr>
                     </tbody>
                     </table>
           </div>
             </div>
         </div>
-        +++++++ TEST +++++++++++++++++
-        
+        <!-- +++++++ TEST +++++++++++++++++ -->
+    </div>
+    </div>
 
+     <footer class="footer">
+      <div class="container-fluid footer-container">
         <div class="row">
-            <div class="col-md-6 col-sm-12">
-            <div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <h1 class="display-heading">Payments</h1>
-                </div>
+          <div class="col-md-4 main-footer-info-container">
+            <h4>lorem
+              <b>ipsum</b>
+            </h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing
+              <br> elit.Suscipit iste officia itaque eveniet obcaecati totam.</p>
+            <div class="social-icons">
+              <ul>
+                <li>
+                  <a href="#">
+                    <img src="../../assets/img/icon-twitter.png" height="20px" width="20px" alt="twitter">
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="../../assets/img/icon-facebook.png" height="20px" width="20px" alt="facebook">
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="../../assets/img/icon-medium.png" height="20px" width="20px" alt="medium">
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="../../assets/img/icon-telegram.png" height="20px" width="20px" alt="telegram">
+                  </a>
+                </li>
+              </ul>
             </div>
-            <div class="table-wrapper table-container">
-            <div class="table-responsive">  
-            <table class="table text-center payment-table">
-            <thead>
-            <tr>
-              <th scope="col">Date</th>
-              <th scope="col">Amount</th>
-              <th scope="col">Total Cost</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td scope="row">2018.02.03</td>
-              <td>100</td>
-              <td>135</td>
-            </tr>
-            <tr>
-              <td scope="row">2018.02.03</td>
-              <td>100</td>
-              <td>135</td>
-            </tr>
-            <tr>
-              <td scope="row">2018.02.03</td>
-              <td>100</td>
-              <td>135</td>
-            </tr>
-          <tr>
-              <td scope="row">2018.02.03</td>
-              <td>100</td>
-              <td>135</td>
-          </tr>
-          </tbody>
-          </table>
-          </div> 
           </div>
-            </div>
-            
-            <div class="col-md-6 col-sm-12"> 
-            <div>
-                <div class="d-flex justify-content-between align-items-center ">
-                    <h1 class="display-heading">Gifts</h1>
-                </div>
-            </div>
-            <div class="table-wrapper table-container">
-                <div class="table-responsive">
-                    <table class="table gifts-table text-center">
-                    <thead>
-                    <tr>
-                        <th scope="col">Purchased at</th>
-                        <th scope="col">Gift Code</th>
-                        <th scope="col">Gift Points</th>
-                        <th scope="col">Redeemed</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="claimed">
-                            <td scope="row">2018.02.02</td>
-                            <td scope="row">4asd5as5cz5xc</td>
-                            <td>123</td>
-                            <td><font-awesome-icon icon="check" style="color: green"/></td>
-                        </tr>
-                        <tr>
-                            <td scope="row">2018.02.02</td>
-                            <td scope="row">4asd5as5cz5xc</td>
-                            <td>123</td>
-                            <td><font-awesome-icon icon="times" style="color: red"/></td>
-                        </tr>
-                        <tr>
-                            <td scope="row">2018.02.02</td>
-                            <td scope="row">4asd5as5cz5xc</td>
-                            <td>123</td>
-                            <td><font-awesome-icon icon="times" style="color: red"/></td>
-                        </tr>
-                        <tr class="claimed">
-                            <td scope="row">2018.02.02</td>
-                            <td scope="row">4asd5as5cz5xc</td>
-                            <td>123</td>
-                            <td><font-awesome-icon icon="check" style="color: green"/></td>
-                        </tr>
-                    </tbody>
-                    </table>
-                </div>
-                </div>
-            </div>
+          <div class="col-md-2 footer-info">
+            <h6>lorem ipsum</h6>
+            <ul>
+              <li>
+                <a href="#">lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ips</a>
+              </li>
+              <li>
+                <a href="#">lorem ipsum lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ipss</a>
+              </li>
+              <li>
+                <a href="#">lorem lorem</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-2 footer-info">
+            <h6>lorem ipsum</h6>
+            <ul>
+              <li>
+                <a href="#">lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ips</a>
+              </li>
+              <li>
+                <a href="#">lorem ipsum lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ipss</a>
+              </li>
+              <li>
+                <a href="#">lorem lorem</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-2 footer-info">
+            <h6>lorem ipsum</h6>
+            <ul>
+              <li>
+                <a href="#">lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ips</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-2 footer-info">
+            <h6>lorem ipsum</h6>
+            <ul>
+              <li>
+                <a href="#">lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ips</a>
+              </li>
+            </ul>
+          </div>
         </div>
-    </div>
-    </div>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -360,7 +462,7 @@ export default {
           id: 1
         }
       ],
-      balance: 13,
+      balance: 15,
       emailStatus: "inactive"
     };
   },

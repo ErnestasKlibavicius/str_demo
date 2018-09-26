@@ -1,5 +1,5 @@
 <template>
-  <div class="confirm">
+  <div class="Admin-Recover">
     <div class="wrapper-login">
       <div class="container h-100">
         <div class="row h-100 justify-conter-center align-items-center">
@@ -11,8 +11,8 @@
             <div>
               <div class="card text-center my-4">
                 <div class="card-body">
-                  <h3 class="card-title" style="color: #2b6cc8">Confirm</h3>
-                  <p>Confirm your registration by entering the password</p>
+                  <h3 class="card-title" style="color: #2b6cc8">Change your password</h3>
+                  <p>Create new Password</p>
                   <form>
                     <div>
                       <div class="col-auto">
@@ -36,7 +36,7 @@
                       </div>
                     </div>
                   </form>
-                  <a @click="sendData(), cutUrl('http://localhost:3000/admin/confirm?inv=code123')" class="btn btn-secondary cyan-btn">CONFIRM</a>
+                  <a @click="sendData()" class="btn btn-secondary cyan-btn">CONFIRM</a>
                 </div>
               </div>
             </div>
@@ -52,10 +52,10 @@
  import axios from 'axios';
 
   export default {
-    name: 'Confirm',
+    name: 'Admin-Recover',
     data() {
       return {
-       display: false,
+        display: false,
        password: '',
        root: 'http://localhost:3000/api'
       }
@@ -65,8 +65,7 @@
       var mainInput = $(".login-field-icon-c");
       var passCont = $(".login-input-field");
       var confirmationData = $("#ConfirmData");
-      console.log(confirmationData.val());
-      console.log(this.password);
+
       if (confirmationData.val() !== this.password){
         confirmationData.css("border", "solid 1px #ff0000");
         mainInput.css("border", "solid 1px #ff0000");
@@ -81,14 +80,6 @@
       }
       
     },
-    
-    cutUrl(str) {
-    console.log("started:", str);
-    var matched = str.match(/([^/]*\/){3}/);
-    console.log("end:", matched);
-    return matched ? matched[0] : str/* or null if you wish */;
-    
-    },
 
     sendData(){
       var vm = this;
@@ -102,8 +93,7 @@
       //"/admin/confirm?inv=code123" changes file pabaiga = window.location.href
       // console.log(this.$BaseURL); **this.$BaseURL - base url i api http://localhost:3000/api**
       console.log(window.location.href);
-      console.log('Sending');
-        axios.post(this.$BaseUrl+'/admin/confirm?inv=code123', userData)
+        axios.post(this.root+"/admin/confirm?inv=code123", userData)
           .then(function(response){
           vm.$router.push({path: '/admin'});
           })
@@ -111,7 +101,6 @@
             alert("Ups! Something went Wrong! " + error);
           });
     }
-
     }
   }
 
