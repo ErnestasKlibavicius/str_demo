@@ -31,12 +31,12 @@
                              <font-awesome-icon icon="lock" style="color: #898989"/>
                             </div>
                           </div>
-                          <input @blur="checkData()" id="ConfirmData" type="password" class="form-control login-input-field" placeholder="Confirm Password">
+                          <input @blur="checkData(), cutUrl()" id="ConfirmData" type="password" class="form-control login-input-field" placeholder="Confirm Password">
                         </div>
                       </div>
                     </div>
                   </form>
-                  <a @click="sendData(), cutUrl('http://localhost:3000/admin/confirm?inv=code123')" class="btn btn-secondary cyan-btn">CONFIRM</a>
+                  <a @click="sendData()" class="btn btn-secondary cyan-btn">CONFIRM</a>
                 </div>
               </div>
             </div>
@@ -50,14 +50,21 @@
 
 <script>
  import axios from 'axios';
-
+ 
   export default {
     name: 'Confirm',
     data() {
       return {
        display: false,
        password: '',
-       root: 'http://localhost:3000/api'
+       cutUrlQuery: function(){
+        var url = location.href.split( '/' );
+        var protocol = url[3];
+        var host = url[url.length -1];
+        var query = protocol + '/' + host;
+        console.log('query: ' + query);
+        return query;
+       }
       }
     },
     methods: {
@@ -82,12 +89,13 @@
       
     },
     
-    cutUrl(str) {
-    console.log("started:", str);
-    var matched = str.match(/([^/]*\/){3}/);
-    console.log("end:", matched);
-    return matched ? matched[0] : str/* or null if you wish */;
-    
+    cutUrl() {
+      var url = location.href.split( '/' );
+      var protocol = url[3];
+      var host = url[url.length -1];
+      var query = protocol + '/' + host;
+       console.log('query: ' + query);
+      return query;
     },
 
     sendData(){
@@ -101,9 +109,8 @@
       // http://localhost:3000/admin
       //"/admin/confirm?inv=code123" changes file pabaiga = window.location.href
       // console.log(this.$BaseURL); **this.$BaseURL - base url i api http://localhost:3000/api**
-      console.log(window.location.href);
-      console.log('Sending');
-        axios.post(this.$BaseUrl+'/admin/confirm?inv=code123', userData)
+      
+        axios.post(this.$BaseURL+this.cutUrlQuery(), userData)
           .then(function(response){
           vm.$router.push({path: '/admin'});
           })

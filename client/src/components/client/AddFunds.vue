@@ -38,7 +38,7 @@
                 <a href="#" class="nav-link">Help</a>
               </li>
               <li class="nav-item account-info-btn">
-                <a href="/services" class="nav-link"> My Account
+                <a href="/client/services" class="nav-link"> My Account
                    <font-awesome-icon icon="user"/>
                 </a>
               </li>
@@ -54,16 +54,16 @@
             <div class="nav-items">
               <ul>
                 <li>
-                  <router-link class="dropdown-item" to="/services">Services</router-link>
+                  <router-link class="dropdown-item" to="/client/services">Services</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/referrals">Referrals</router-link>
+                  <router-link class="dropdown-item" to="/client/referrals">Referrals</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/change-password">Change Password</router-link>
+                  <router-link class="dropdown-item" to="/client/change-password">Change Password</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/add-funds">Add Funds</router-link>
+                  <router-link class="dropdown-item" to="/client/add-funds">Add Funds</router-link>
                 </li>
               </ul>
             </div>
@@ -101,14 +101,14 @@
         </div>
         <div class="table-container">
           <div class="row text-center payment-type-container">
-               <router-link class="col-md-6 option" to="/add-funds">
+               <router-link class="col-md-6 option" to="/client/add-funds">
                   <div>
                     <a> 
                         <h3 class="my-3 option-header">Make a Bitcoin Payment</h3> 
                     </a> 
                   </div>
               </router-link>
-              <router-link class="col-md-6 option" to="/redeem">
+              <router-link class="col-md-6 option" to="/client/redeem">
                 <div>
                 <a> 
                     <h3 class="my-3 option-header">Redeem</h3> 
@@ -129,10 +129,11 @@
             </div>
             <form>
               <div class="row d-flex justify-content-center align-items-center payment-options-container">
-                <div class="col-md-1 payment-option"  v-for="price in defaultValues" @click="setValue($event)">{{price.value}}</div>
+                <div class="col-md-1 payment-option" v-for="price in defaultValues" @click="setValue($event.target)">{{price.value}}</div>
+                <div class="col-md-1 payment-option" @click="showOther($event.target)">Other</div>
               </div>
-            <div class="form-group form-inline form-container row pt-3 d-flex justify-content-center align-items-center">
-                <label class="col-sm-2 text-center col-form-label mt-3" style="color: #2b6cc8;">Amount</label>
+            <div id="other-input-container" class="form-group form-inline form-container row pt-3 d-flex justify-content-center align-items-center">
+                <div class="col-sm-2 text-center col-form-label mt-3" style="color: #2b6cc8;">Amount</div>
                 <!-- <div class="col-sm-5">
                    <span class="text-muted"><input type="checkbox" id="checkbox" v-model="isGift"> Is It a Gift? </span>
                    <div>
@@ -265,6 +266,8 @@ export default {
   data() {
     return {
         value: 0,
+        other: false,
+        selectedValue: 0,
         isGift: false,
         balance: 15,
         defaultValues: [
@@ -283,8 +286,24 @@ export default {
         this.value = 10;
       }
     },
+    showOther(){
+      var container = $("#other-input-container");
+      container.toggleClass("display-other");
+    },
     setValue(e) {
-      this.value = e.target.innerHTML;
+      var option = e;
+      this.selectedValue = option.innerHTML;
+      console.log(this.selectedValue);
+     var list = option.classList;
+      if(list.contains('activeOption')){
+        list.remove('activeOption');
+      }
+      else{
+        list.add('activeOption');
+      }
+
+    
+
     },
      toggleBalance(){
       if(this.balance < 1){
@@ -296,6 +315,10 @@ export default {
         this.balance = this.balance / 1000;
       }
     }
+  },
+  mounted(){
+      var item = document.querySelectorAll("#payment-item");
+    console.log(item);
   }
 }
 </script>

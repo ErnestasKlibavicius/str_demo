@@ -38,7 +38,7 @@
                 <a href="#" class="nav-link">Help</a>
               </li>
               <li class="nav-item account-info-btn">
-                <a href="/services" class="nav-link"> My Account
+                <a href="/client/services" class="nav-link"> My Account
                  <font-awesome-icon icon="user"/>
                 </a>
               </li>
@@ -54,16 +54,16 @@
             <div class="nav-items">
               <ul>
                 <li>
-                  <router-link class="dropdown-item" to="/services">Services</router-link>
+                  <router-link class="dropdown-item" to="/client/services">Services</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/referrals">Referrals</router-link>
+                  <router-link class="dropdown-item" to="/client/referrals">Referrals</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/change-password">Change Password</router-link>
+                  <router-link class="dropdown-item" to="/client/change-password">Change Password</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/add-funds">Add Funds</router-link>
+                  <router-link class="dropdown-item" to="/client/add-funds">Add Funds</router-link>
                 </li>
               </ul>
             </div>

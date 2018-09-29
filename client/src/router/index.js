@@ -35,6 +35,7 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   routes: [
+    //Static Routes START
     {
       path: '/',
       name: 'Home',
@@ -44,11 +45,6 @@ export default new Router({
       path: '/faq',
       name: 'Faq',
       component: Faq
-    },
-    {
-      path: '/login',
-      name: 'Login',
-      component: Login
     },
     {
       path: '/documentation',
@@ -70,30 +66,45 @@ export default new Router({
       name: 'DownApp2',
       component: DownApp2
     },
+    //Static Routes END
+
+//------------------------------------------------------------------------------------------
+
+    //USER routes START
     {
-      path: '/services',
+      path: '/client/services',
       name: 'Services',
       component: Services
     },
     {
-      path: '/register',
-      name: 'Register',
-      component: Register
+      path: '/client/add-funds',
+      name: 'AddFunds',
+      component: AddFunds
     },
     {
-      path: '/referrals',
+      path: '/client/referrals',
       name: 'Referrals',
       component: Referrals
-    },
+    },   
     {
-      path: '/change-password',
+      path: '/client/change-password',
       name: 'ChangePass',
       component: ChangePassword
     },
     {
-      path: '/add-funds',
-      name: 'AddFunds',
-      component: AddFunds
+      path: '/client/redeem',
+      name: 'Redeem',
+      component: Redeem
+    },
+    //USER routes END
+    
+    //--------------------------------------------------------------------
+    
+    //ADMIN routes START
+    {
+      path: '/admin/recover',
+      name: 'Admin-Recover',
+      component: AdminRecover
     },
     {
       path: '/admin',
@@ -101,45 +112,55 @@ export default new Router({
       component: Clients,
     },
     {
-      path: '/update-password',
+      path: '/admin/update-password',
       name: 'updatePasswordAdmin',
       component: UpdatePasswordAdmin
     },
     {
-      path: '/log-in',
+      path: '/admin/login',
       name: 'AdminLogin',
       component: AdminLogin
     },
     {
-      path: '/admins',
+      path: '/admin/admins',
       name: 'Admins',
       component: Admins
     },
     {
-      path: '/info',
+      path: '/admin/info',
       name: 'Dashboard',
       component: Dashboard
     },
     {
-      path: '/recover',
-      name: 'Admin-Recover',
-      component: AdminRecover
-    },
-    {
-      path: '/confirm',
-      name: 'Confirm',
-      component: Confirm
-    },
-    {
-      path: '/gifts',
+      path: '/admin/gifts',
       name: 'Gifts',
       component: Gifts
     },
     {
-      path: '/clients',
+      path: '/admin/clients',
       name: 'Clients',
       component: Clients
     },
+    {
+      path: '/admin/confirm',
+      name: 'Confirm',
+      component: Confirm
+    },
+    //ADMIN routes END
+
+    //------------------------------------------------------------------------
+
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+
     {
       path: '/client',
       name: 'Client',
@@ -149,11 +170,6 @@ export default new Router({
           path: 'recoverpass'
         }
       ]
-    },
-    {
-      path: '/redeem',
-      name: 'Redeem',
-      component: Redeem
     },
     {
       path: '/api',

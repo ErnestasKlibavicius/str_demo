@@ -92,7 +92,7 @@
 
         axios.post('http://localhost:3000/auth', userInfo)
         .then(function(response){
-         vm.$router.push({path: '/account'});
+         vm.$router.push({path: '/client/services'});
         })
         .catch(function(error){
           alert("Ups! Something went Wrong! " + error);

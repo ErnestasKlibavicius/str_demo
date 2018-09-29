@@ -409,12 +409,23 @@ body {
         font-size: 19px;
         border: 1px solid #4ea3ff;
         border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       
+    }
+    .activeOption{
+        background: #007bff;
+        color: #ffffff;
     }
     .payment-option:hover{
         background-image: linear-gradient(to right, #007bff, #1f89ff, #3896ff, #4ea3ff, #64afff);
         border-color: #007bff;
         color: #ffffff;
     }
+}
+.display-other{
+    display: true;
 }
 .gift-field{
     width: 220px;
@@ -441,7 +452,7 @@ body {
 
 // REDEEM INPUT
 .redeem-input{
-    background-color: #ffffff;
+   background-color: #ffffff;
    border-color: #007bff;
 }
 
@@ -450,6 +461,14 @@ body {
     font-size: 20px;
     text-decoration: none !important;
     color: red;
+}
+#filterMenuButton{
+    padding: 0.1rem 0.5rem;
+    background: #3f9bff;
+    border: none;
+}
+#filterMenuButton::after{
+    display: none;
 }
 .delete-btn:hover{
     color: #a31313;

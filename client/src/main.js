@@ -14,7 +14,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import
  { 
    faBars,  faUser, faAngleRight, faAngleDown,
-   faLock, faArrowDown, faTimesCircle, faCheck, faPlus, faTimes, faTrashAlt
+   faLock, faArrowDown, faTimesCircle, faCheck, faPlus, faTimes, faTrashAlt, faChevronCircleDown  
  } from '@fortawesome/free-solid-svg-icons'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -22,14 +22,16 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 library.add
 (
   faBars, faUser, faAngleRight, faAngleDown, faLock,
-  faArrowDown, faTimesCircle, faCheck, faPlus, faTimes, faTrashAlt
+  faArrowDown, faTimesCircle, faCheck, faPlus, faTimes, faTrashAlt, faChevronCircleDown
 );
 library.add(far);
 library.add(fas);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+
+Vue.prototype.$BaseURL = "http://localhost:3000/api/"
 
 new Vue({
   el: '#app',
@@ -38,4 +40,4 @@ new Vue({
   template: '<App/>'
 })
 
-Vue.prototype.$BaseURL = 'http://localhost:3000/api';
+

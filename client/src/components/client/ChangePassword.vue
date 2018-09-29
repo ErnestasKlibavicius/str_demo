@@ -38,7 +38,7 @@
                 <a href="#" class="nav-link">Help</a>
               </li>
               <li class="nav-item account-info-btn">
-                <a href="/services" class="nav-link"> My Account
+                <a href="/client/services" class="nav-link"> My Account
                    <font-awesome-icon icon="user"/>
                 </a>
               </li>
@@ -54,16 +54,16 @@
             <div class="nav-items">
               <ul>
                 <li>
-                  <router-link class="dropdown-item" to="/services">Services</router-link>
+                  <router-link class="dropdown-item" to="/client/services">Services</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/referrals">Referrals</router-link>
+                  <router-link class="dropdown-item" to="/client/referrals">Referrals</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/change-password">Change Password</router-link>
+                  <router-link class="dropdown-item" to="/client/change-password">Change Password</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/add-funds">Add Funds</router-link>
+                  <router-link class="dropdown-item" to="/client/add-funds">Add Funds</router-link>
                 </li>
               </ul>
             </div>
@@ -100,6 +100,7 @@
                 </div>
             </div>
             <div class="table-container">
+              <p v-if="display" class="alert alert-danger text-center">Passwords Need to Match!</p>
                 <form>
                 <div class="form-group row pt-3">
                 <label class="col-sm-3 offset-sm-1 text-center col-form-label">Old Password</label>
@@ -110,13 +111,13 @@
                 <div class="form-group row pt-3">
                 <label class="col-sm-3 offset-sm-1 text-center col-form-label">New Password</label>
                     <div class="col-sm-5">
-                        <input type="password" class="form-control" v-model="newPass" placeholder="New Password">
+                        <input type="password" id="n-pass-label" @blur="checkData()" class="form-control" v-model="newPass" placeholder="New Password">
                     </div>
                 </div>
                 <div class="form-group row pt-3">
                 <label class="col-sm-3 offset-sm-1 text-center col-form-label">Confirm New Password</label>
                     <div class="col-sm-5">
-                        <input type="password" class="form-control" placeholder="Confirm New Password">
+                        <input type="password" id="ConfirmData" @blur="checkData()" class="form-control" placeholder="Confirm New Password">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -238,12 +239,29 @@ export default {
   name: "ChangePass",
   data() {
     return {
+      display: false,
       oldPass: '',
       newPass: '',
       balance: 15
     };
   },
   methods: {
+    checkData(){
+      var passCont = $("#n-pass-label");
+      var confirmationData = $("#ConfirmData");
+      console.log(confirmationData.val());
+      console.log(this.password);
+      if (confirmationData.val() !== this.newPass){
+        confirmationData.css("border", "solid 1px #ff0000");
+        passCont.css("border", "solid 1px #ff0000");
+        this.display = true;
+      }
+      else{
+       this.display = false;
+       confirmationData.css("border", "1px solid #ced4da");
+       passCont.css("border", "solid 1px #ced4da");
+      }
+    },
     updatePassword(e){
       e.preventDefault();
       
@@ -256,7 +274,7 @@ export default {
 
         axios.post('http://localhost:3000/changepass', userInfo)
         .then(function(response){
-         vm.$router.push({path: '/services'});
+         vm.$router.push({path: '/client/services'});
         })
         .catch(function(error){
           alert("Ups! Something went Wrong! " + error);

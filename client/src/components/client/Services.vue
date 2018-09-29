@@ -38,7 +38,7 @@
                 <a href="#" class="nav-link">Help</a>
               </li>
               <li class="nav-item account-info-btn">
-                <a href="/services" class="nav-link"> My Account
+                <a href="/client/services" class="nav-link"> My Account
                    <font-awesome-icon icon="user"/>
                 </a>
               </li>
@@ -54,16 +54,16 @@
             <div class="nav-items">
               <ul>
                 <li>
-                  <router-link class="dropdown-item" to="/services">Services</router-link>
+                  <router-link class="dropdown-item" to="/client/services">Services</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/referrals">Referrals</router-link>
+                  <router-link class="dropdown-item" to="/client/referrals">Referrals</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/change-password">Change Password</router-link>
+                  <router-link class="dropdown-item" to="/client/change-password">Change Password</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/add-funds">Add Funds</router-link>
+                  <router-link class="dropdown-item" to="/client/add-funds">Add Funds</router-link>
                 </li>
               </ul>
             </div>
@@ -166,12 +166,21 @@
           </div>
             </div>
         </div>
-        <!-- +++++++ TEST +++++++++++++++++ -->
         <div class="row">
             <div class="col-md-8 offset-md-2 px-0">
                 <div>
                     <div class="d-flex justify-content-between align-items-center add-licenses-container">
                         <h1 class="display-heading">Payments</h1>
+                            <div class="dropdown">
+                          <button class="btn btn-secondary dropdown-toggle" type="button" id="filterMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <font-awesome-icon icon="chevron-circle-down"/>
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="filterMenuButton">
+                            <a class="dropdown-item" href="#">Pending</a>
+                            <a class="dropdown-item" href="#">Completed</a>
+                            <a class="dropdown-item" href="#">Failed</a>
+                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -243,15 +252,22 @@
           </div>
             </div>
         </div>
-        <!-- +++++++ TEST +++++++++++++++++
-
-         +++++++ TEST +++++++++++++++++ -->
         <div class="row">
             <div class="col-md-8 offset-md-2 px-0">
                 <div>
                     <div class="d-flex justify-content-between align-items-center add-licenses-container">
                         <h1 class="display-heading">Gifts</h1>
-                        <p>Is redeemed?</p>
+                
+                        <div class="dropdown">
+                          <button class="btn btn-secondary dropdown-toggle" type="button" id="filterMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <font-awesome-icon icon="chevron-circle-down"/>
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="filterMenuButton">
+                            <a class="dropdown-item" href="#">Redeem</a>
+                            <a class="dropdown-item" href="#">Unredeemed</a>
+                            <a class="dropdown-item" href="#">All</a>
+                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -334,7 +350,6 @@
           </div>
             </div>
         </div>
-        <!-- +++++++ TEST +++++++++++++++++ -->
     </div>
     </div>
 
@@ -492,7 +507,7 @@ export default {
 
        axios.post('http://localhost:3000/client')
         .then(function(response){
-         vm.$router.push({path: '/services'});
+         vm.$router.push({path: '/client/services'});
          console.log('Added new code');
         })
         .catch(function(error){
@@ -507,7 +522,7 @@ export default {
        axios.delete('http://localhost:3000/client' + authCode)
         .then(function(response){
          vm.authCodes.splice(1, 1);
-         vm.$router.push({path: '/services'});
+         vm.$router.push({path: '/client/services'});
         })
         .catch(function(error){
           alert("Ups! Something went Wrong! " + error);

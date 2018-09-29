@@ -43,8 +43,8 @@
                   My Account  <font-awesome-icon icon="user"/>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="/info">Info</a>
-                    <a class="dropdown-item" href="/update-password">Update Password</a>
+                    <a class="dropdown-item" href="/admin/info">Info</a>
+                    <a class="dropdown-item" href="/admin/update-password">Update Password</a>
                   </div>
                 </div>
              </li>
@@ -60,13 +60,13 @@
             <div class="nav-items">
               <ul>
                 <li>
-                  <router-link class="dropdown-item" to="/clients">Clients</router-link>
+                  <router-link class="dropdown-item" to="/admin/clients">Clients</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/gifts">Gifts</router-link>
+                  <router-link class="dropdown-item" to="/admin/gifts">Gifts</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/admins">Admins</router-link>
+                  <router-link class="dropdown-item" to="/admin/admins">Admins</router-link>
                 </li>
               </ul>
             </div>
