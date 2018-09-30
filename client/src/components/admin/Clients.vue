@@ -114,7 +114,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td data-toggle="modal" @click="update" data-target="#userModal" style="cursor: pointer;" scope="row">2018.02.03</td>
+                  <td data-toggle="modal" data-target="#userModal" style="cursor: pointer;" scope="row">2018.02.03</td>
                     <td data-toggle="modal" data-target="#resendIvtModal" style="cursor: pointer;">adam.Smith@gmail.com</td>
                     <td>
                      
@@ -143,6 +143,39 @@
                 </tr>
               </tbody>
             </table>
+             <div>
+            <nav aria-label="Page navigation admin-clients-pages">
+              <ul class="pagination justify-content-center align-items-center">
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">First</span>
+                  </a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&lt;</span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&gt;</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+                  <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Last</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
           </div>
         </div>
       </div>
@@ -161,41 +194,50 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <label for="accountType" class="col-form-label">Type:</label>
-            <select class="form-control" v-model="users[0].type" id="accountType">
-              <option>Default</option>
-              <option>Legacy</option>
-            </select>
+            <label class="col-form-label">createdAt:</label>
+            <p class="form-control"> 2018.03.15</p>
           </div>
           <div class="form-group">
-            <label for="username" class="col-form-label">Username:</label>
-            <input class="form-control" v-model="users[0].username" id="username">
+            <label class="col-form-label">ID:</label>
+            <p class="form-control"> id123456</p>
           </div>
            <div class="form-group">
-            <label for="funds" class="col-form-label">Referral Balance:</label>
-            <input class="form-control" v-model="referralsBalance" id="funds">
+            <label class="col-form-label">Email:</label>
+           <p class="form-control"> superEmail@gmail.com</p>
           </div>
           <div class="form-group">
-            <label for="email" class="col-form-label">Email:</label>
-            <input class="form-control" v-model="users[0].email" id="email">
+            <label class="col-form-label">Email Verified:</label>
+           <p class="form-control"> Verified </p>
            </div>
-            <div v-if="users[0].type == 'Legacy' " class="form-group">
-            <label class="col-form-label">legacyCodeCount:</label>
-            <input class="form-control" v-model="legacyCodeCount">
+          <div class="form-group">
+            <label class="col-form-label">legacy Codes Count:</label>    
+            <p class="form-control">0</p>
+          </div>
+          <div class="form-group">
+            <label class="col-form-label">balance:</label>
+            <p class="form-control">0.0015</p>
            </div>
+          <div class="form-group">
+            <label class="col-form-label">referredClientCount:</label>
+            <p class="form-control">15</p>
+          </div>
+          <div class="form-group">
+            <label class="col-form-label">referredClientCount:</label>
+            <p class="form-control">15</p>
+          </div>
           <div class="form-group">
             <label class="col-form-label">referralCut:</label>
-            <input class="form-control" v-model="referralCut">
-           </div>
-          <div class="form-group">
-            <label for="referral" class="col-form-label">Referral:</label>
-            <input class="form-control" v-model="users[0].referrals[0].link" id="referral">
+            <p class="form-control">5.5</p>
           </div>
+            <div class="form-group">
+            <label class="col-form-label">referralsBalance:</label>
+            <p class="form-control">0.001</p>
+          </div>
+
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" @click="updateClientInfo()" class="btn btn-primary" data-dismiss="modal">Update</button>
       </div>
     </div>
   </div>
@@ -447,7 +489,7 @@ export default {
   },
   methods: {
    update(){
-     this.$router.push({ path: '/clients', query: { plan: 'private' }});
+     this.$router.push({ path: '/admins/clients'});
    },
    addUser(){
     this.newUser.push(

@@ -37,11 +37,18 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">Help</a>
               </li>
-              <li class="nav-item account-info-btn">
-                <a href="/client/services" class="nav-link"> My Account
-                   <font-awesome-icon icon="user"/>
+            <li class="nav-item account-info-btn">
+              <div class="dropdown show">
+                <a class="dropdown-toggle nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 My Account  <font-awesome-icon icon="user"/>
                 </a>
-              </li>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="/client/info">Account Info</a>
+                  <a class="dropdown-item" href="/client/change-password">Update Password</a>
+                  <a class="dropdown-item"  data-toggle="modal" data-target="#deleteModal" href="#">Delete Account</a>
+                </div>
+              </div>
+             </li>
             </ul>
           </div>
         </div>
@@ -58,9 +65,6 @@
                 </li>
                 <li>
                   <router-link class="dropdown-item" to="/client/referrals">Referrals</router-link>
-                </li>
-                <li>
-                  <router-link class="dropdown-item" to="/client/change-password">Change Password</router-link>
                 </li>
                 <li>
                   <router-link class="dropdown-item" to="/client/add-funds">Add Funds</router-link>
@@ -132,8 +136,12 @@
                 <div class="col-md-1 payment-option" v-for="price in defaultValues" @click="setValue($event.target)">{{price.value}}</div>
                 <div class="col-md-1 payment-option" @click="showOther($event.target)">Other</div>
               </div>
-            <div id="other-input-container" class="form-group form-inline form-container row pt-3 d-flex justify-content-center align-items-center">
-                <div class="col-sm-2 text-center col-form-label mt-3" style="color: #2b6cc8;">Amount</div>
+            <div id="other-input-container" class="form-group form-inline row pt-3 d-flex justify-content-center align-items-center">
+                <div v-if="otherOptionActive" class="col-sm-12 text-center col-form-label " style="color: #2b6cc8;">
+                  <label>Amount</label>
+                  <input type="number" class="form-control gift-field" @keydown.enter.prevent>
+                </div>
+              
                 <!-- <div class="col-sm-5">
                    <span class="text-muted"><input type="checkbox" id="checkbox" v-model="isGift"> Is It a Gift? </span>
                    <div>
@@ -256,6 +264,31 @@
         </div>
       </div>
     </footer>
+    <!-- DELETE MODAL -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLongTitle">Delete Account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <form>
+                <div class="form-group row pt-3">
+                      <div class="col-sm-12 text-center">
+                          <h4>Are you sure you want to delete your account?</h4>
+                          <button type="button" data-dismiss="modal" class="btn btn-primary space">Cancel</button>
+                          <button type="button" data-dismiss="modal" class="btn btn-danger space">Delete</button>
+                      </div>
+                </div>
+            </form>
+      </div>
+    </div>
+  </div>
+</div>
+
   </div>
 </template>
 
@@ -266,7 +299,7 @@ export default {
   data() {
     return {
         value: 0,
-        other: false,
+        otherOptionActive: false,
         selectedValue: 0,
         isGift: false,
         balance: 15,
@@ -286,9 +319,17 @@ export default {
         this.value = 10;
       }
     },
-    showOther(){
-      var container = $("#other-input-container");
-      container.toggleClass("display-other");
+    showOther(e){
+      this.otherOptionActive = !this.otherOptionActive;
+      console.log(this.otherOptionActive);
+      var list = e.classList;
+      if(list.contains('activeOption') || !this.otherOptionActive){
+        list.remove('activeOption');
+      }
+      else{
+        list.add('activeOption');
+      }
+    
     },
     setValue(e) {
       var option = e;
@@ -315,10 +356,6 @@ export default {
         this.balance = this.balance / 1000;
       }
     }
-  },
-  mounted(){
-      var item = document.querySelectorAll("#payment-item");
-    console.log(item);
   }
 }
 </script>

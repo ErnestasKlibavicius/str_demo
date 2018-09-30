@@ -15,8 +15,10 @@ import UpdPassword from '@/components/client/UpdPassword'
 import Referrals from '@/components/client/Referrals'
 import ChangePassword from '@/components/client/ChangePassword'
 import AddFunds from '@/components/client/AddFunds'
-import Client from '@/components/client/Client'
+import ClientInfo from '@/components/client/ClientInfo'
 import Redeem from '@/components/client/Redeem'
+import ClientConfirm from '@/components/client/Confirm'
+import ClientRecover from '@/components/client/Recover'
 //Admin Views
 import Dashboard from '@/components/admin/Dashboard'
 import Admins from '@/components/admin/Admins'
@@ -70,7 +72,7 @@ export default new Router({
 
 //------------------------------------------------------------------------------------------
 
-    //USER routes START
+    //CLIENT routes START
     {
       path: '/client/services',
       name: 'Services',
@@ -85,11 +87,26 @@ export default new Router({
       path: '/client/referrals',
       name: 'Referrals',
       component: Referrals
-    },   
+    },  
+    {
+      path: '/client/confirm',
+      name: 'ClientConfirm',
+      component: ClientConfirm
+    }, 
+    {
+      path: '/client/recover',
+      name: 'ClientRecover',
+      component: ClientRecover
+    }, 
     {
       path: '/client/change-password',
       name: 'ChangePass',
       component: ChangePassword
+    },
+    {
+      path: '/client/info',
+      name: 'ClientInfo',
+      component: ClientInfo
     },
     {
       path: '/client/redeem',
@@ -161,16 +178,6 @@ export default new Router({
       component: Login
     },
 
-    {
-      path: '/client',
-      name: 'Client',
-      component: Client,
-      children: [
-        {
-          path: 'recoverpass'
-        }
-      ]
-    },
     {
       path: '/api',
       name: 'Api',

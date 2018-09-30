@@ -1,5 +1,5 @@
 <template>
-  <div class="redeem">
+  <div class="ClientInfo">
     <header class="header-container sticky-top">
       <nav class="navbar navbar-expand-md">
         <div class="container-fluid">
@@ -37,7 +37,7 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">Help</a>
               </li>
-                <li class="nav-item account-info-btn">
+            <li class="nav-item account-info-btn">
               <div class="dropdown show">
                 <a class="dropdown-toggle nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                  My Account  <font-awesome-icon icon="user"/>
@@ -67,7 +67,7 @@
                   <router-link class="dropdown-item" to="/client/referrals">Referrals</router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/client/add-funds" style="border-bottom: 1px solid #3f9bff;">Add Funds</router-link>
+                  <router-link class="dropdown-item" to="/client/add-funds">Add Funds</router-link>
                 </li>
               </ul>
             </div>
@@ -92,61 +92,53 @@
         </div>
       </div>
     </div>
-    <div class="content mt-5">
-        <div class="container main-data">
+      <div class="content mt-5">
+      <div class="container main-data">
         <div class="row">
             <div class="col-md-12 px-0">
             <div>
                 <div class="d-flex justify-content-between align-items-center">
-                <h1 class="display-heading ml-3">Redeem Your Code</h1>
+                <h1 class="display-heading ml-3">Account Information</h1>
                 </div>
             </div>
             </div>
         </div>
         <div class="table-container">
-          <div class="row text-center payment-type-container">
-              <router-link class="col-md-6 option" to="/client/add-funds">
-                  <div>
-                    <a> 
-                        <h3 class="my-3 option-header">Make a Bitcoin Payment</h3> 
-                    </a> 
-                  </div>
-              </router-link>
-              <router-link class="col-md-6 option" to="/client/redeem">
-                <div>
-                <a> 
-                    <h3 class="my-3 option-header">Redeem</h3> 
-                </a> 
-                </div>
-              </router-link>
+          <div class="row">
+            <div class="col-md-12 d-flex align-items-center justify-content-center">
+              <h2 class="option-header ref-header my-2">Your Info</h2>
+            </div>
           </div>
            <div class="row">
              <div class="col-md-12">
-                <ul class="info-container-list ml-5 my-3">
-                  <li>Enter your code</li>
-                  <li>Use your code only once!</li>
-                  <li>Enter only one code when redeeming!</li>
-                  <li class="rate-info">Make sure you entered the correct code</li>
+                <ul class="info-container-list no-bullet ml-5 my-3">
+                  <li>
+                    <div class="info-container">
+                      <div>Email:
+                        <span>143</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="info-container">
+                      <div> Created At:
+                        <span>324</span>
+                      </div>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>
-            <form>
-              <div class="row d-flex justify-content-center align-items-center payment-options-container">
-                <div class="col-md-12">
-                    <h2 style="color: #2b6cc8;">Enter code </h2>   
-                </div>
-                <input type="text" class="input-group-text redeem-input">
-              </div>
-        
            
-            <div class="form-group row">
-                <div class="col-sm-12 text-center my-3">
-                  <button type="submit" class="btn btn-primary redeem-btn">Redeem</button>
-                </div>
-            </div>
-            </form>
         </div>
         </div>
+
+<!--         
+    "createdAt": "2006-01-02T15:04:05Z07:00",
+    "updatedAt": "2006-01-02T15:04:05Z07:00",
+    "id":"id123456",
+    "email":"asd@gmail.com",
+    "emailVerified": true -->
     </div> 
  
  <footer class="footer">
@@ -278,10 +270,12 @@
 
 <script>
 export default {
-  name: "Redeem",
+  name: "ClientInfo",
   data() {
     return {
         value: 0,
+        otherOptionActive: false,
+        selectedValue: 0,
         isGift: false,
         balance: 15,
         defaultValues: [
@@ -300,8 +294,32 @@ export default {
         this.value = 10;
       }
     },
+    showOther(e){
+      this.otherOptionActive = !this.otherOptionActive;
+      console.log(this.otherOptionActive);
+      var list = e.classList;
+      if(list.contains('activeOption') || !this.otherOptionActive){
+        list.remove('activeOption');
+      }
+      else{
+        list.add('activeOption');
+      }
+    
+    },
     setValue(e) {
-      this.value = e.target.innerHTML;
+      var option = e;
+      this.selectedValue = option.innerHTML;
+      console.log(this.selectedValue);
+     var list = option.classList;
+      if(list.contains('activeOption')){
+        list.remove('activeOption');
+      }
+      else{
+        list.add('activeOption');
+      }
+
+    
+
     },
      toggleBalance(){
       if(this.balance < 1){

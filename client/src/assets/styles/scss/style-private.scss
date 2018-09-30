@@ -206,6 +206,9 @@ body {
             text-align: right;
         }
     }
+    tr:last-of-type{
+        border-bottom: 1px solid #dee2e6 !important;
+    }
     thead{
         border-bottom: hidden;
         tr{
@@ -243,6 +246,10 @@ body {
 }
 
 //Payments
+.payment-status-pending{color: #ebd932;}
+.payment-status-completed{color: #26b62d;}
+.payment-status-failed{color: #ce2828;}
+
 .payment-table{
     font-size: 15px;
     color: #808080;
@@ -257,6 +264,9 @@ body {
         td:last-of-type{
             width: 20%;
         }
+    }
+    tr:last-of-type{
+        border-bottom: 1px solid #dee2e6 !important;
     }
     thead{
         border-bottom: hidden;
@@ -456,6 +466,22 @@ body {
    border-color: #007bff;
 }
 
+//account info
+.info-container {
+    font-size: 18px;
+    padding: 7px 8px 7px 8px;
+    margin: 5px;
+    background: #ffffff;
+    border-radius: 10px; 
+    .referral-link{
+        color: #2b6cc8;
+    }
+    span{
+        font-weight: bold;
+        color: #000000;
+    }
+}
+
 //BUTTONS 
 .delete-btn{
     font-size: 20px;
@@ -494,12 +520,16 @@ body {
 .logout-link{
     cursor: pointer;
 }
+.filter-options{
+    margin-left: 10px;
+}
 //Headings
 h1.display-heading{
     color: #2b6cc8;
     font-size: 37px;
     font-weight: bold;
     font-family: Roboto !important;
+    margin-left: 5px;
 }
 
  //FOOTER

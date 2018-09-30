@@ -37,11 +37,18 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">Help</a>
               </li>
-              <li class="nav-item account-info-btn">
-                <a href="/client/services" class="nav-link"> My Account
-                   <font-awesome-icon icon="user"/>
+                  <li class="nav-item account-info-btn">
+              <div class="dropdown show">
+                <a class="dropdown-toggle nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 My Account  <font-awesome-icon icon="user"/>
                 </a>
-              </li>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="/client/info">Account Info</a>
+                  <a class="dropdown-item" href="/client/change-password">Update Password</a>
+                  <a class="dropdown-item"  data-toggle="modal" data-target="#deleteModal" href="#">Delete Account</a>
+                </div>
+              </div>
+             </li>
             </ul>
           </div>
         </div>
@@ -58,9 +65,6 @@
                 </li>
                 <li>
                   <router-link class="dropdown-item" to="/client/referrals">Referrals</router-link>
-                </li>
-                <li>
-                  <router-link class="dropdown-item" to="/client/change-password">Change Password</router-link>
                 </li>
                 <li>
                   <router-link class="dropdown-item" to="/client/add-funds">Add Funds</router-link>
@@ -228,6 +232,30 @@
         </div>
       </div>
     </footer>
+        <!-- DELETE MODAL -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLongTitle">Delete Account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <form>
+                <div class="form-group row pt-3">
+                      <div class="col-sm-12 text-center">
+                          <h4>Are you sure you want to delete your account?</h4>
+                          <button type="button" data-dismiss="modal" class="btn btn-primary space">Cancel</button>
+                          <button type="button" data-dismiss="modal" class="btn btn-danger space">Delete</button>
+                      </div>
+                </div>
+            </form>
+      </div>
+    </div>
+  </div>
+</div>
   </div>
 </template>
 

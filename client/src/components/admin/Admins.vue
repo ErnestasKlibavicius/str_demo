@@ -149,6 +149,39 @@
                 </tr>
               </tbody>
             </table>
+             <div>
+            <nav aria-label="Page navigation admin-admins-pages">
+              <ul class="pagination justify-content-center align-items-center">
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">First</span>
+                  </a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&lt;</span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&gt;</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+                  <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Last</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
           </div>
         </div>
       </div>
