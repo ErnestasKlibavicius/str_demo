@@ -45,7 +45,7 @@
                   <a  @click="sendData"  class="btn btn-secondary cyan-btn">CREATE ACCOUNT</a>
                 </div>
               </div>
-              <p class="login-link">Already have an account? <router-link to="/login" class="">Log In</router-link> </p> 
+              <p class="login-link">Already have an account? <router-link to="/client/log-in" class="">Log In</router-link> </p> 
             </div>
           </div>
         </div>
@@ -63,10 +63,25 @@
     data() {
       return {
        username: '',
-       password: ''
+       password: '',
+       cutUrlQuery: function(){
+        var url = location.href.split( '/' );
+        var protocol = url[3];
+        var host = url[url.length -1];
+        var query = protocol;
+        return query;
+       }
       }
     },
     methods: {
+      cutUrl() {
+        var url = location.href.split( '/' );
+        var protocol = url[2];
+        var host = url[url.length -1];
+        var query = protocol;
+        console.log('query' + query);
+        return query;
+      },
       sendData(){
         var vm = this;
         var userInfo = 
@@ -74,13 +89,16 @@
           userName: this.username,
           password: this.password
         } 
-
-        axios.post('http://localhost:3000/client', userInfo)
+        console.log(this.$BaseURL+this.cutUrlQuery());
+        axios.post(this.$BaseURL+this.cutUrlQuery(), userInfo)
         .then(function(response){
-         vm.$router.push({path: '/login'});
+          if(resonse.status == 201){
+            vm.$router.push({path: '/client/log-in'});
+          }
         })
         .catch(function(error){
-          alert("Ups! Something went Wrong! " + error);
+           alert("cannot perform action");
+           console.log("cannot perform action - "+ "error code:" + error.response.status);
         });
       }
     }

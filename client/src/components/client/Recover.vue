@@ -55,9 +55,15 @@
     name: 'ClientRecover',
     data() {
       return {
-        display: false,
+       display: false,
        password: '',
-       root: 'http://localhost:3000/api'
+       cutUrlQuery: function(){
+        var url = location.href.split( '/' );
+        var protocol = url[3];
+        var host = url[url.length -1];
+        var query = protocol + '/' + host;
+        return query;
+       }
       }
     },
     methods: {
@@ -88,17 +94,15 @@
         password: this.password
       }
 
-      // "/api/admin/confirm?inv=code123"
-      // http://localhost:3000/admin
-      //"/admin/confirm?inv=code123" changes file pabaiga = window.location.href
-      // console.log(this.$BaseURL); **this.$BaseURL - base url i api http://localhost:3000/api**
-      console.log(window.location.href);
-        axios.post(this.root+"/admin/confirm?inv=code123", userData)
+        axios.post(this.$BaseURL+this.cutUrlQuery(), userData)
           .then(function(response){
-          vm.$router.push({path: '/admin'});
+            if(response.status == 201){
+              vm.$router.push({path: '/client/services'});
+            }
           })
           .catch(function(error){
-            alert("Ups! Something went Wrong! " + error);
+            alert("cannot perform action");
+            console.log("cannot perform action- "+ "error code:" + error.response.status);
           });
     }
     }

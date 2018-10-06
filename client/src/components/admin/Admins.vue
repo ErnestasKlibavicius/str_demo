@@ -73,7 +73,7 @@
           <div class="nav-items">
             <ul>
               <li>
-                <a class="dropdown-item" href="/">Logout</a>
+                <a class="dropdown-item" @click="logOut()">Logout</a>
               </li>
             </ul>
           </div>
@@ -388,16 +388,41 @@ export default {
     return {
       extraEmails: [],
       email: '',
-      id: 3
+      id: 3,
+      cutUrlQuery: function(){
+        var url = location.href.split( '/' );
+        var protocol = url[3];
+        var host = url[url.length -1];
+        var query = protocol + '/' + host;
+        return query;
+       }
     };
   },
   methods : {
+    cutUrl() {
+      var url = location.href.split( '/' );
+      var protocol = url[3];
+      var host = url[url.length -1];
+      var query = protocol + '/' + host;
+      return query;
+    },
     addEmail(){
       this.extraEmails.push(
         {
           field: ''
         }
       );
+    },
+    logOut(){
+      axios.post(this.$BaseURL+this.cutUrlQuery())
+      .then(function(response){
+        if(response.status == 201){
+          vm.$router.push({path: '/'});
+        }
+      })
+      .catch(function(error){
+        alert("Ups! Something went Wrong! " +  error.response.status);
+      });
     },
     sendInvite(){
       var inviteEmail =
@@ -443,7 +468,8 @@ export default {
         .catch(function(error){
           alert("Ups! Something went Wrong! " + error);
         });
-    }
+    },
+ 
   }
   };
 </script>

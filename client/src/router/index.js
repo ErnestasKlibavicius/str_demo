@@ -94,7 +94,7 @@ export default new Router({
       component: ClientConfirm
     }, 
     {
-      path: '/client/recover',
+      path: '/client/recover-pass',
       name: 'ClientRecover',
       component: ClientRecover
     }, 
@@ -119,7 +119,7 @@ export default new Router({
     
     //ADMIN routes START
     {
-      path: '/admin/recover',
+      path: '/admin/recover-pass',
       name: 'Admin-Recover',
       component: AdminRecover
     },
@@ -168,12 +168,12 @@ export default new Router({
     //------------------------------------------------------------------------
 
     {
-      path: '/register',
+      path: '/client',
       name: 'Register',
       component: Register
     },
     {
-      path: '/login',
+      path: '/client/log-in',
       name: 'Login',
       component: Login
     },

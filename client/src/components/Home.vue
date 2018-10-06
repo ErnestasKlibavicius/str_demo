@@ -37,7 +37,7 @@
                 <a href="#" class="nav-link">Help</a>
               </li>
               <li class="nav-item purchase-nav-item">
-                <a href="/login" class="nav-link">Login</a>
+                <a href="/client/log-in" class="nav-link">Login</a>
               </li>
             </ul>
           </div>

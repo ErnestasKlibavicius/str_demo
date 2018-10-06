@@ -62,7 +62,6 @@
         var protocol = url[3];
         var host = url[url.length -1];
         var query = protocol + '/' + host;
-        console.log('query: ' + query);
         return query;
        }
       }
@@ -72,8 +71,7 @@
       var mainInput = $(".login-field-icon-c");
       var passCont = $(".login-input-field");
       var confirmationData = $("#ConfirmData");
-      console.log(confirmationData.val());
-      console.log(this.password);
+     
       if (confirmationData.val() !== this.password){
         confirmationData.css("border", "solid 1px #ff0000");
         mainInput.css("border", "solid 1px #ff0000");
@@ -94,7 +92,6 @@
       var protocol = url[3];
       var host = url[url.length -1];
       var query = protocol + '/' + host;
-       console.log('query: ' + query);
       return query;
     },
 
@@ -104,12 +101,17 @@
       {
         password: this.password
       }
+      console.log(this.$BaseURL+this.cutUrlQuery());
+
         axios.post(this.$BaseURL+this.cutUrlQuery(), userData)
           .then(function(response){
-          vm.$router.push({path: '/admin'});
+            if(response.status == 201){
+              vm.$router.push({path: '/client/services'});
+            }
           })
           .catch(function(error){
-            alert("Ups! Something went Wrong! " + error);
+            alert("cannot perform action");
+            console.log("cannot perform action- "+ "error code:" + error.response.status);
           });
     }
 

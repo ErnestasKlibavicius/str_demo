@@ -77,7 +77,14 @@
       return {
        username: '',
        password: '',
-       email: ''
+       email: '',
+       cutUrlQuery: function(){
+        var url = location.href.split( '/' );
+        var protocol = url[3];
+        var host = url[url.length -1];
+        var query = protocol + '/' + host;
+        return query;
+       }
       }
     },
     methods: {
@@ -88,13 +95,15 @@
           userName: this.username,
           password: this.password
         };
-        // console.log(this.$BaseURL); **this.$BaseURL - base url i api http://localhost:3000/api**
-        axios.post('http://localhost:3000/adminssss', adminInfo)
+    
+        axios.post(this.$BaseURL+this.cutUrlQuery(), adminInfo)
         .then(function(response){
-         vm.$router.push({path: '/admin'});
+          if(response.status == 201){
+            vm.$router.push({path: '/admin'});
+          }
         })
         .catch(function(error){
-          alert("Ups! Something went Wrong! " + error.response.status);
+          alert("cannot perform action: " + error.response.status);
         });
       },
       sendPassword(){
@@ -102,10 +111,11 @@
         var adminEmail = {
           email: this.email
         }
-
-        axios.post('http://localhost:3000/forgotpass', adminEmail)
+        axios.post(this.$BaseURL+'admin/forgot-pass', adminEmail)
         .then(function(response){
-        //  vm.$router.push({path: '/'});
+          if (response.status ==201){
+            console.log('Succesfull');
+          }
         })
         .catch(function(error){
           alert("Ups! Something went Wrong! " + error);

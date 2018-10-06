@@ -40,7 +40,7 @@
                   <a @click="sendData" class="btn btn-secondary cyan-btn">LOGIN</a>
                 </div>
               </div>
-               <p class="sign-up-link"> Don't have an account? <router-link to="/register" class="">Sign Up</router-link> </p> 
+               <p class="sign-up-link"> Don't have an account? <router-link to="/client" class="">Sign Up</router-link> </p> 
             </div>
           </div>
           <div class="modal fade" id="forgotPassModal" tabindex="-1" role="dialog" aria-labelledby="forgotPassModalTitle" aria-hidden="true">
@@ -78,7 +78,14 @@
       return {
        username: '',
        password: '',
-       email: ''
+       email: '',
+       cutUrlQuery: function(){
+        var url = location.href.split( '/' );
+        var protocol = url[3];
+        var host = url[url.length -1];
+        var query = protocol + '/' + host;
+        return query;
+       }
       }
     },
     methods: {
@@ -89,13 +96,15 @@
           userName: this.username,
           password: this.password
         } 
-
-        axios.post('http://localhost:3000/auth', userInfo)
+        axios.post(this.$BaseURL+this.cutUrlQuery(), userInfo)
         .then(function(response){
-         vm.$router.push({path: '/client/services'});
+          if(response.status == 201){
+            vm.$router.push({path: '/client/services'});
+          }
         })
         .catch(function(error){
-          alert("Ups! Something went Wrong! " + error);
+          alert("cannot perform action");
+          console.log("cannot perform action- "+ "error code:" + error.response.status);
         });
       },
       sendPassword(){
@@ -103,13 +112,16 @@
         var userEmail = {
           email: this.email
         }
-
-        axios.post('http://localhost:3000/forgotpass', userEmail)
+        
+        axios.post(this.$BaseURL+'client/forgot-pass/', userEmail)
         .then(function(response){
-        //  vm.$router.push({path: '/'});
+          if (response.status ==201){
+            console.log('Succesfull');
+          }
         })
         .catch(function(error){
-          alert("Ups! Something went Wrong! " + error);
+          alert("cannot perform action");
+          console.log("cannot perform action- "+ "error code:" + error.response.status);
         });
       }
     }

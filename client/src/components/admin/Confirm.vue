@@ -62,7 +62,6 @@
         var protocol = url[3];
         var host = url[url.length -1];
         var query = protocol + '/' + host;
-        console.log('query: ' + query);
         return query;
        }
       }
@@ -72,8 +71,6 @@
       var mainInput = $(".login-field-icon-c");
       var passCont = $(".login-input-field");
       var confirmationData = $("#ConfirmData");
-      console.log(confirmationData.val());
-      console.log(this.password);
       if (confirmationData.val() !== this.password){
         confirmationData.css("border", "solid 1px #ff0000");
         mainInput.css("border", "solid 1px #ff0000");
@@ -94,7 +91,6 @@
       var protocol = url[3];
       var host = url[url.length -1];
       var query = protocol + '/' + host;
-       console.log('query: ' + query);
       return query;
     },
 
@@ -105,20 +101,17 @@
         password: this.password
       }
 
-      // "/api/admin/confirm?inv=code123"
-      // http://localhost:3000/admin
-      //"/admin/confirm?inv=code123" changes file pabaiga = window.location.href
-      // console.log(this.$BaseURL); **this.$BaseURL - base url i api http://localhost:3000/api**
-      
         axios.post(this.$BaseURL+this.cutUrlQuery(), userData)
           .then(function(response){
-          vm.$router.push({path: '/admin'});
+            if(response.status == 201){
+              vm.$router.push({path: '/admin'});
+            }
           })
           .catch(function(error){
-            alert("Ups! Something went Wrong! " + error);
+            alert('cannot perform action');
+            console.log("cannot perform action: "  + error.response.status);
           });
     }
-
     }
   }
 
