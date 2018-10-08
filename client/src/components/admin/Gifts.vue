@@ -44,7 +44,7 @@
                   </a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <a class="dropdown-item" href="/admin/info">Info</a>
-                    <a class="dropdown-item" href="/admin/update-password">Update Password</a>
+                    <a class="dropdown-item" href="/admin/change-pass">Update Password</a>
                   </div>
                 </div>
              </li>
@@ -73,7 +73,7 @@
             <div class="nav-items">
               <ul>
                 <li>
-                  <a class="dropdown-item" href="/">Logout</a>
+                  <a class="dropdown-item" @click="logOut()">Logout</a>
                 </li>
               </ul>
             </div>
@@ -308,14 +308,35 @@
 
 
 <script>
+import axios from 'axios';
+
 export default {
   name: "Gifts",
   data() {
     return {
       codes: [],
+      cutUrlQuery: function(){
+        var url = location.href.split( '/' );
+        var protocol = url[3];
+        var host = url[url.length -1];
+        var query = protocol + '/' + host;
+        return query;
+       }
     };
   },
   methods: {
+     logOut(){
+      axios.post(this.$BaseURL+'admin/log-out')
+      .then(function(response){
+        if(response.status == 201){
+          vm.$router.push({path: '/'});
+        }
+      })
+      .catch(function(error){
+        alert("cannot perform action");
+        console.log("cannot perform action- "+ "error code:" + error.response.status);
+      });
+    },
     AddCode: function() {
       this.codes.push({code: 'newCode', date: new Date().toDateString()});
     }

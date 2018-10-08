@@ -43,8 +43,8 @@
                  My Account  <font-awesome-icon icon="user"/>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="/admins/info">Account Info</a>
-                  <a class="dropdown-item" href="/admin/update-password">Update Password</a>
+                  <a class="dropdown-item" href="/admin/info">Account Info</a>
+                  <a class="dropdown-item" href="/admin/change-pass">Update Password</a>
                 </div>
               </div>
              </li>
@@ -73,7 +73,7 @@
           <div class="nav-items">
             <ul>
               <li>
-                <a class="dropdown-item" href="/">Logout</a>
+                <a class="dropdown-item" @click="logOut()">Logout</a>
               </li>
             </ul>
           </div>
@@ -104,14 +104,14 @@
                   <li>
                     <div class="info-container">
                       <div>Email:
-                        <span>143</span>
+                        <span>yourmail@gmail.com</span>
                       </div>
                     </div>
                   </li>
                   <li>
                     <div class="info-container">
                       <div> Created At:
-                        <span>324</span>
+                        <span>2015.03.12</span>
                       </div>
                     </div>
                   </li>
@@ -134,16 +134,49 @@
 
 
 <script>
+import axios from 'axios';
+
 export default {
   name: "Dashboard",
   data() {
     return {
-      MinFuelPointsToBuyValue: 2.35,
-      FuelPointRateValue: 23,
-      AuthCodeSigValue: 'sadasdasdavfaf',
-      AuthCodeSessionMinsValue: 15
+      cutUrlQuery: function(){
+        var url = location.href.split( '/' );
+        var protocol = url[3];
+        var host = url[url.length -1];
+        var query = protocol + '/' + host;
+        return query;
+       }
     };
-  }, methods: {}
+  }, methods: {
+      logOut(){
+      axios.post(this.$BaseURL+'admin/log-out')
+      .then(function(response){
+        if(response.status == 201){
+          vm.$router.push({path: '/'});
+        }
+      })
+      .catch(function(error){
+        alert("cannot perform action");
+        console.log("cannot perform action- "+ "error code:" + error.response.status);
+      });
+    },
+    retrieve(){
+      axios.get(this.$BaseURL+'admin')
+      .then(function(response){
+        if(response.status == 200){
+          console.log(response.data);
+        }
+      })
+      .catch(function(error){
+        alert("cannot perform action");
+        console.log("cannot perform action -" + "error code:" + error.response.status);
+      });
+    }
+  },
+  mounted() {
+    this.retrieve()
+  }
   };
 </script>
 

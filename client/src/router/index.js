@@ -129,7 +129,7 @@ export default new Router({
       component: Clients,
     },
     {
-      path: '/admin/update-password',
+      path: '/admin/change-pass',
       name: 'updatePasswordAdmin',
       component: UpdatePasswordAdmin
     },

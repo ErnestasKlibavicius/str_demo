@@ -118,7 +118,8 @@
           }
         })
         .catch(function(error){
-          alert("Ups! Something went Wrong! " + error);
+          alert("cannot perform action");
+          console.log("cannot perform action- "+ "error code:" + error.response.status);
         });
       }
     }

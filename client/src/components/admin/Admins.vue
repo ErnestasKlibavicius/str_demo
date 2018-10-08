@@ -44,7 +44,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                   <a class="dropdown-item" href="/admin/info">Info</a>
-                  <a class="dropdown-item" href="/admin/update-password">Update Password</a>
+                  <a class="dropdown-item" href="/admin/change-pass">Update Password</a>
                 </div>
               </div>
              </li>
@@ -240,7 +240,7 @@
             <form>
                 <div class="form-group row pt-3">
                       <div class="col-sm-12 text-center">
-                          <h4>Resend invite to this admin? ID: {{id}}</h4>
+                          <h4>Resend invite to this admin?</h4>
                           <button type="button" data-dismiss="modal" class="btn btn-danger space">Cancel</button>
                           <button type="button" @click="resendInvite()" data-dismiss="modal" class="btn btn-primary space">Resend</button>
                       </div>
@@ -414,14 +414,15 @@ export default {
       );
     },
     logOut(){
-      axios.post(this.$BaseURL+this.cutUrlQuery())
+      axios.post(this.$BaseURL+'admin/log-out')
       .then(function(response){
         if(response.status == 201){
           vm.$router.push({path: '/'});
         }
       })
       .catch(function(error){
-        alert("Ups! Something went Wrong! " +  error.response.status);
+        alert("cannot perform action");
+        console.log("cannot perform action- "+ "error code:" + error.response.status);
       });
     },
     sendInvite(){
@@ -430,13 +431,15 @@ export default {
         email:  this.email
       };
       var vm = this;
-
-      axios.post('http://localhost:3000/admin', inviteEmail)
+      axios.post(this.$BaseURL+'admin/invite', inviteEmail)
         .then(function(response){
-         vm.$router.push({path: '/admins'});
+          if(response.status == 201){
+           vm.$router.push({path: '/admin/admins'});
+          }
         })
         .catch(function(error){
-          alert("Ups! Something went Wrong! " + error);
+          alert("cannot perform action");
+          console.log("cannot perform action- "+ "error code:" + error.response.status);
         });
     },
       resendInvite(){
@@ -446,12 +449,15 @@ export default {
       };
       var vm = this;
 
-      axios.post('http://localhost:3000/admin', adminID)
+      axios.post(this.$BaseURL+'admin/resend-inv', adminID)
         .then(function(response){
-         vm.$router.push({path: '/admins'});
+          if(response.status == 201){
+            vm.$router.push({path: '/admin/admins'});
+          }
         })
         .catch(function(error){
-          alert("Ups! Something went Wrong! " + error);
+          alert("cannot perform action");
+          console.log("cannot perform action- "+ "error code:" + error.response.status);
         });
     },
     deleteAdmin(){
