@@ -87,7 +87,7 @@
       <div id="emailVerifyLabel" class="row">
         <div class="container-fluid email-verify-label-container">
           <div class="d-flex justify-content-center align-items-center">
-            <p href="#" class="badge badge-pill my-2">Your email isn't verified ! Didn't get an email? Click <a href="#">Here</a></p>
+            <p href="#" class="badge badge-pill my-2">Your email isn't verified ! Didn't get an email? Click <a href="#" @click="resendVer()">Here</a></p>
           </div>
         </div>
       </div>
@@ -615,6 +615,18 @@ export default {
         });
       
     },
+       resendVer(){
+      axios.post(this.$BaseURL+'client/resend-verif')
+      .then(function(response){
+        if(response.status == 201){
+         alert('New email verification link was sent to you');
+        }
+      })
+      .catch(function(error){
+        alert("cannot perform action");
+        console.log("cannot perform action - " + "error code:" + error.response.status);
+      });
+    },
     toggleBalance(){
     if(this.balance < 1){
       $('.mBtc').css("display", "inline-block");
@@ -625,16 +637,17 @@ export default {
       this.balance = this.balance / 1000;
     }
     },
-    logOut(){
-      var vm = this;
-
-       axios.post('http://localhost:3000/client', "LogOut")
-        .then(function(response){
-         vm.$router.push({path: '/'});
-        })
-        .catch(function(error){
-          alert("Ups! Something went Wrong! " + error);
-        });
+     logOut(){
+      axios.post(this.$BaseURL+'client/log-out')
+      .then(function(response){
+        if(response.status == 201){
+          vm.$router.push({path: '/'});
+        }
+      })
+      .catch(function(error){
+        alert("cannot perform action");
+        console.log("cannot perform action- "+ "error code:" + error.response.status);
+      });
     },
     AddAuthCode(){
       var vm = this;

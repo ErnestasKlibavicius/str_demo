@@ -11,7 +11,6 @@ import DownApp2 from '@/components/DownApp2'
 import Register from '@/components/Register'
 //Client Views
 import Services from '@/components/client/Services'
-import UpdPassword from '@/components/client/UpdPassword'
 import Referrals from '@/components/client/Referrals'
 import ChangePassword from '@/components/client/ChangePassword'
 import AddFunds from '@/components/client/AddFunds'

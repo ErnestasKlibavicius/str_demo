@@ -77,7 +77,7 @@
                   <a class="dropdown-item balance" @click="toggleBalance" href="#">Balance: {{balance}} <span class="mBtc">m</span>&#x20bf;</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="/">Logout</a>
+                  <a class="dropdown-item logout-link" @click="logOut()">Logout</a>
                 </li>
               </ul>
             </div>
@@ -87,7 +87,7 @@
       <div id="emailVerifyLabel" class="row">
         <div class="container-fluid email-verify-label-container">
           <div class="d-flex justify-content-center align-items-center">
-            <p href="#" class="badge badge-pill my-2">Your email isn't verified ! Didn't get an email? Click <a href="#">Here</a></p>
+            <p href="#" class="badge badge-pill my-2">Your email isn't verified ! Didn't get an email? Click <a href="#" @click="resendVer()">Here</a></p>
           </div>
         </div>
       </div>
@@ -340,6 +340,18 @@ export default {
         });
       
     },
+      logOut(){
+      axios.post(this.$BaseURL+'client/log-out')
+      .then(function(response){
+        if(response.status == 201){
+          vm.$router.push({path: '/'});
+        }
+      })
+      .catch(function(error){
+        alert("cannot perform action");
+        console.log("cannot perform action- "+ "error code:" + error.response.status);
+      });
+    },
     checkValue() {
       if(this.value <= 10) {
         this.value = 10;
@@ -388,6 +400,18 @@ export default {
           console.log("cannot perform action - " + "error code:" + error.response.status);
         });
     },
+    resendVer(){
+      axios.post(this.$BaseURL+'client/resend-verif')
+      .then(function(response){
+        if(response.status == 201){
+         alert('New email verification link was sent to you');
+        }
+      })
+      .catch(function(error){
+        alert("cannot perform action");
+        console.log("cannot perform action - " + "error code:" + error.response.status);
+      });
+    },
     pay(e){
       e.preventDefault();
       var paymentData = {
@@ -396,7 +420,6 @@ export default {
 
       }
       var vm = this;
-      console.log(paymentData);
       axios.post(this.$BaseURL+'client/payment/add-funds', paymentData)
         .then(function(response){
           if(response.status == 201){
