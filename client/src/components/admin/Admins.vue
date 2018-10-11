@@ -466,13 +466,13 @@ export default {
         adminID:  this.id
       };
       var vm = this;
-
-      axios.delete('http://localhost:3000/admin/' + ObjectID.adminID)
+      axios.delete(this.$BaseURL+'admin/del/' + ObjectID.adminID)
         .then(function(response){
          vm.$router.push({path: '/admins'});
         })
         .catch(function(error){
-          alert("Ups! Something went Wrong! " + error);
+          alert("cannot perform action");
+          console.log("cannot perform action -" + "error code:" + error.response.status);
         });
     },
  

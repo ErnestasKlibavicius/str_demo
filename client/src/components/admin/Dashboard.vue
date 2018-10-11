@@ -104,14 +104,14 @@
                   <li>
                     <div class="info-container">
                       <div>Email:
-                        <span>yourmail@gmail.com</span>
+                        <span>{{info.email}}</span>
                       </div>
                     </div>
                   </li>
                   <li>
                     <div class="info-container">
                       <div> Created At:
-                        <span>2015.03.12</span>
+                        <span> {{info.createdAt}}</span>
                       </div>
                     </div>
                   </li>
@@ -121,14 +121,107 @@
            
         </div>
         </div>
-
-<!--         
-    "createdAt": "2006-01-02T15:04:05Z07:00",
-    "updatedAt": "2006-01-02T15:04:05Z07:00",
-    "id":"id123456",
-    "email":"asd@gmail.com",
-    "emailVerified": true -->
     </div>
+
+     <footer class="footer">
+      <div class="container-fluid footer-container">
+        <div class="row">
+          <div class="col-md-4 main-footer-info-container">
+            <h4>lorem
+              <b>ipsum</b>
+            </h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing
+              <br> elit.Suscipit iste officia itaque eveniet obcaecati totam.</p>
+            <div class="social-icons">
+              <ul>
+                <li>
+                  <a href="#">
+                    <img src="../../assets/img/icon-twitter.png" height="20px" width="20px" alt="twitter">
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="../../assets/img/icon-facebook.png" height="20px" width="20px" alt="facebook">
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="../../assets/img/icon-medium.png" height="20px" width="20px" alt="medium">
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="../../assets/img/icon-telegram.png" height="20px" width="20px" alt="telegram">
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-2 footer-info">
+            <h6>lorem ipsum</h6>
+            <ul>
+              <li>
+                <a href="#">lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ips</a>
+              </li>
+              <li>
+                <a href="#">lorem ipsum lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ipss</a>
+              </li>
+              <li>
+                <a href="#">lorem lorem</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-2 footer-info">
+            <h6>lorem ipsum</h6>
+            <ul>
+              <li>
+                <a href="#">lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ips</a>
+              </li>
+              <li>
+                <a href="#">lorem ipsum lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ipss</a>
+              </li>
+              <li>
+                <a href="#">lorem lorem</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-2 footer-info">
+            <h6>lorem ipsum</h6>
+            <ul>
+              <li>
+                <a href="#">lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ips</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-2 footer-info">
+            <h6>lorem ipsum</h6>
+            <ul>
+              <li>
+                <a href="#">lorem</a>
+              </li>
+              <li>
+                <a href="#">lorem ips</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
 </div>
 </template>
 
@@ -140,6 +233,7 @@ export default {
   name: "Dashboard",
   data() {
     return {
+      info: [],
       cutUrlQuery: function(){
         var url = location.href.split( '/' );
         var protocol = url[3];
@@ -162,11 +256,10 @@ export default {
       });
     },
     retrieve(){
+      var vm = this;
       axios.get(this.$BaseURL+'admin')
       .then(function(response){
-        if(response.status == 200){
-          console.log(response.data);
-        }
+          vm.info = response.data[0];
       })
       .catch(function(error){
         alert("cannot perform action");

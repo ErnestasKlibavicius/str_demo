@@ -118,7 +118,7 @@
             <tr>
                 <td scope="row">2018.02.03</td>
                 <td>{{authCodes[0].code}}</td>
-                <td><a href="#" @click="deleteAuthCode" class=""><font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/></a></td>
+                <td><a href="#" @click="deleteAuthCode" ><font-awesome-icon class="i delete-btn" :icon="['fas', 'trash-alt']"/></a></td>
             </tr>
             <tr>
               <td scope="row">2018.02.03</td>
@@ -208,16 +208,6 @@
                 <div>
                     <div class="d-flex justify-content-start align-items-center add-licenses-container">
                         <h1 class="display-heading">Payments</h1>
-                            <div class="dropdown filter-options">
-                          <button class="btn btn-secondary dropdown-toggle" type="button" id="filterMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <font-awesome-icon icon="chevron-circle-down"/>
-                          </button>
-                          <div class="dropdown-menu" aria-labelledby="filterMenuButton">
-                            <a class="dropdown-item payment-status-pending" href="#">Pending</a>
-                            <a class="dropdown-item payment-status-completed" href="#">Completed</a>
-                            <a class="dropdown-item payment-status-failed" href="#">Failed</a>
-                          </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -571,7 +561,7 @@
                       <div class="col-sm-12 text-center">
                           <h4>Are you sure you want to delete your account?</h4>
                           <button type="button" data-dismiss="modal" class="btn btn-primary space">Cancel</button>
-                          <button type="button" data-dismiss="modal" class="btn btn-danger space">Delete</button>
+                          <button type="button" @click="deleteClient()" data-dismiss="modal" class="btn btn-danger space">Delete</button>
                       </div>
                 </div>
             </form>
@@ -589,10 +579,8 @@ import axios from 'axios';
 export default {
   name: "Services",
      mounted(){
-      if(this.emailStatus === "active"){
-        var emailLabel = document.getElementById("emailVerifyLabel");
-        emailLabel.remove();
-      }
+       this.checkEmail();
+    
   },
   data() {
     return {
@@ -604,10 +592,29 @@ export default {
         }
       ],
       balance: 15,
-      emailStatus: "inactive"
+      emailVerified: false
     };
   },
   methods: {
+     checkEmail(){
+      var vm = this;
+      axios.get(this.$BaseURL+'client')
+        .then(function(response){
+            if(response.data[0].emailVerified){
+              vm.emailVerified = true;
+              var emailLabel = document.getElementById("emailVerifyLabel");
+              emailLabel.remove();
+            }
+            else{
+              vm.emailVerified = false;
+            }
+        })
+        .catch(function(error){
+          alert("cannot perform action");
+          console.log("cannot perform action - " + "error code:" + error.response.status);
+        });
+      
+    },
     toggleBalance(){
     if(this.balance < 1){
       $('.mBtc').css("display", "inline-block");
@@ -632,13 +639,15 @@ export default {
     AddAuthCode(){
       var vm = this;
 
-       axios.post('http://localhost:3000/client')
+       axios.post(this.$BaseURL+'client/auth-code')
         .then(function(response){
-         vm.$router.push({path: '/client/services'});
-         console.log('Added new code');
+          if(response.status == 201){
+            vm.$router.push({path: '/client/services'});
+          }
         })
         .catch(function(error){
-          alert("Ups! Something went Wrong! " + error);
+          alert("cannot perform action");
+          console.log("cannot perform action - " + "error code:" + error.response.status);
         });
     },
     deleteAuthCode(){
@@ -646,13 +655,25 @@ export default {
       var authCode = {
         authCodeID: this.authCodes[0].id
       }
-       axios.delete('http://localhost:3000/client' + authCode)
+       axios.delete(this.$BaseURL+'client/auth-code',authCode)
         .then(function(response){
          vm.authCodes.splice(1, 1);
          vm.$router.push({path: '/client/services'});
         })
         .catch(function(error){
-          alert("Ups! Something went Wrong! " + error);
+          alert("cannot perform action");
+          console.log("cannot perform action - " + "error code:" + error.response.status);
+        });
+    },
+      deleteClient(){
+      var vm = this;
+      axios.delete(this.$BaseURL+'client')
+        .then(function(response){
+         vm.$router.push({path: '/'});
+        })
+        .catch(function(error){
+          alert("cannot perform action");
+          console.log("cannot perform action - " + "error code:" + error.response.status);
         });
     }
   }

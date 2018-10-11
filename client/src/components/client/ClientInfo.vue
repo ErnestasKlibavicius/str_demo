@@ -115,14 +115,28 @@
                   <li>
                     <div class="info-container">
                       <div>Email:
-                        <span>143</span>
+                        <span>{{info.email}}</span>
+                      </div>
+                    </div>
+                  </li>
+                   <li>
+                    <div class="info-container">
+                      <div>Email Verified:
+                        <span>{{info.emailVerified}}</span>
                       </div>
                     </div>
                   </li>
                   <li>
                     <div class="info-container">
                       <div> Created At:
-                        <span>324</span>
+                        <span>{{info.createdAt}}</span>
+                      </div>
+                    </div>
+                  </li>
+                   <li>
+                    <div class="info-container">
+                      <div>Legacy Codes Count:
+                        <span>{{info.legacyCodesCount}}</span>
                       </div>
                     </div>
                   </li>
@@ -132,13 +146,6 @@
            
         </div>
         </div>
-
-<!--         
-    "createdAt": "2006-01-02T15:04:05Z07:00",
-    "updatedAt": "2006-01-02T15:04:05Z07:00",
-    "id":"id123456",
-    "email":"asd@gmail.com",
-    "emailVerified": true -->
     </div> 
  
  <footer class="footer">
@@ -256,7 +263,7 @@
                       <div class="col-sm-12 text-center">
                           <h4>Are you sure you want to delete your account?</h4>
                           <button type="button" data-dismiss="modal" class="btn btn-primary space">Cancel</button>
-                          <button type="button" data-dismiss="modal" class="btn btn-danger space">Delete</button>
+                          <button type="button" @click="deleteClient()" data-dismiss="modal" class="btn btn-danger space">Delete</button>
                       </div>
                 </div>
             </form>
@@ -269,10 +276,14 @@
 
 
 <script>
+import axios from 'axios';
+
 export default {
   name: "ClientInfo",
   data() {
     return {
+        emailVerified: false,
+        info: [],
         value: 0,
         otherOptionActive: false,
         selectedValue: 0,
@@ -289,37 +300,30 @@ export default {
     };
   },
   methods: {
+    checkEmail(){
+      var vm = this;
+
+      axios.get(this.$BaseURL+'client')
+        .then(function(response){
+            if(response.data[0].emailVerified){
+              vm.emailVerified = true;
+              var emailLabel = document.getElementById("emailVerifyLabel");
+              emailLabel.remove();
+            }
+            else{
+              vm.emailVerified = false;
+            }
+        })
+        .catch(function(error){
+          alert("cannot perform action");
+          console.log("cannot perform action - " + "error code:" + error.response.status);
+        });
+      
+    },
     checkValue() {
       if(this.value <= 10) {
         this.value = 10;
       }
-    },
-    showOther(e){
-      this.otherOptionActive = !this.otherOptionActive;
-      console.log(this.otherOptionActive);
-      var list = e.classList;
-      if(list.contains('activeOption') || !this.otherOptionActive){
-        list.remove('activeOption');
-      }
-      else{
-        list.add('activeOption');
-      }
-    
-    },
-    setValue(e) {
-      var option = e;
-      this.selectedValue = option.innerHTML;
-      console.log(this.selectedValue);
-     var list = option.classList;
-      if(list.contains('activeOption')){
-        list.remove('activeOption');
-      }
-      else{
-        list.add('activeOption');
-      }
-
-    
-
     },
      toggleBalance(){
       if(this.balance < 1){
@@ -330,7 +334,33 @@ export default {
         $('.mBtc').css("display", "none");
         this.balance = this.balance / 1000;
       }
+    },
+      retrieve(){
+      var vm = this;
+      axios.get(this.$BaseURL+'client')
+      .then(function(response){
+          vm.info = response.data[0];
+      })
+      .catch(function(error){
+        alert("cannot perform action");
+        console.log("cannot perform action - " + "error code:" + error.response.status);
+      });
+    },
+      deleteClient(){
+      var vm = this;
+      axios.delete(this.$BaseURL+'client')
+        .then(function(response){
+         vm.$router.push({path: '/'});
+        })
+        .catch(function(error){
+          alert("cannot perform action");
+          console.log("cannot perform action - " + "error code:" + error.response.status);
+        });
     }
+  },
+  mounted(){
+    this.checkEmail();
+    this.retrieve();
   }
 }
 </script>

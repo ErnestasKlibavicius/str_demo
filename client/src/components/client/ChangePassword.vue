@@ -248,7 +248,7 @@
                       <div class="col-sm-12 text-center">
                           <h4>Are you sure you want to delete your account?</h4>
                           <button type="button" data-dismiss="modal" class="btn btn-primary space">Cancel</button>
-                          <button type="button" data-dismiss="modal" class="btn btn-danger space">Delete</button>
+                          <button type="button" @click="deleteClient()" data-dismiss="modal" class="btn btn-danger space">Delete</button>
                       </div>
                 </div>
             </form>
@@ -265,20 +265,41 @@ import axios from 'axios';
 
 export default {
   name: "ChangePass",
+      mounted(){
+       this.checkEmail();
+  },
   data() {
     return {
       display: false,
       oldPass: '',
       newPass: '',
-      balance: 15
+      balance: 15,
+      emailVerified: false
     };
   },
   methods: {
+    checkEmail(){
+      var vm = this;
+      axios.get(this.$BaseURL+'client')
+        .then(function(response){
+            if(response.data[0].emailVerified){
+              vm.emailVerified = true;
+              var emailLabel = document.getElementById("emailVerifyLabel");
+              emailLabel.remove();
+            }
+            else{
+              vm.emailVerified = false;
+            }
+        })
+        .catch(function(error){
+          alert("cannot perform action");
+          console.log("cannot perform action - " + "error code:" + error.response.status);
+        });
+      
+    },
     checkData(){
       var passCont = $("#n-pass-label");
       var confirmationData = $("#ConfirmData");
-      console.log(confirmationData.val());
-      console.log(this.password);
       if (confirmationData.val() !== this.newPass){
         confirmationData.css("border", "solid 1px #ff0000");
         passCont.css("border", "solid 1px #ff0000");
@@ -300,12 +321,15 @@ export default {
           newPass: this.newPass
         } 
 
-        axios.post('http://localhost:3000/changepass', userInfo)
+        axios.post(this.$BaseURL+"client/change-pass", userInfo)
         .then(function(response){
-         vm.$router.push({path: '/client/services'});
+          if (response.status == 201){
+            vm.$router.push({path: '/client/services'});
+          }
         })
         .catch(function(error){
-          alert("Ups! Something went Wrong! " + error);
+          alert("cannot perform action");
+          console.log("cannot perform action -" + "error code:" + error.response.status);
         });
     },
     toggleBalance(){
@@ -317,6 +341,17 @@ export default {
       $('.mBtc').css("display", "none");
       this.balance = this.balance / 1000;
     }
+    },
+      deleteClient(){
+      var vm = this;
+      axios.delete(this.$BaseURL+'client')
+        .then(function(response){
+         vm.$router.push({path: '/'});
+        })
+        .catch(function(error){
+          alert("cannot perform action");
+          console.log("cannot perform action - " + "error code:" + error.response.status);
+        });
     }
   }
   };

@@ -135,13 +135,13 @@
                 <div class="col-md-12">
                     <h2 style="color: #2b6cc8;">Enter code </h2>   
                 </div>
-                <input type="text" class="input-group-text redeem-input">
+                <input type="text" v-model="code" class="input-group-text redeem-input">
               </div>
         
            
             <div class="form-group row">
                 <div class="col-sm-12 text-center my-3">
-                  <button type="submit" class="btn btn-primary redeem-btn">Redeem</button>
+                  <button type="submit" @click="redeemCode" class="btn btn-primary redeem-btn">Redeem</button>
                 </div>
             </div>
             </form>
@@ -264,7 +264,7 @@
                       <div class="col-sm-12 text-center">
                           <h4>Are you sure you want to delete your account?</h4>
                           <button type="button" data-dismiss="modal" class="btn btn-primary space">Cancel</button>
-                          <button type="button" data-dismiss="modal" class="btn btn-danger space">Delete</button>
+                          <button type="button" @click="deleteClient()" data-dismiss="modal" class="btn btn-danger space">Delete</button>
                       </div>
                 </div>
             </form>
@@ -277,10 +277,16 @@
 
 
 <script>
+import axios from 'axios';
+
 export default {
   name: "Redeem",
+      mounted(){
+       this.checkEmail();
+  },
   data() {
     return {
+        code: '',
         value: 0,
         isGift: false,
         balance: 15,
@@ -290,11 +296,30 @@ export default {
           {value: 50},
           {value: 100},
           {value: 250}
-        ]
-  
+        ],
+         emailVerified: false
     };
   },
   methods: {
+     checkEmail(){
+      var vm = this;
+      axios.get(this.$BaseURL+'client')
+        .then(function(response){
+            if(response.data[0].emailVerified){
+              vm.emailVerified = true;
+              var emailLabel = document.getElementById("emailVerifyLabel");
+              emailLabel.remove();
+            }
+            else{
+              vm.emailVerified = false;
+            }
+        })
+        .catch(function(error){
+          alert("cannot perform action");
+          console.log("cannot perform action - " + "error code:" + error.response.status);
+        });
+      
+    },
     checkValue() {
       if(this.value <= 10) {
         this.value = 10;
@@ -312,6 +337,33 @@ export default {
         $('.mBtc').css("display", "none");
         this.balance = this.balance / 1000;
       }
+    },
+      deleteClient(){
+      var vm = this;
+      axios.delete(this.$BaseURL+'client')
+        .then(function(response){
+         vm.$router.push({path: '/'});
+        })
+        .catch(function(error){
+          alert("cannot perform action");
+          console.log("cannot perform action - " + "error code:" + error.response.status);
+        });
+    },
+    redeemCode(e){
+      e.preventDefault();
+      var usersCode = {
+        code: this.code
+      }
+        axios.post(this.$BaseURL+'client/gift/redeem', usersCode)
+          .then(function(response){
+            if(response.status == 201){
+              vm.$router.push({path: '/client/add-funds'});
+            }
+          })
+          .catch(function(error){
+            alert("cannot perform action");
+            console.log("cannot perform action- "+ "error code:" + error.response.status);
+          });
     }
   }
 }

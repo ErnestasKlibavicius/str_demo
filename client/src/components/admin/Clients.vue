@@ -199,7 +199,7 @@
           </div>
           <div class="form-group">
             <label class="col-form-label">ID:</label>
-            <p class="form-control"> id123456</p>
+            <input type="number" class="form-control" v-model="id">
           </div>
            <div class="form-group">
             <label class="col-form-label">Email:</label>
@@ -211,7 +211,7 @@
            </div>
           <div class="form-group">
             <label class="col-form-label">legacy Codes Count:</label>    
-            <p class="form-control">0</p>
+            <input type="number" class="form-control" v-model="legacyCodeCount">
           </div>
           <div class="form-group">
             <label class="col-form-label">balance:</label>
@@ -222,22 +222,19 @@
             <p class="form-control">15</p>
           </div>
           <div class="form-group">
-            <label class="col-form-label">referredClientCount:</label>
-            <p class="form-control">15</p>
-          </div>
-          <div class="form-group">
             <label class="col-form-label">referralCut:</label>
-            <p class="form-control">5.5</p>
+            <input type="text" class="form-control" v-model="referralCut">
           </div>
             <div class="form-group">
             <label class="col-form-label">referralsBalance:</label>
-            <p class="form-control">0.001</p>
+            <input type="text" class="form-control" v-model="referralsBalance">
           </div>
 
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" @click="updateClientInfo()" data-dismiss="modal" class="btn btn-primary space">Update</button>
       </div>
     </div>
   </div>
@@ -266,21 +263,6 @@
                           <input type="number" class="form-control" style="display: inline-block" v-model="legacyCodeCount" placeholder="Type amount of legacy codes">
                       </div>
                  </div>
-
-                        <!--for multipal users -->
-                    <!-- <div class="form-group row pt-3" v-for="(item, index) in newUser">
-                      <label class="col-sm-3 text-center col-form-label">New user:</label>
-                      <div class="col-sm-9">
-                          <input type="email" class="form-control" v-model="newUser[index].field" placeholder="email">
-                      </div>
-                    </div> -->
-<!--                     
-                   <div class="form-group row pt-3">
-                  <label class="col-sm-5 col-form-label">Add another user:</label>
-                        <a href="#" @click="addUser" class="pull-right d-flex align-items-center add-btn">
-                          <font-awesome-icon class="i" icon="plus" />
-                        </a>
-                </div> -->
             </form>
       </div>
       <div class="modal-footer d-flex justify-content-center">
@@ -524,13 +506,16 @@ export default {
         legacyCodeCount: this.legacyCodeCount
       };
       var vm = this;
-
-      axios.post('http://localhost:3000/admin', inviteObj)
+  
+      axios.post(this.$BaseURL + 'admin/client/invite', inviteObj)
         .then(function(response){
-         vm.$router.push({path: '/clients'});
+          if(response.status == 201){
+            vm.$router.push({path: '/admin/clients'});
+          }
         })
         .catch(function(error){
-          alert("Ups! Something went Wrong! " + error);
+          alert("cannot perform action");
+          console.log("cannot perform action -" + "error code:" + error.response.status);
         });
     },
      resendInvite(){
@@ -540,9 +525,11 @@ export default {
       };
       var vm = this;
 
-      axios.post('http://localhost:3000/admin', userID)
+      axios.post(this.$BaseURL + 'admin/client/resend-inv', userID)
         .then(function(response){
-         vm.$router.push({path: '/clients'});
+          if(response.status == 201){
+            vm.$router.push({path: '/admin/clients'});
+          }
         })
         .catch(function(error){
           alert("Ups! Something went Wrong! " + error);
@@ -559,12 +546,15 @@ export default {
       };
       var vm = this;
 
-      axios.put('http://localhost:3000/admin', userInfo)
+      axios.put(this.$BaseURL + 'admin/client', userInfo)
         .then(function(response){
-         vm.$router.push({path: '/clients'});
+          if(response.status == 200){
+            vm.$router.push({path: '/admin/clients'});
+          }
         })
         .catch(function(error){
-          alert("Ups! Something went Wrong! " + error);
+          alert("cannot perform action");
+          console.log("cannot perform action -" + "error code:" + error.response.status);
         });
     }
   }

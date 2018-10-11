@@ -123,7 +123,7 @@
                     <div class="referral-container">
                       <div> Accumulated Balance:
                         <span>324</span>
-                          <button class="ml-1 btn btn-primary">Transfer to balance</button>
+                          <button @click="convertRef" class="ml-1 btn btn-primary">Transfer to balance</button>
                       </div>
                     </div>
                   </li>
@@ -257,7 +257,7 @@
                       <div class="col-sm-12 text-center">
                           <h4>Are you sure you want to delete your account?</h4>
                           <button type="button" data-dismiss="modal" class="btn btn-primary space">Cancel</button>
-                          <button type="button" data-dismiss="modal" class="btn btn-danger space">Delete</button>
+                          <button type="button" @click="deleteClient()" data-dismiss="modal" class="btn btn-danger space">Delete</button>
                       </div>
                 </div>
             </form>
@@ -270,14 +270,39 @@
 
 
 <script>
+import axios from 'axios';
+
   export default {
     name: 'Referrals',
+       mounted(){
+       this.checkEmail();
+  },
     data() {
       return {
-        balance: 15
+        balance: 15,
+        emailVerified: false
       }
     },
     methods:{
+ checkEmail(){
+      var vm = this;
+      axios.get(this.$BaseURL+'client')
+        .then(function(response){
+            if(response.data[0].emailVerified){
+              vm.emailVerified = true;
+              var emailLabel = document.getElementById("emailVerifyLabel");
+              emailLabel.remove();
+            }
+            else{
+              vm.emailVerified = false;
+            }
+        })
+        .catch(function(error){
+          alert("cannot perform action");
+          console.log("cannot perform action - " + "error code:" + error.response.status);
+        });
+      
+    },
       toggleBalance(){
         if(this.balance < 1){
           $('.mBtc').css("display", "inline-block");
@@ -287,7 +312,31 @@
           $('.mBtc').css("display", "none");
           this.balance = this.balance / 1000;
         }
-      }
+      },
+        deleteClient(){
+      var vm = this;
+      axios.delete(this.$BaseURL+'client')
+        .then(function(response){
+         vm.$router.push({path: '/'});
+        })
+        .catch(function(error){
+          alert("cannot perform action");
+          console.log("cannot perform action - " + "error code:" + error.response.status);
+        });
+    },
+    convertRef(){
+      var vm = this;
+      axios.post(this.$BaseURL+'client/convert-ref')
+        .then(function(response){
+          if(response.status == 201){
+            vm.$router.push({path: '/client/referrals'});
+          }
+        })
+        .catch(function(error){
+          alert("cannot perform action");
+          console.log("cannot perform action - " + "error code:" + error.response.status);
+        });
+    }
     }
   }
 

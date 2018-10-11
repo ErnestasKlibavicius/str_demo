@@ -101,8 +101,6 @@
       {
         password: this.password
       }
-      console.log(this.$BaseURL+this.cutUrlQuery());
-
         axios.post(this.$BaseURL+this.cutUrlQuery(), userData)
           .then(function(response){
             if(response.status == 201){

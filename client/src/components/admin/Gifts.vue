@@ -107,7 +107,7 @@
                   <th scope="col">Date</th>
                   <th scope="col">Code</th>
                   <th scope="col"> 
-                    <a href="#"  @click="AddCode" class="pull-right d-flex align-items-center add-btn">
+                    <a href="#" data-toggle="modal" data-target="#createGiftModal" class="pull-right d-flex align-items-center add-btn">
                       <font-awesome-icon class="i" icon="plus" />
                     </a>
                   </th>
@@ -204,6 +204,35 @@
         </div>
       </div>
     </div>
+    <!-- ADD GIFT MODAL -->
+  <div class="modal fade" id="createGiftModal" tabindex="-1" role="dialog" aria-labelledby="createGiftModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createGiftModalLongTitle">Create Gift</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <form>
+                <div class="form-group row pt-3">
+                      <div class="col-sm-12 text-center">
+                        <div class="form-group row pt-2">
+                          <label class="col-sm-3 text-center col-form-label">Amount:</label>
+                          <div class="col-sm-9">
+                            <input type="number" class="form-control" style="display: inline-block" v-model="giftAmount">
+                          </div>
+                        </div>
+                        <button type="button" data-dismiss="modal" class="btn btn-danger space">Cancel</button>
+                        <button type="button" @click="CreateGift()" data-dismiss="modal" class="btn btn-primary space">Create</button>
+                      </div>
+                </div>
+            </form>
+      </div>
+    </div>
+  </div>
+</div>
        <footer class="footer">
       <div class="container-fluid footer-container">
         <div class="row">
@@ -315,6 +344,7 @@ export default {
   data() {
     return {
       codes: [],
+      giftAmount: 0,
       cutUrlQuery: function(){
         var url = location.href.split( '/' );
         var protocol = url[3];
@@ -339,6 +369,22 @@ export default {
     },
     AddCode: function() {
       this.codes.push({code: 'newCode', date: new Date().toDateString()});
+    },
+    CreateGift() {
+      var vm = this;
+      var gift = {
+        giftAmount: this.giftAmount
+      }
+      axios.post(this.$BaseURL+'admin/gift', gift)
+      .then(function(response){
+        if(response.status == 201){
+          vm.$router.push({path: 'admin/gifts'});
+        }
+      })
+      .catch(function(error){
+        alert("cannot perform action");
+        console.log("cannot perform action- "+ "error code:" + error.response.status);
+      });
     }
   }
 };

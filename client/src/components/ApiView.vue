@@ -1,6 +1,6 @@
 <template>
   <div class="api">
-   api view component
+   api view component {{user}}
     <router-view></router-view>
   </div>
 </template>

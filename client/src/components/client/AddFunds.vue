@@ -139,7 +139,7 @@
             <div id="other-input-container" class="form-group form-inline row pt-3 d-flex justify-content-center align-items-center">
                 <div v-if="otherOptionActive" class="col-sm-12 text-center col-form-label " style="color: #2b6cc8;">
                   <label>Amount</label>
-                  <input type="number" class="form-control gift-field" @keydown.enter.prevent>
+                  <input type="number" v-model="selectedValue" class="form-control gift-field" @keydown.enter.prevent>
                 </div>
               
                 <!-- <div class="col-sm-5">
@@ -155,9 +155,9 @@
                 <div class="col-sm-12 text-center my-3">
                   <p class="text-muted mb-1"><input type="checkbox" id="checkbox" v-model="isGift"> Is it a gift? </p>
                     <div class="d-flex justify-content-center">
-                     <input type="number" v-if="isGift" class="form-control gift-field" placeholder="Quantity" @keydown.enter.prevent>
+                     <input type="number" v-model="giftAmount" v-if="isGift" class="form-control gift-field" placeholder="Quantity" @keydown.enter.prevent>
                    </div>
-                  <button type="submit" class="btn btn-primary payment-btn">Pay With Bitcoin</button>
+                  <button type="submit" @click="pay" class="btn btn-primary payment-btn">Pay With Bitcoin</button>
                 </div>
             </div>
             </form>
@@ -280,7 +280,7 @@
                       <div class="col-sm-12 text-center">
                           <h4>Are you sure you want to delete your account?</h4>
                           <button type="button" data-dismiss="modal" class="btn btn-primary space">Cancel</button>
-                          <button type="button" data-dismiss="modal" class="btn btn-danger space">Delete</button>
+                          <button type="button" @click="deleteClient()" data-dismiss="modal" class="btn btn-danger space">Delete</button>
                       </div>
                 </div>
             </form>
@@ -294,12 +294,18 @@
 
 
 <script>
+import axios from 'axios';
+
 export default {
   name: "AddFunds",
+      mounted(){
+       this.checkEmail();
+  },
   data() {
     return {
         value: 0,
         otherOptionActive: false,
+        giftAmount: 0,
         selectedValue: 0,
         isGift: false,
         balance: 15,
@@ -309,11 +315,31 @@ export default {
           {value: 50},
           {value: 100},
           {value: 250}
-        ]
+        ],
+        emailVerified: false
   
     };
   },
   methods: {
+     checkEmail(){
+      var vm = this;
+      axios.get(this.$BaseURL+'client')
+        .then(function(response){
+            if(response.data[0].emailVerified){
+              vm.emailVerified = true;
+              var emailLabel = document.getElementById("emailVerifyLabel");
+              emailLabel.remove();
+            }
+            else{
+              vm.emailVerified = false;
+            }
+        })
+        .catch(function(error){
+          alert("cannot perform action");
+          console.log("cannot perform action - " + "error code:" + error.response.status);
+        });
+      
+    },
     checkValue() {
       if(this.value <= 10) {
         this.value = 10;
@@ -321,7 +347,6 @@ export default {
     },
     showOther(e){
       this.otherOptionActive = !this.otherOptionActive;
-      console.log(this.otherOptionActive);
       var list = e.classList;
       if(list.contains('activeOption') || !this.otherOptionActive){
         list.remove('activeOption');
@@ -334,7 +359,6 @@ export default {
     setValue(e) {
       var option = e;
       this.selectedValue = option.innerHTML;
-      console.log(this.selectedValue);
      var list = option.classList;
       if(list.contains('activeOption')){
         list.remove('activeOption');
@@ -342,9 +366,6 @@ export default {
       else{
         list.add('activeOption');
       }
-
-    
-
     },
      toggleBalance(){
       if(this.balance < 1){
@@ -355,6 +376,37 @@ export default {
         $('.mBtc').css("display", "none");
         this.balance = this.balance / 1000;
       }
+    },
+    deleteClient(){
+      var vm = this;
+      axios.delete(this.$BaseURL+'client')
+        .then(function(response){
+         vm.$router.push({path: '/'});
+        })
+        .catch(function(error){
+          alert("cannot perform action");
+          console.log("cannot perform action - " + "error code:" + error.response.status);
+        });
+    },
+    pay(e){
+      e.preventDefault();
+      var paymentData = {
+        giftsCount: this.giftAmount,
+        btcAmount: this.selectedValue / 1000 
+
+      }
+      var vm = this;
+      console.log(paymentData);
+      axios.post(this.$BaseURL+'client/payment/add-funds', paymentData)
+        .then(function(response){
+          if(response.status == 201){
+            vm.$router.push({path: 'payment processor page'});
+          }
+        })
+        .catch(function(error){
+          alert("cannot perform action");
+          console.log("cannot perform action - " + "error code:" + error.response.status);
+        });
     }
   }
 }
